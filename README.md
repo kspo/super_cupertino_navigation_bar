@@ -1,6 +1,8 @@
-# super_cupertino_navigation_bar
+# Super Cupertino Navigation Bar
 
-About This is most desired plugin of Cupertino Navigation Bar With Search Field and Avatar
+It's been necessary from the beginning, and I just did it.
+
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/BPJmthQ3YRwD6QqcVD" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/HBOMax-hbomax-the-great-gatsby-2013-thegreatgatsbyonhbomax-BPJmthQ3YRwD6QqcVD">via GIPHY</a></p>
 
 ## Getting Started
 
