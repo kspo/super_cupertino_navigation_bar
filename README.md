@@ -10,10 +10,6 @@ It's been necessary from the beginning, and I just did it.
 
 <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/cheers.gif" width="350px"/>
 
-| Floated                                                                                                                     | Pinned                                                                                                                       |
-|-----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro.gif" width="250px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_1.gif" width="250px"/> |
-
 ## Getting Started 
 
 This project is a starting point for a Flutter application.
