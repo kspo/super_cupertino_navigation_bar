@@ -18,7 +18,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return CupertinoApp(
       debugShowCheckedModeBanner: false,
-      theme: const CupertinoThemeData(brightness: Brightness.light),
+      theme: const CupertinoThemeData(brightness: Brightness.dark),
       localizationsDelegates: const <LocalizationsDelegate<Object>>[
         // ... app-specific localization delegate(s) here
         GlobalMaterialLocalizations.delegate,
