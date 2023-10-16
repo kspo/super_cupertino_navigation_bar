@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.dart';
 
 import '../general.dart';
@@ -22,24 +19,7 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
 
   List<Users> _users = [];
   bool focused = false;
-
-  Future<List<Users>> search(String text) async {
-    try {
-      var client = http.Client();
-
-      final response = await client
-          .get(Uri.parse('https://dummyjson.com/users/search?q=$text'));
-
-      // print(UserList.fromJson(json.decode(response.body)).users!);
-      if (response.statusCode == 200) {
-        return UserList.fromJson(json.decode(response.body)).users!;
-      } else {
-        throw Exception('Something Goes Wrong');
-      }
-    } catch (e) {
-      throw Exception('$e');
-    }
-  }
+  bool hasData = false;
 
   Widget createResultList() {
     return ListView.separated(
@@ -87,37 +67,124 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
               onFocused: (value) => setState(() {
                 focused = value;
               }),
-              onCancelTap: () => setState(() {
-                _users = [];
-              }),
-              onSuffixTap: () => setState(() {
-                _users = [];
-              }),
-              onChanged: (text) {
-                search(text).then((value) {
-                  _users = value;
-                  setState(() {});
+              onSuffixTap: () {
+                setState(() {
+                  hasData = false;
                 });
               },
-              onSubmitted: (text) {
-                search(text).then((value) {
-                  _users = value;
-                  setState(() {});
+              onCancelTap: () {
+                setState(() {
+                  hasData = false;
                 });
               },
-              searchResultChildren: [
-                const SizedBox(
-                  height: 5,
-                ),
-                const SizedBox(),
-                Divider(
-                  indent: 15,
-                  endIndent: 15,
-                  color: Colors.grey.withOpacity(0.25),
-                  height: 20,
-                ),
-                createResultList(),
-              ],
+              onChanged: (text1) {
+                setState(() {
+                  hasData = text1.isNotEmpty;
+                });
+              },
+              onSubmitted: (text1) {
+                setState(() {
+                  hasData = text1.isNotEmpty;
+                });
+              },
+              searchResultChildren: !hasData
+                  ? []
+                  : [
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        children: [
+                          for (int i = 0; i < 4; i++)
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(700),
+                                    child: Image.asset(
+                                      "assets/empty_profile.png",
+                                      width: 55,
+                                      height: 55,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    "John Doe",
+                                    style: TextStyle(fontSize: 14),
+                                  )
+                                ],
+                              ),
+                            )
+                        ],
+                      ),
+                      Divider(
+                        indent: 15,
+                        endIndent: 15,
+                        color: Colors.grey.withOpacity(0.25),
+                        height: 40,
+                      ),
+                      ListView.separated(
+                        itemCount: 4,
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        separatorBuilder: (c, i) => Divider(
+                          color: Colors.grey.withOpacity(0.25),
+                          height: 20,
+                        ),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (c, i) => Row(
+                          children: [
+                            Icon(
+                              CupertinoIcons.profile_circled,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text("Messages with: Lorem Ipsum...")
+                          ],
+                        ),
+                      ),
+                      Divider(
+                        color: Colors.grey.withOpacity(0.25),
+                        height: 40,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Fotoğraflar",
+                              style: general.getSubtitle(context),
+                            ),
+                            Spacer(),
+                            Text(
+                              "Tümünü Gör",
+                              style: general.getLinkStyle(context),
+                            )
+                          ],
+                        ),
+                      ),
+                      GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                        physics: NeverScrollableScrollPhysics(),
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        children: List.generate(100, (index) {
+                          return Container(
+                            color: general.colors[index % 7],
+                            child: Text(
+                              'Item $index',
+                            ),
+                          );
+                        }),
+                      )
+                    ],
             ),
             previousPageTitle: "Lists",
             stretch: true,
@@ -129,7 +196,7 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
                     if (snapshot.hasData) {
                       return ListView.separated(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 25),
+                            horizontal: 15, vertical: 15),
                         separatorBuilder: (context, index) => Divider(
                           color: CupertinoColors.systemGrey.withOpacity(0.35),
                           height: 25,
