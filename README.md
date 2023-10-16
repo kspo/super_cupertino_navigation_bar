@@ -8,9 +8,9 @@
 
 It's been necessary from the beginning, and I just did it.
 
-<img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/cheers.gif" style="width:150px" width="150px"/>
+<img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/cheers.gif" width="350px"/>
 
-## Getting Started
+## Getting Started 
 
 This project is a starting point for a Flutter application.
 
