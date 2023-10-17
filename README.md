@@ -109,13 +109,14 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
 | transitionBetweenRoutes   | bool                          | Whether to transition between navigation bars. When transitionBetweenRoutes is true, this navigation bar will transition on top of the routes instead of inside it if the route being transitioned to also has a CupertinoNavigationBar or a CupertinoSliverNavigationBar with transitionBetweenRoutes set to true.                                                                                                                                               |
 | heroTag                   | Object                        | Tag for the navigation bar's Hero widget if transitionBetweenRoutes is true. Defaults to a common tag between all CupertinoNavigationBar and CupertinoSliverNavigationBar instances of the same Navigator. With the default tag, all navigation bars of the same navigator can transition between each other as long as there's only one navigation bar per route.                                                                                                |
 | stretch                   | bool                          | This specifies navbar behavior when negative scroll has been done. It moves with scroll contents when it's true. But it will be static on scrolling.                                                                                                                                                                                                                                                                                                              |
-| slivers                   | List<Widget>                  | SuperCupertinoNavigationBar has CustomScrollView so place all of your children place here as Sliver Widget such as SliverToBoxAdapter etc.                                                                                                                                                                                                                                                                                                                        |
+| slivers                   | List[Widget]                  | SuperCupertinoNavigationBar has CustomScrollView so place all of your children place here as Sliver Widget such as SliverToBoxAdapter etc.                                                                                                                                                                                                                                                                                                                        |
 | scrollController          | ScrollController              | SuperCupertinoNavigationBar has own scrollController but if you want to add scrollController as custom, you can set here. this will be used as primary scrollController                                                                                                                                                                                                                                                                                           |
 | appBarType                | AppBarType (Enum)             | AppBarType is an enum and it sets Appbar as Large Title or Normal Navbar and whether it has Search Bar or not. **Values:** LargeTitleWithPinnedSearch, LargeTitleWithFloatedSearch, LargeTitleWithoutSearch, NormalNavbarWithPinnedSearch, NormalNavbarWithFloatedSearch                                                                                                                                                                                          |
 | searchFieldDecoration     | SearchFieldDecoration (Model) | This is Search Field Model which you can find extended information below                                                                                                                                                                                                                                                                                                                                                                                          |
 | avatarModel               | AvatarModel (Model)           | This is Avatar Model which you can find extended information below                                                                                                                                                                                                                                                                                                                                                                                                |
 
 ##### AppBarType Enum
+
 AppBarType values below;
 ```dart
 enum AppBarType {
@@ -156,9 +157,31 @@ enum AppBarType {
 | onFocused            | ValueChanged[bool]          | triggers desired event on search field focus                                                                                                                                     |
 | hideSearchBarOnInit  | bool                        | this is applicable only LargeTitleWithFloatedSearch and NormalNavbarWithFloatedSearch                                                                                            |
 | searchFieldBehaviour | SearchFieldBehaviour (Enum) | This specifies result screen behavior. 3 behaviour may be set: **ShowResultScreenAfterFieldInput, ShowResultScreenAfterFieldFocused, NeverShowResultScreen.** [Shown below](#as) |
-| searchResultHeader   | SearchResultHeader (Model)  | This is Avatar Model which you can find extended information below                                                                                                               |
-| searchResultChildren | List[Widget]                | This is Avatar Model which you can find extended information below                                                                                                               |
+| searchResultHeader   | SearchResultHeader (Model)  | This is just model which is required to set height and child attributes                                                                                                          |
+| searchResultChildren | List[Widget]                | This appears according to SearchFieldBehaviour. You can set children here after desired action such as onChanged, onSubmitted etc.                                               |
 
+##### SearchFieldBehaviour Enum
+
+SearchFieldBehaviour values below;
+```dart
+enum SearchFieldBehaviour {
+  ShowResultScreenAfterFieldInput,
+  ShowResultScreenAfterFieldFocused,
+  NeverShowResultScreen,
+}
+```
+
+Let's look at expected behaviour;
+
+|ShowResultScreenAfterFieldInput|ShowResultScreenAfterFieldFocused|NeverShowResultScreen|
+|---|---|---|
+|asd|as|asd|
+
+## Contribute and Provide Feedback
+If you wish to contribute to this project, take a look at our GitHub repository and report any issues or bugs. You can help us further improve the project!
+
+## License
+This package is licensed under the MIT License. For detailed information, check the LICENSE file.
 
 [linkedin]: https://www.linkedin.com/in/kaz%C4%B1m-selman-poyraz-0048b7143/
 [github]: https://github.com/kspo
