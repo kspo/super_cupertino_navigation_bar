@@ -38,11 +38,6 @@ class SearchFieldDecoration {
       height: 0,
     ),
     this.searchResultChildren = const [],
-    // this.itemSize = 20.0,
-    // this.backgroundColor,
-    // this.placeholderStyle,
-    // this.style,
-    // this.borderRadius,
   });
 
   final TextEditingController? controller;

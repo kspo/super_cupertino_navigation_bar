@@ -42,8 +42,8 @@ As a developer who appreciates Cupertino's elegant design, wouldn't you want to 
 
 - [Getting Started](#getting-started)
 - [SuperCupertinoNavigationBar Attributes](#SuperCupertinoNavigationBar-Attributes)
-  - [AppBarType Enum](#asd)
-- [Attributes of SearchFieldDecoration](#attributes-of-bottombartheme)
+  - [AppBarType Enum](#AppBarType-Enum)
+- [SearchFieldDecoration Attributes](#attributes-of-bottombartheme)
   - [Attributes of SearchResultHeader](#asd)
   - [SearchFieldBehaviour Enum](#asd)
 - [Attributes of AvatarModel](#attributes-of-mainactionbuttontheme)
@@ -114,7 +114,51 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
 | appBarType                | AppBarType (Enum)             | AppBarType is an enum and it sets Appbar as Large Title or Normal Navbar and whether it has Search Bar or not. **Values:** LargeTitleWithPinnedSearch, LargeTitleWithFloatedSearch, LargeTitleWithoutSearch, NormalNavbarWithPinnedSearch, NormalNavbarWithFloatedSearch                                                                                                                                                                                          |
 | searchFieldDecoration     | SearchFieldDecoration (Model) | This is Search Field Model which you can find extended information below                                                                                                                                                                                                                                                                                                                                                                                          |
 | avatarModel               | AvatarModel (Model)           | This is Avatar Model which you can find extended information below                                                                                                                                                                                                                                                                                                                                                                                                |
+
+##### AppBarType Enum
+AppBarType values below;
+```dart
+enum AppBarType {
+  LargeTitleWithPinnedSearch,
+  LargeTitleWithFloatedSearch,
+  LargeTitleWithoutSearch,
+  NormalNavbarWithPinnedSearch,
+  NormalNavbarWithFloatedSearch,
+}
+```
+
 ---
+
+#### SearchFieldDecoration Attributes
+
+| Attribute            | Type                        | Annotation                                                                                                                                                                       |
+|----------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| controller           | TextEditingController       | SearchField TextEditingController                                                                                                                                                |
+| onChanged            | ValueChanged[String]        | get Text value onChange and do some Event                                                                                                                                        |
+| onSubmitted          | ValueChanged[String]        | get Text value onSubmit and do some Event                                                                                                                                        |
+| placeholderText      | String                      | SearchField Placeholder Text Value                                                                                                                                               |
+| decoration           | BoxDecoration               | Style your search field                                                                                                                                                          |
+| keyboardType         | TextInputType               | Select TextInputType                                                                                                                                                             |
+| padding              | EdgeInsetsGeometry          | only horizontal padding is applicable                                                                                                                                            |
+| prefixIconColor      | Color                       |                                                                                                                                                                                  |
+| placeholderColor     | Color                       |                                                                                                                                                                                  |
+| prefixInsets         | EdgeInsetsGeometry          | padding around prefix icon                                                                                                                                                       |
+| prefixIcon           | Widget                      | Select desired Icon, default is Icon(CupertinoIcons.search)                                                                                                                      |
+| suffixInsets         | EdgeInsetsGeometry          | padding around suffix icon                                                                                                                                                       |
+| suffixIcon           | Icon                        | Select desired Icon, default is Icon(CupertinoIcons.xmark_circle_fill)                                                                                                           |
+| onSuffixTap          | VoidCallback                | No return value supplied. Just Clears th search field and you can do some event                                                                                                  |
+| onCancelTap          | VoidCallback                | No return value supplied. Just Clears th search field and cancels search actions. Also you can do some event                                                                     |
+| paddingLeft          | double                      |                                                                                                                                                                                  |
+| paddingRight         | double                      |                                                                                                                                                                                  |
+| cancelButtonName     | String                      |                                                                                                                                                                                  |
+| cancelButtonStyle    | TextStyle                   |                                                                                                                                                                                  |
+| cursorColor          | Color                       |                                                                                                                                                                                  |
+| onFocused            | ValueChanged[bool]          | triggers desired event on search field focus                                                                                                                                     |
+| hideSearchBarOnInit  | bool                        | this is applicable only LargeTitleWithFloatedSearch and NormalNavbarWithFloatedSearch                                                                                            |
+| searchFieldBehaviour | SearchFieldBehaviour (Enum) | This specifies result screen behavior. 3 behaviour may be set: **ShowResultScreenAfterFieldInput, ShowResultScreenAfterFieldFocused, NeverShowResultScreen.** [Shown below](#as) |
+| searchResultHeader   | SearchResultHeader (Model)  | This is Avatar Model which you can find extended information below                                                                                                               |
+| searchResultChildren | List[Widget]                | This is Avatar Model which you can find extended information below                                                                                                               |
+
 
 [linkedin]: https://www.linkedin.com/in/kaz%C4%B1m-selman-poyraz-0048b7143/
 [github]: https://github.com/kspo
