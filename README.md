@@ -185,8 +185,8 @@ After search field action, result screen will appear and in this screen below th
 
 |                                                            Example 1 Apple Music                                                             |                                                            Example 2 Apple Music                                                             |
 |:--------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_3.png" width="150px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_2.png" width="150px"/> |
-search_result_header_3
+| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_2.png" width="250px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_3.png" width="250px"/> |
+
 ```dart
 const SearchResultHeader({
   super.key,
