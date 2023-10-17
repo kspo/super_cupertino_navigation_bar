@@ -70,7 +70,6 @@ import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.da
 ```dart
 CupertinoPageScaffold(  //inside CupertinoPageScaffold
   child: SuperCupertinoNavigationBar(
-      transitionBetweenRoutes: false, // if don't want transition animation set false / default is true
       largeTitleType: AppBarType.LargeTitleWithFloatedSearch, // Set desired AppBarType
       avatarModel: AvatarModel(
         avatarUrl: null,
