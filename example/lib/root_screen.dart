@@ -20,7 +20,7 @@ class _RootScreenState extends State<RootScreen> {
     return CupertinoPageScaffold(
       child: SuperCupertinoNavigationBar(
         // transitionBetweenRoutes: false,
-        largeTitleType: AppBarType.LargeTitleWithFloatedSearch,
+        appBarType: AppBarType.LargeTitleWithFloatedSearch,
         avatarModel: AvatarModel(
           avatarUrl: null,
           avatarIsVisible: true,

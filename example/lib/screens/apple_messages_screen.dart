@@ -45,7 +45,7 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
           SuperCupertinoNavigationBar(
             scrollController: scrollController,
             largeTitle: const Text("Messages"),
-            largeTitleType: AppBarType.LargeTitleWithFloatedSearch,
+            appBarType: AppBarType.LargeTitleWithFloatedSearch,
             trailing: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [Icon(CupertinoIcons.pencil_ellipsis_rectangle)],
@@ -170,8 +170,8 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
                       GridView.count(
                         shrinkWrap: true,
                         crossAxisCount: 2,
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 15),
                         physics: const NeverScrollableScrollPhysics(),
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,

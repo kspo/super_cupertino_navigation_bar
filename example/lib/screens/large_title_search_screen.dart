@@ -15,7 +15,7 @@ class _LargeTitleSearchScreenState extends State<LargeTitleSearchScreen> {
     return CupertinoPageScaffold(
       child: SuperCupertinoNavigationBar(
         largeTitle: const Text("Gallery"),
-        largeTitleType: AppBarType.LargeTitleWithPinnedSearch,
+        appBarType: AppBarType.LargeTitleWithPinnedSearch,
         previousPageTitle: "Widgets",
         stretch: true,
         slivers: [

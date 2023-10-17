@@ -13,7 +13,7 @@ class NormalNavbarSearchScreen extends StatelessWidget {
         largeTitle: const Text("Tips"),
         automaticallyImplyLeading: false,
         //backgroundColor: Colors.amber,
-        largeTitleType: AppBarType.NormalNavbarWithFloatedSearch,
+        appBarType: AppBarType.NormalNavbarWithFloatedSearch,
         searchFieldDecoration: SearchFieldDecoration(
           searchFieldBehaviour:
               SearchFieldBehaviour.ShowResultScreenAfterFieldInput,

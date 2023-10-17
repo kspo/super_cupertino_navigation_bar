@@ -18,7 +18,7 @@ class _LargeTitleActionsScreenState extends State<LargeTitleActionsScreen> {
     return CupertinoPageScaffold(
       child: SuperCupertinoNavigationBar(
         largeTitle: const Text("Get Stuff Done"),
-        largeTitleType: AppBarType.LargeTitleWithoutSearch,
+        appBarType: AppBarType.LargeTitleWithoutSearch,
         previousPageTitle: "Widgets",
         stretch: true,
         slivers: [

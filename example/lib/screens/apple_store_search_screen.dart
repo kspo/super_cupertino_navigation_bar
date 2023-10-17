@@ -239,7 +239,7 @@ class _AppleStoreSearchScreenState extends State<AppleStoreSearchScreen> {
       child: SuperCupertinoNavigationBar(
         automaticallyImplyLeading: false,
         largeTitle: const Text("Search"),
-        largeTitleType: AppBarType.LargeTitleWithPinnedSearch,
+        appBarType: AppBarType.LargeTitleWithPinnedSearch,
         avatarModel: AvatarModel(
           avatarIsVisible: true,
           onTap: null,

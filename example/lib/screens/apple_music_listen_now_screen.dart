@@ -18,7 +18,7 @@ class _AppleMusicListenNowScreenState extends State<AppleMusicListenNowScreen> {
     return CupertinoPageScaffold(
       child: SuperCupertinoNavigationBar(
         largeTitle: const Text("Listen Now"),
-        largeTitleType: AppBarType.LargeTitleWithoutSearch,
+        appBarType: AppBarType.LargeTitleWithoutSearch,
         automaticallyImplyLeading: false,
         stretch: true,
         avatarModel: AvatarModel(

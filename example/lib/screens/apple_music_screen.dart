@@ -128,7 +128,7 @@ class _AppleMusicScreenState extends State<AppleMusicScreen> {
       child: SuperCupertinoNavigationBar(
         automaticallyImplyLeading: false,
         largeTitle: const Text("Search"),
-        largeTitleType: AppBarType.LargeTitleWithPinnedSearch,
+        appBarType: AppBarType.LargeTitleWithPinnedSearch,
         previousPageTitle: "Widgets",
         stretch: true,
         avatarModel: AvatarModel(

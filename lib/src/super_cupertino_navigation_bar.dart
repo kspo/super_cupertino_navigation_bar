@@ -38,7 +38,7 @@ class SuperCupertinoNavigationBar extends StatefulWidget {
     this.stretch = true,
     required this.slivers,
     this.scrollController,
-    this.largeTitleType = AppBarType.LargeTitleWithFloatedSearch,
+    this.appBarType = AppBarType.LargeTitleWithFloatedSearch,
     SearchFieldDecoration? searchFieldDecoration,
     this.avatarModel,
   }) : super(key: key) {
@@ -58,7 +58,7 @@ class SuperCupertinoNavigationBar extends StatefulWidget {
   // final String? avatarUrl;
   // final bool avatarIsVisible;
   final AvatarModel? avatarModel;
-  final AppBarType largeTitleType;
+  final AppBarType appBarType;
 
   /// The navigation bar's title.
   ///
@@ -211,7 +211,7 @@ class _SuperCupertinoNavigationBarState
         setState(() {});
       });
       if (widget.searchFieldDecoration.hideSearchBarOnInit &&
-          widget.largeTitleType == AppBarType.LargeTitleWithFloatedSearch) {
+          widget.appBarType == AppBarType.LargeTitleWithFloatedSearch) {
         _scrollController.animateTo(
           Measures.searchBarHeight,
           duration: const Duration(milliseconds: 1),
@@ -263,7 +263,7 @@ class _SuperCupertinoNavigationBarState
         await Future.delayed(const Duration(milliseconds: 60));
 
         if (_scrollController.hasClients) {
-          if (widget.largeTitleType == AppBarType.LargeTitleWithFloatedSearch) {
+          if (widget.appBarType == AppBarType.LargeTitleWithFloatedSearch) {
             if (_scrollController.offset < Measures.searchBarHeight / 2 &&
                 _scrollController.offset > 0) {
               _scrollController.animateTo(
@@ -300,8 +300,7 @@ class _SuperCupertinoNavigationBarState
                 curve: Curves.fastOutSlowIn,
               );
             }
-          } else if (widget.largeTitleType ==
-              AppBarType.LargeTitleWithoutSearch) {
+          } else if (widget.appBarType == AppBarType.LargeTitleWithoutSearch) {
             if (_scrollController.offset <
                     Measures.navBarLargeTitleHeight / 2 &&
                 _scrollController.offset > 0) {
@@ -319,7 +318,7 @@ class _SuperCupertinoNavigationBarState
                 curve: Curves.fastOutSlowIn,
               );
             }
-          } else if (widget.largeTitleType ==
+          } else if (widget.appBarType ==
               AppBarType.LargeTitleWithPinnedSearch) {
             if (_scrollController.offset <
                     Measures.navBarLargeTitleHeight / 2 &&
@@ -340,7 +339,7 @@ class _SuperCupertinoNavigationBarState
                 curve: Curves.fastOutSlowIn,
               );
             }
-          } else if (widget.largeTitleType ==
+          } else if (widget.appBarType ==
               AppBarType.NormalNavbarWithFloatedSearch) {
             if (_scrollController.offset < Measures.searchBarHeight / 2 &&
                 _scrollController.offset > 0) {
@@ -377,14 +376,14 @@ class _SuperCupertinoNavigationBarState
                         height: !searchBarHasFocus
                             ? (Measures.navBarPersistentHeight +
                                 MediaQuery.paddingOf(context).top +
-                                (widget.largeTitleType !=
+                                (widget.appBarType !=
                                         AppBarType.LargeTitleWithoutSearch
                                     ? Measures.searchBarHeight
                                     : 0) +
-                                (widget.largeTitleType ==
+                                (widget.appBarType ==
                                             AppBarType
                                                 .NormalNavbarWithFloatedSearch ||
-                                        widget.largeTitleType ==
+                                        widget.appBarType ==
                                             AppBarType
                                                 .NormalNavbarWithPinnedSearch
                                     ? 0
@@ -471,7 +470,7 @@ class _SuperCupertinoNavigationBarState
                     _height = Measures.navBarPersistentHeight +
                         MediaQuery.paddingOf(context).top;
                   } else {
-                    if (widget.largeTitleType ==
+                    if (widget.appBarType ==
                         AppBarType.LargeTitleWithFloatedSearch) {
                       _height = Measures.navBarPersistentHeight +
                           MediaQuery.paddingOf(context).top +
@@ -483,7 +482,7 @@ class _SuperCupertinoNavigationBarState
                               Measures.searchBarHeight +
                                   Measures.collapsedBottomPadding +
                                   Measures.navBarLargeTitleHeight);
-                    } else if (widget.largeTitleType ==
+                    } else if (widget.appBarType ==
                         AppBarType.LargeTitleWithPinnedSearch) {
                       _height = Measures.navBarPersistentHeight +
                           MediaQuery.paddingOf(context).top +
@@ -494,7 +493,7 @@ class _SuperCupertinoNavigationBarState
                               widget.stretch ? -200 : 0,
                               Measures.searchBarHeight +
                                   Measures.collapsedBottomPadding);
-                    } else if (widget.largeTitleType ==
+                    } else if (widget.appBarType ==
                         AppBarType.LargeTitleWithoutSearch) {
                       _height = Measures.navBarPersistentHeight +
                           MediaQuery.paddingOf(context).top +
@@ -504,7 +503,7 @@ class _SuperCupertinoNavigationBarState
                             widget.stretch ? -200 : 0,
                             Measures.navBarLargeTitleHeight,
                           );
-                    } else if (widget.largeTitleType ==
+                    } else if (widget.appBarType ==
                         AppBarType.NormalNavbarWithFloatedSearch) {
                       _height = Measures.navBarPersistentHeight +
                           MediaQuery.paddingOf(context).top +
@@ -515,7 +514,7 @@ class _SuperCupertinoNavigationBarState
                               0,
                               Measures.searchBarHeight +
                                   Measures.normalNavbarCollapsedBottomPadding);
-                    } else if (widget.largeTitleType ==
+                    } else if (widget.appBarType ==
                         AppBarType.NormalNavbarWithPinnedSearch) {
                       _height = Measures.navBarPersistentHeight +
                           MediaQuery.paddingOf(context).top +
@@ -525,7 +524,7 @@ class _SuperCupertinoNavigationBarState
                   }
 
                   Widget _filteredChild = const SizedBox();
-                  if (widget.largeTitleType ==
+                  if (widget.appBarType ==
                       AppBarType.LargeTitleWithPinnedSearch) {
                     _filteredChild = LargeTitleWithPinnedSearch(
                       keys: keys,
@@ -563,7 +562,7 @@ class _SuperCupertinoNavigationBarState
                           widget.alwaysShowMiddle && widget.middle != null,
                     );
                   }
-                  if (widget.largeTitleType ==
+                  if (widget.appBarType ==
                       AppBarType.LargeTitleWithFloatedSearch) {
                     _filteredChild = LargeTitleWithFloatedSearch(
                       keys: keys,
@@ -602,8 +601,7 @@ class _SuperCupertinoNavigationBarState
                     );
                   }
 
-                  if (widget.largeTitleType ==
-                      AppBarType.LargeTitleWithoutSearch) {
+                  if (widget.appBarType == AppBarType.LargeTitleWithoutSearch) {
                     _filteredChild = LargeTitleWithoutSearch(
                       keys: keys,
                       hasFocusValueNotifier: searchBarHasFocusMetric,
@@ -638,7 +636,7 @@ class _SuperCupertinoNavigationBarState
                           widget.alwaysShowMiddle && widget.middle != null,
                     );
                   }
-                  if (widget.largeTitleType ==
+                  if (widget.appBarType ==
                       AppBarType.NormalNavbarWithFloatedSearch) {
                     _filteredChild = NormalNavbarWithFloatedSearch(
                       keys: keys,
@@ -676,7 +674,7 @@ class _SuperCupertinoNavigationBarState
                           widget.alwaysShowMiddle && widget.middle != null,
                     );
                   }
-                  if (widget.largeTitleType ==
+                  if (widget.appBarType ==
                       AppBarType.NormalNavbarWithPinnedSearch) {
                     _filteredChild = NormalNavbarWithPinnedSearch(
                       keys: keys,

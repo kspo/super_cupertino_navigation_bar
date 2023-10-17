@@ -61,7 +61,7 @@ class _AppleClocksScreenState extends State<AppleClocksScreen> {
     return CupertinoPageScaffold(
       child: SuperCupertinoNavigationBar(
         largeTitle: const Text("World Clock"),
-        largeTitleType: AppBarType.LargeTitleWithoutSearch,
+        appBarType: AppBarType.LargeTitleWithoutSearch,
         trailing: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [Icon(CupertinoIcons.add)],

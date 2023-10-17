@@ -65,7 +65,7 @@ class _AppleContactsScreenState extends State<AppleContactsScreen> {
           SuperCupertinoNavigationBar(
             scrollController: scrollController,
             largeTitle: const Text("Contacts"),
-            largeTitleType: AppBarType.LargeTitleWithPinnedSearch,
+            appBarType: AppBarType.LargeTitleWithPinnedSearch,
             trailing: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [Icon(Icons.add)],

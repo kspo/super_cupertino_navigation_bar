@@ -19,7 +19,7 @@ class _AppleTipsScreenState extends State<AppleTipsScreen> {
       child: SuperCupertinoNavigationBar(
         largeTitle: const Text("Tips"),
         automaticallyImplyLeading: false,
-        largeTitleType: AppBarType.LargeTitleWithPinnedSearch,
+        appBarType: AppBarType.LargeTitleWithPinnedSearch,
         searchFieldDecoration: SearchFieldDecoration(
           searchFieldBehaviour:
               SearchFieldBehaviour.ShowResultScreenAfterFieldInput,
