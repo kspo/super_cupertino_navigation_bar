@@ -43,7 +43,7 @@ As a developer who appreciates Cupertino's elegant design, wouldn't you want to 
 - [Getting Started](#getting-started)
 - [SuperCupertinoNavigationBar Attributes](#SuperCupertinoNavigationBar-Attributes)
   - [AppBarType Enum](#AppBarType-Enum)
-- [SearchFieldDecoration Attributes](#attributes-of-bottombartheme)
+- [SearchFieldDecoration Attributes](#SearchFieldDecoration-Attributes)
   - [Attributes of SearchResultHeader](#asd)
   - [SearchFieldBehaviour Enum](#asd)
 - [Attributes of AvatarModel](#attributes-of-mainactionbuttontheme)
