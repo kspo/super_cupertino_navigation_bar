@@ -46,9 +46,9 @@ As a developer who appreciates Cupertino's elegant design, wouldn't you want to 
 - [SuperCupertinoNavigationBar Attributes](#SuperCupertinoNavigationBar-Attributes)
   - [AppBarType Enum](#AppBarType-Enum)
 - [SearchFieldDecoration Attributes](#SearchFieldDecoration-Attributes)
-  - [Attributes of SearchResultHeader](#asd)
-  - [SearchFieldBehaviour Enum](#asd)
-- [Attributes of AvatarModel](#attributes-of-mainactionbuttontheme)
+  - [SearchFieldBehaviour Enum](#SearchFieldBehaviour-Enum)
+  - [SearchResultHeader Attributes](#SearchResultHeader)
+- [AvatarModel Attributes](#AvatarModel-Attributes)
 
 ### Getting Started
 
@@ -159,7 +159,7 @@ enum AppBarType {
 | onFocused            | ValueChanged[bool]          | triggers desired event on search field focus                                                                                                                                                                   |
 | hideSearchBarOnInit  | bool                        | this is applicable only LargeTitleWithFloatedSearch and NormalNavbarWithFloatedSearch                                                                                                                          |
 | searchFieldBehaviour | SearchFieldBehaviour (Enum) | This specifies result screen behavior. 3 behaviour may be set: <p>**ShowResultScreenAfterFieldInput, ShowResultScreenAfterFieldFocused, NeverShowResultScreen.**</p> [Shown below](#SearchFieldBehaviour-Enum) |
-| searchResultHeader   | SearchResultHeader (Model)  | This is just model which is required to set height and child attributes                                                                                                                                        |
+| searchResultHeader   | SearchResultHeader (Widget) | This is just model which is required to set height and child attributes                                                                                                                                        |
 | searchResultChildren | List[Widget]                | This appears according to SearchFieldBehaviour. You can set children here after desired action such as onChanged, onSubmitted etc.                                                                             |
 
 ##### SearchFieldBehaviour Enum
@@ -178,6 +178,23 @@ Let's look at expected behaviour;
 |                                                      ShowResultScreenAfterFieldInput                                                      |                                                     ShowResultScreenAfterFieldFocused                                                     |                                                           NeverShowResultScreen                                                           |
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_1.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_2.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_3.gif" width="150px"/>  |
+
+### SearchResultHeader
+
+After search field action, result screen will appear and in this screen below the search bar you can place any widget you want! Let's look at picture
+
+|                                                            Example 1 Apple Music                                                             |                                                            Example 2 Apple Music                                                             |
+|:--------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_3.png" width="150px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_2.png" width="150px"/> |
+search_result_header_3
+```dart
+const SearchResultHeader({
+  super.key,
+  required this.height,
+  required this.child,
+});
+```
+
 
 ## Contribute and Provide Feedback
 If you wish to contribute to this project, take a look at our GitHub repository and report any issues or bugs. You can help us further improve the project!
