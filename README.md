@@ -173,9 +173,9 @@ enum SearchFieldBehaviour {
 
 Let's look at expected behaviour;
 
-|ShowResultScreenAfterFieldInput|ShowResultScreenAfterFieldFocused|NeverShowResultScreen|
-|---|---|---|
-|asd|as|asd|
+| ShowResultScreenAfterFieldInput                                                                                                         | ShowResultScreenAfterFieldFocused                                                                                                       | NeverShowResultScreen                                                                                                                   |
+|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_1.gif" width="76px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_2.gif" width="76px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_3.gif" width="76px"/> |
 
 ## Contribute and Provide Feedback
 If you wish to contribute to this project, take a look at our GitHub repository and report any issues or bugs. You can help us further improve the project!
