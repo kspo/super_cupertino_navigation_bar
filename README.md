@@ -65,7 +65,7 @@ import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.da
 
 #### Easy to use
 
-Create a **Scaffold** widget and set **bottomNavigationBar** with **BottomBarWithSheet** like in the code below
+<strong style="color:#F99417">SuperCupertinoNavigationBar</strong> widget has **CustomScrollView** widget in it so you should place your children in **slivers** key whose type List.
 
 ```dart
 CupertinoPageScaffold(  //inside CupertinoPageScaffold

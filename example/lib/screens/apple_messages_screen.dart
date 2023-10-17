@@ -17,7 +17,7 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
   final alphabets =
       List.generate(26, (index) => String.fromCharCode(index + 65));
 
-  List<Users> _users = [];
+  final List<Users> _users = [];
   bool focused = false;
   bool hasData = false;
 
@@ -107,10 +107,10 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
                                       height: 55,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 5,
                                   ),
-                                  Text(
+                                  const Text(
                                     "John Doe",
                                     style: TextStyle(fontSize: 14),
                                   )
@@ -127,14 +127,14 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
                       ),
                       ListView.separated(
                         itemCount: 4,
-                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
                         separatorBuilder: (c, i) => Divider(
                           color: Colors.grey.withOpacity(0.25),
                           height: 20,
                         ),
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (c, i) => Row(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (c, i) => const Row(
                           children: [
                             Icon(
                               CupertinoIcons.profile_circled,
@@ -159,7 +159,7 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
                               "Fotoğraflar",
                               style: general.getSubtitle(context),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               "Tümünü Gör",
                               style: general.getLinkStyle(context),
@@ -171,8 +171,8 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
                         shrinkWrap: true,
                         crossAxisCount: 2,
                         padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                        physics: NeverScrollableScrollPhysics(),
+                            const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                        physics: const NeverScrollableScrollPhysics(),
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 10,
                         children: List.generate(100, (index) {
