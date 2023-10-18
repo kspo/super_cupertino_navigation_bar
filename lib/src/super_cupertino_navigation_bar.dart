@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:super_cupertino_navigation_bar/src/navbar_prototypes/normal_navbar_with_floated_search.dart';
 import 'package:super_cupertino_navigation_bar/src/navbar_prototypes/normal_navbar_with_pinned_search.dart';
+import 'package:super_cupertino_navigation_bar/src/navbar_prototypes/normal_navbar_without_search.dart';
 import 'package:super_cupertino_navigation_bar/src/shared/measures.dart';
 
 import 'models/avatar.model.dart';
@@ -38,7 +39,7 @@ class SuperCupertinoNavigationBar extends StatefulWidget {
     this.stretch = true,
     required this.slivers,
     this.scrollController,
-    this.appBarType = AppBarType.LargeTitleWithFloatedSearch,
+    this.appBarType = AppBarType.LargeTitleWithoutSearch,
     SearchFieldDecoration? searchFieldDecoration,
     this.avatarModel,
   }) : super(key: key) {
@@ -377,7 +378,10 @@ class _SuperCupertinoNavigationBarState
                             ? (Measures.navBarPersistentHeight +
                                 MediaQuery.paddingOf(context).top +
                                 (widget.appBarType !=
-                                        AppBarType.LargeTitleWithoutSearch
+                                            AppBarType
+                                                .LargeTitleWithoutSearch &&
+                                        widget.appBarType !=
+                                            AppBarType.NormalNavbarWithoutSearch
                                     ? Measures.searchBarHeight
                                     : 0) +
                                 (widget.appBarType ==
@@ -385,7 +389,9 @@ class _SuperCupertinoNavigationBarState
                                                 .NormalNavbarWithFloatedSearch ||
                                         widget.appBarType ==
                                             AppBarType
-                                                .NormalNavbarWithPinnedSearch
+                                                .NormalNavbarWithPinnedSearch ||
+                                        widget.appBarType ==
+                                            AppBarType.NormalNavbarWithoutSearch
                                     ? 0
                                     : Measures.navBarLargeTitleHeight) +
                                 Measures.collapsedBottomPadding)
@@ -520,6 +526,10 @@ class _SuperCupertinoNavigationBarState
                           MediaQuery.paddingOf(context).top +
                           Measures.searchBarHeight +
                           Measures.normalNavbarCollapsedBottomPadding;
+                    } else if (widget.appBarType ==
+                        AppBarType.NormalNavbarWithoutSearch) {
+                      _height = Measures.navBarPersistentHeight +
+                          MediaQuery.paddingOf(context).top;
                     }
                   }
 
@@ -712,6 +722,44 @@ class _SuperCupertinoNavigationBarState
                           widget.alwaysShowMiddle && widget.middle != null,
                     );
                   }
+                  if (widget.appBarType ==
+                      AppBarType.NormalNavbarWithoutSearch) {
+                    _filteredChild = NormalNavbarWithoutSearch(
+                      keys: keys,
+                      hasDataValueNotifier: searchBarHasDataMetric,
+                      hasFocusValueNotifier: searchBarHasFocusMetric,
+                      avatarModel: widget.avatarModel ?? AvatarModel(),
+                      focusNode: _focusNode,
+                      animationController: animationController,
+                      searchFieldDecoration: widget.searchFieldDecoration,
+                      scrollController: _scrollController,
+                      textEditingController: availableTextController,
+                      components: components,
+                      userMiddle: widget.middle,
+                      backgroundColor: CupertinoDynamicColor.maybeResolve(
+                              widget.backgroundColor, context) ??
+                          CupertinoTheme.of(context)
+                              .scaffoldBackgroundColor
+                              .withOpacity(0.75),
+                      collapsedBackgroundColor:
+                          CupertinoDynamicColor.maybeResolve(
+                                  widget.collapsedBackgroundColor, context) ??
+                              CupertinoTheme.of(context)
+                                  .barBackgroundColor
+                                  .withOpacity(0.5),
+                      brightness: widget.brightness,
+                      border: widget.border,
+                      padding: widget.padding,
+                      actionsForegroundColor:
+                          CupertinoTheme.of(context).primaryColor,
+                      transitionBetweenRoutes: widget.transitionBetweenRoutes,
+                      heroTag: widget.heroTag,
+                      persistentHeight: Measures.navBarPersistentHeight +
+                          MediaQuery.paddingOf(context).top,
+                      alwaysShowMiddle:
+                          widget.alwaysShowMiddle && widget.middle != null,
+                    );
+                  }
 
                   return AnimatedPositioned(
                     duration: Duration(
@@ -744,188 +792,5 @@ class _SuperCupertinoNavigationBarState
         children: widget.searchFieldDecoration.searchResultChildren,
       ),
     );
-
-    /*return ValueListenableBuilder(
-        valueListenable: Measures.searchBarHasData,
-        builder: (context, searchBarHasData, child) {
-          if (!searchBarHasData) {
-            return Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width / 1.5,
-                child: widget.searchFieldDecoration.emptyWidget ??
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.abc,
-                          size: 60,
-                          color: widget.searchFieldDecoration.cursorColor,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Search Something!',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 18,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "Write at least ${widget.searchFieldDecoration.minimumChars} character to search",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(
-                          height: 120,
-                        )
-                      ],
-                    ),
-              ),
-            );
-          }
-
-          return ValueListenableBuilder(
-              valueListenable: Measures.searchHasError,
-              builder: (context, hasError, child) {
-                if (hasError) {
-                  //print("hasError");
-                  return Center(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width / 1.5,
-                      child: widget.searchFieldDecoration.emptyWidget ??
-                          const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.error_outline_outlined,
-                                size: 60,
-                                color: Colors.red,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                'Something went wrong!',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "Check spelling or do a new search",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 120,
-                              )
-                            ],
-                          ),
-                    ),
-                  );
-                }
-
-                return ValueListenableBuilder(
-                  valueListenable: Measures.searchIsLoading,
-                  builder: (context, isLoading, child) {
-                    //print("isLoading $isLoading");
-                    if (isLoading) {
-                      return Positioned(
-                        top: Measures.navBarPersistentHeight +
-                            MediaQuery.paddingOf(context).top +
-                            10 +
-                            renderBox.size.height,
-                        left: 0,
-                        right: 0,
-                        child: Center(
-                          child: CupertinoActivityIndicator(
-                            radius: 14,
-                          ),
-                        ),
-                      );
-                    }
-                    //print("isNotLoading");
-
-                    if (Measures.searchListItems.value.isEmpty) {
-                      return Center(
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width / 1.5,
-                          child: widget.searchFieldDecoration.emptyWidget ??
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.search,
-                                    size: 60,
-                                    color: CupertinoTheme.of(context)
-                                        .textTheme
-                                        .textStyle
-                                        .color!
-                                        .withOpacity(0.8),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  const Text(
-                                    'No results for your search',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  const Opacity(
-                                    opacity: 0.65,
-                                    child: Text(
-                                      "Check spelling or do a new search",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 120,
-                                  )
-                                ],
-                              ),
-                        ),
-                      );
-                    }
-                    return ListView(
-                      padding: EdgeInsets.only(
-                        right: 15,
-                        left: 15,
-                        top: Measures.navBarPersistentHeight +
-                            MediaQuery.paddingOf(context).top +
-                            10 +
-                            renderBox.size.height,
-                      ),
-                      addAutomaticKeepAlives: true,
-                      children:
-                          widget.searchFieldDecoration.searchResultChildren,
-                    );
-                  },
-                );
-              });
-        });*/
   }
 }

@@ -318,4 +318,31 @@ class General {
       ],
     );
   }
+
+  Widget dummyContact() => Row(
+        children: [
+          for (int i = 0; i < 4; i++)
+            Expanded(
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(700),
+                    child: Image.asset(
+                      "assets/empty_profile.png",
+                      width: 55,
+                      height: 55,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    "John Doe",
+                    style: TextStyle(fontSize: 14),
+                  )
+                ],
+              ),
+            )
+        ],
+      );
 }

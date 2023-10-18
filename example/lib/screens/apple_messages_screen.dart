@@ -93,32 +93,7 @@ class _AppleMessagesScreenState extends State<AppleMessagesScreen> {
                       const SizedBox(
                         height: 15,
                       ),
-                      Row(
-                        children: [
-                          for (int i = 0; i < 4; i++)
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(700),
-                                    child: Image.asset(
-                                      "assets/empty_profile.png",
-                                      width: 55,
-                                      height: 55,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  const Text(
-                                    "John Doe",
-                                    style: TextStyle(fontSize: 14),
-                                  )
-                                ],
-                              ),
-                            )
-                        ],
-                      ),
+                      general.dummyContact(),
                       Divider(
                         indent: 15,
                         endIndent: 15,

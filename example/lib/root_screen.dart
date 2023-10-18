@@ -14,7 +14,11 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreenState extends State<RootScreen> {
   final _general = General.instance;
-  // final _scroll = ScrollController();
+  bool showDummy = false;
+
+  void setClosed() => setState(() {
+        showDummy = false;
+      });
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -31,9 +35,60 @@ class _RootScreenState extends State<RootScreen> {
         collapsedBackgroundColor:
             CupertinoTheme.of(context).barBackgroundColor.withOpacity(0.8),
         searchFieldDecoration: SearchFieldDecoration(
-            hideSearchBarOnInit: true,
-            searchFieldBehaviour:
-                SearchFieldBehaviour.ShowResultScreenAfterFieldInput),
+          hideSearchBarOnInit: true,
+          searchFieldBehaviour:
+              SearchFieldBehaviour.ShowResultScreenAfterFieldFocused,
+          onCancelTap: setClosed,
+          onSuffixTap: setClosed,
+          onChanged: (text) {
+            setState(() {
+              if (text.length >= 3) {
+                showDummy = true;
+              } else {
+                showDummy = false;
+              }
+            });
+          },
+          searchResultChildren: [
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Text(
+                "This search field has no search action. This is just show off 😎",
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Text(
+                "But you can place here any widget conditionally! For example;",
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Text(
+                "Write 3 chars to search field",
+                textAlign: TextAlign.center,
+              ),
+            ),
+            AnimatedCrossFade(
+              firstChild: SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: const Text(
+                  "This can be placeholder",
+                  style: TextStyle(color: Colors.green),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              secondChild: _general.dummyContact(),
+              crossFadeState: showDummy
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              duration: const Duration(milliseconds: 250),
+            ),
+          ],
+        ),
         slivers: [
           SliverToBoxAdapter(
             child: Container(

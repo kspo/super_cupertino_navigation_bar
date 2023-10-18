@@ -92,30 +92,30 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
 
 #### SuperCupertinoNavigationBar Attributes
 
-| Attribute                 | Type                          | Annotation                                                                                                                                                                                                                                                               |
-|---------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| largeTitle                | Widget                        | Supply Text widget in order to get right transition animation                                                                                                                                                                                                            |
-| leading                   | Widget                        | You can add desired Widget left top of Navbar                                                                                                                                                                                                                            |
-| automaticallyImplyLeading | bool                          | used for removing the back button, from the second screen after navigating to route                                                                                                                                                                                      |
-| automaticallyImplyTitle   | bool                          | If true and [largeTitle] is null, automatically fill in a Text() widget with the current route's title                                                                                                                                                                   |
-| alwaysShowMiddle          | bool                          | This should be set to false if you only want to show [largeTitle] in expanded state and [middle] in collapsed state                                                                                                                                                      |
-| physics                   | ScrollPhysics                 | SuperCupertinoNavigationBar has CustomScrollView in it. Physic is used to set CustomScrollView's physics                                                                                                                                                                 |
-| previousPageTitle         | String                        | Manually specify the previous route's title when automatically implying the leading back button                                                                                                                                                                          |
-| middle                    | Widget                        | Widget to place in the middle of the navigation bar. Normally a title or a segmented control.                                                                                                                                                                            |
-| trailing                  | Widget                        | Widget to place at the end of the navigation bar. Normally additional actions taken on the page such as a search or edit function.                                                                                                                                       |
-| border                    | Border                        | The direction in which the widget content will line up                                                                                                                                                                                                                   |
-| backgroundColor           | Color                         | The background color of the navigation bar. If it contains transparency, the tab bar will automatically produce a blurring effect to the content behind it. Defaults to CupertinoTheme's scaffoldBackgroundColor if null.                                                |
-| collapsedBackgroundColor  | Color                         | The background color of the collapsed navigation bar. If it contains transparency, the tab bar will automatically produce a blurring effect to the content behind it. Defaults to CupertinoTheme's barBackgroundColor if null.                                           |
-| brightness                | Brightness                    | The brightness of the specified backgroundColor. Setting this value changes the style of the system status bar.                                                                                                                                                          |
-| padding                   | EdgeInsetsDirectional         | Padding for the contents of the navigation bar. Defaults: Vertically, sized to the same height as the navigation bar itself minus the status bar. Horizontally, padding will be 16 pixels                                                                                |
-| transitionBetweenRoutes   | bool                          | Set true for transition between navigation bars                                                                                                                                                                                                                          |
-| heroTag                   | Object                        | Tag for the navigation bar's Hero widget if transitionBetweenRoutes is true                                                                                                                                                                                              |
-| stretch                   | bool                          | This specifies navbar behavior when negative scroll has been done. It moves with scroll contents when it's true. But it will be static on scrolling.                                                                                                                     |
-| slivers                   | List[Widget]                  | SuperCupertinoNavigationBar has CustomScrollView so place all of your children place here as Sliver Widget such as SliverToBoxAdapter etc.                                                                                                                               |
-| scrollController          | ScrollController              | SuperCupertinoNavigationBar has own scrollController but if you want to add scrollController as custom, you can set here. this will be used as primary scrollController                                                                                                  |
-| appBarType                | AppBarType (Enum)             | AppBarType is an enum and it sets Appbar as Large Title or Normal Navbar and whether it has Search Bar or not. **Values:** LargeTitleWithPinnedSearch, LargeTitleWithFloatedSearch, LargeTitleWithoutSearch, NormalNavbarWithPinnedSearch, NormalNavbarWithFloatedSearch |
-| searchFieldDecoration     | SearchFieldDecoration (Model) | This is Search Field Model which you can find extended information below                                                                                                                                                                                                 |
-| avatarModel               | AvatarModel (Model)           | This is Avatar Model which you can find extended information below                                                                                                                                                                                                       |
+| Attribute                 | Type                          | Annotation                                                                                                                                                                                                                                                                      |
+|---------------------------|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| largeTitle                | Widget                        | Supply Text widget in order to get right transition animation                                                                                                                                                                                                                   |
+| leading                   | Widget                        | You can add desired Widget left top of Navbar                                                                                                                                                                                                                                   |
+| automaticallyImplyLeading | bool                          | used for removing the back button, from the second screen after navigating to route                                                                                                                                                                                             |
+| automaticallyImplyTitle   | bool                          | If true and [largeTitle] is null, automatically fill in a Text() widget with the current route's title                                                                                                                                                                          |
+| alwaysShowMiddle          | bool                          | This should be set to false if you only want to show [largeTitle] in expanded state and [middle] in collapsed state                                                                                                                                                             |
+| physics                   | ScrollPhysics                 | SuperCupertinoNavigationBar has CustomScrollView in it. Physic is used to set CustomScrollView's physics                                                                                                                                                                        |
+| previousPageTitle         | String                        | Manually specify the previous route's title when automatically implying the leading back button                                                                                                                                                                                 |
+| middle                    | Widget                        | Widget to place in the middle of the navigation bar. Normally a title or a segmented control.                                                                                                                                                                                   |
+| trailing                  | Widget                        | Widget to place at the end of the navigation bar. Normally additional actions taken on the page such as a search or edit function.                                                                                                                                              |
+| border                    | Border                        | The direction in which the widget content will line up                                                                                                                                                                                                                          |
+| backgroundColor           | Color                         | The background color of the navigation bar. If it contains transparency, the tab bar will automatically produce a blurring effect to the content behind it. Defaults to CupertinoTheme's scaffoldBackgroundColor if null.                                                       |
+| collapsedBackgroundColor  | Color                         | The background color of the collapsed navigation bar. If it contains transparency, the tab bar will automatically produce a blurring effect to the content behind it. Defaults to CupertinoTheme's barBackgroundColor if null.                                                  |
+| brightness                | Brightness                    | The brightness of the specified backgroundColor. Setting this value changes the style of the system status bar.                                                                                                                                                                 |
+| padding                   | EdgeInsetsDirectional         | Padding for the contents of the navigation bar. Defaults: Vertically, sized to the same height as the navigation bar itself minus the status bar. Horizontally, padding will be 16 pixels                                                                                       |
+| transitionBetweenRoutes   | bool                          | Set true for transition between navigation bars                                                                                                                                                                                                                                 |
+| heroTag                   | Object                        | Tag for the navigation bar's Hero widget if transitionBetweenRoutes is true                                                                                                                                                                                                     |
+| stretch                   | bool                          | This specifies navbar behavior when negative scroll has been done. It moves with scroll contents when it's true. But it will be static on scrolling.                                                                                                                            |
+| slivers                   | List[Widget]                  | SuperCupertinoNavigationBar has CustomScrollView so place all of your children place here as Sliver Widget such as SliverToBoxAdapter etc.                                                                                                                                      |
+| scrollController          | ScrollController              | SuperCupertinoNavigationBar has own scrollController but if you want to add scrollController as custom, you can set here. this will be used as primary scrollController                                                                                                         |
+| appBarType                | AppBarType (Enum)             | AppBarType is an enum and it sets Appbar as Large Title or Normal Navbar and whether it has Search Bar or not. <p>**Values:** LargeTitleWithPinnedSearch, LargeTitleWithFloatedSearch, LargeTitleWithoutSearch, NormalNavbarWithPinnedSearch, NormalNavbarWithFloatedSearch</p> |
+| searchFieldDecoration     | SearchFieldDecoration (Model) | This is Search Field Model which you can find extended information below                                                                                                                                                                                                        |
+| avatarModel               | AvatarModel (Model)           | This is Avatar Model which you can find extended information below                                                                                                                                                                                                              |
 
 ##### AppBarType Enum
 
@@ -162,7 +162,7 @@ enum AppBarType {
 | searchResultHeader   | SearchResultHeader (Widget) | This is just model which is required to set height and child attributes                                                                                                                                        |
 | searchResultChildren | List[Widget]                | This appears according to SearchFieldBehaviour. You can set children here after desired action such as onChanged, onSubmitted etc.                                                                             |
 
-##### SearchFieldBehaviour Enum
+#### SearchFieldBehaviour Enum
 
 SearchFieldBehaviour values below;
 ```dart
@@ -195,6 +195,53 @@ const SearchResultHeader({
 });
 ```
 
+### AvatarModel Attributes
+You can set avatar like Apple Applications do. See the required model attributes;
+
+| Attribute        | Type         | Annotation                                                          |
+|------------------|--------------|---------------------------------------------------------------------|
+| avatarUrl        | String       | write here url string of Image.asset(url)                           |
+| avatarIsVisible  | bool         | default value is false                                              |
+| onTap            | VoidCallback | Callback, set event onTap                                           |
+| avatarIconColor  | Color        | avatar icon default color is CupertinoColors.link                   |
+| icon             | IconData     | you can change default icon which is CupertinoIcons.profile_circled |
+
+```dart
+AvatarModel({
+  this.avatarUrl,
+  this.avatarIsVisible = false,
+  this.onTap,
+  this.avatarIconColor = CupertinoColors.link,
+  this.icon = CupertinoIcons.profile_circled,
+});
+```
+
+### Some Notices
+
+1. If you want to use default navigation bar, you can use simply this way;
+
+```dart
+CupertinoPageScaffold(
+  navigationBar: DefaultCupertinoNavigationBar( // same as CupertinoNavigationBar but little differencies
+  backgroundColor: CupertinoColors.systemGrey.withOpacity(0.5),
+  middle: const Text('CupertinoNavigationBar Sample'),
+  )
+);
+```
+
+2. You can use SuperCupertinoNavigationBar without largeTitle. Simply use this value;
+
+```dart
+CupertinoPageScaffold(  //inside CupertinoPageScaffold
+  child: SuperCupertinoNavigationBar(
+    largeTitleType: AppBarType.NormalNavbarWithoutSearch, // This will make appbar like CupertinoNavigationBar
+    middle: Text("Home")
+    slivers: [
+      // Any Sliver here
+    ],
+  ),
+);
+```
 
 ## Contribute and Provide Feedback
 If you wish to contribute to this project, take a look at our GitHub repository and report any issues or bugs. You can help us further improve the project!

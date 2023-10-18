@@ -79,6 +79,7 @@ enum AppBarType {
   LargeTitleWithoutSearch,
   NormalNavbarWithPinnedSearch,
   NormalNavbarWithFloatedSearch,
+  NormalNavbarWithoutSearch,
 }
 
 enum SearchFieldBehaviour {
