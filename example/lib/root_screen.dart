@@ -1,3 +1,4 @@
+import 'package:example/screens/default_navbar_actions_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marvelous_carousel/marvelous_carousel.dart';
@@ -32,8 +33,6 @@ class _RootScreenState extends State<RootScreen> {
         ),
         stretch: true,
         largeTitle: const Text('Home'),
-        collapsedBackgroundColor:
-            CupertinoTheme.of(context).barBackgroundColor.withOpacity(0.8),
         searchFieldDecoration: SearchFieldDecoration(
           hideSearchBarOnInit: true,
           searchFieldBehaviour:
@@ -131,15 +130,32 @@ class _RootScreenState extends State<RootScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: SizedBox(
-                                    width: 382,
-                                    height: 170,
-                                    child: Image.asset(
-                                      e.imageUrl,
-                                      fit: BoxFit.cover,
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                      colors: [Colors.green, Colors.blueAccent],
                                     ),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  height: 170,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius:
+                                            const BorderRadius.vertical(
+                                                top: Radius.circular(15)),
+                                        child: SizedBox(
+                                          width: 225,
+                                          child: Image.asset(
+                                            e.imageUrl,
+                                            fit: BoxFit.cover,
+                                            alignment: Alignment.topCenter,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -254,7 +270,81 @@ class _RootScreenState extends State<RootScreen> {
                     ),
                     itemCount: _general.examples.length,
                   ),
-                )
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Notices",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          Text(
+                            "Some Notices For Demo",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15.5,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: CupertinoTheme.of(context).barBackgroundColor,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute<Widget>(
+                        builder: (BuildContext context) {
+                          return DefaultNavbarActionsScreen();
+                        },
+                      ),
+                    ),
+                    child: Container(
+                      color: Colors.transparent,
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        children: [
+                          Icon(
+                            CupertinoIcons.app_badge_fill,
+                            color: Colors.amber,
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Text("Default Navbar"),
+                          const Spacer(),
+                          const Icon(
+                            Icons.arrow_forward_rounded,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

@@ -2,8 +2,8 @@ import 'package:example/general.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.dart';
 
-class NormalNavbarActionsScreen extends StatelessWidget {
-  const NormalNavbarActionsScreen({super.key});
+class DefaultNavbarActionsScreen extends StatelessWidget {
+  const DefaultNavbarActionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

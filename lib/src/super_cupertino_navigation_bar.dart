@@ -481,6 +481,7 @@ class _SuperCupertinoNavigationBarState
                       _height = Measures.navBarPersistentHeight +
                           MediaQuery.paddingOf(context).top +
                           Measures.searchBarHeight +
+                          Measures.collapsedBottomPadding +
                           Measures.navBarLargeTitleHeight -
                           clampDouble(
                               _offset,
@@ -514,6 +515,7 @@ class _SuperCupertinoNavigationBarState
                       _height = Measures.navBarPersistentHeight +
                           MediaQuery.paddingOf(context).top +
                           Measures.searchBarHeight +
+                          Measures.collapsedBottomPadding +
                           Measures.normalNavbarCollapsedBottomPadding -
                           clampDouble(
                               _offset,

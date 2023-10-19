@@ -4,16 +4,13 @@ import 'package:example/models/user_list.model.dart';
 import 'package:example/screens/apple_all_shortcuts_screen.dart';
 import 'package:example/screens/apple_clock_screen.dart';
 import 'package:example/screens/apple_contacts_screen.dart';
+import 'package:example/screens/apple_folders_browse.dart';
 import 'package:example/screens/apple_messages_screen.dart';
 import 'package:example/screens/apple_music_listen_now_screen.dart';
 import 'package:example/screens/apple_music_screen.dart';
 import 'package:example/screens/apple_shortcuts_gallery_screen.dart';
 import 'package:example/screens/apple_store_search_screen.dart';
 import 'package:example/screens/apple_tips_screen.dart';
-import 'package:example/screens/large_title_actions_screen.dart';
-import 'package:example/screens/large_title_search_actions_screen.dart';
-import 'package:example/screens/normal_navbar_actions_screen.dart';
-import 'package:example/screens/normal_navbar_search_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -111,32 +108,37 @@ class General {
     SubListItem(
       icon: Icons.folder_copy,
       iconColor: Colors.deepOrangeAccent,
-      title: "Apple Folders",
-      screen: const AppleStoreSearchScreen(),
+      title: "Apple Folders > Browse",
+      screen: const AppleFoldersBrowse(),
       imageUrl: "assets/app_icon_13.png",
     ),
   ];
 
   List<Carousel> listCarousel = [
     Carousel(
-      title: "Large Navbar, Search, Actions",
-      imageUrl: "assets/slider1.png",
-      screen: const LargeTitleSearchActionsScreen(),
+      title: "Large Title, Floated Search Bar",
+      imageUrl: "assets/intro.gif",
+      screen: const AppleMessagesScreen(),
     ),
     Carousel(
-      title: "Large Navbar, Actions",
-      imageUrl: "assets/slider2.png",
-      screen: const LargeTitleActionsScreen(),
+      title: "Search Result Header",
+      imageUrl: "assets/intro_1.gif",
+      screen: const AppleMusicScreen(),
     ),
     Carousel(
-      title: "Normal Navbar, Search",
-      imageUrl: "assets/slider3.png",
-      screen: const NormalNavbarSearchScreen(),
+      title: "Large Title and Avatar",
+      imageUrl: "assets/intro_2.gif",
+      screen: const AppleMusicListenNowScreen(),
     ),
     Carousel(
-      title: "Normal Navbar, Actions",
-      imageUrl: "assets/slider4.png",
-      screen: const NormalNavbarActionsScreen(),
+      title: "Normal Navbar, Floated Search Bar",
+      imageUrl: "assets/intro_33.gif",
+      screen: const AppleTipsScreen(),
+    ),
+    Carousel(
+      title: "Normal Navbar, Pinned Search Bar",
+      imageUrl: "assets/intro_4.gif",
+      screen: const AppleFoldersBrowse(),
     ),
   ];
 
