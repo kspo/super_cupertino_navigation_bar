@@ -117,26 +117,26 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                   left: 38,
                                   bottom: 0,
                                   child: ValueListenableBuilder(
-                                      valueListenable:
-                                          widget.hasDataValueNotifier,
-                                      builder:
-                                          (context, searchBarHasData, child) {
-                                        return searchBarHasData
-                                            ? const SizedBox()
-                                            : Text(
-                                                widget.searchFieldDecoration
-                                                        .placeholderText ??
-                                                    "Search",
-                                                style: TextStyle(
-                                                  height: 3.7,
-                                                  color: widget
-                                                          .searchFieldDecoration
-                                                          .placeholderColor ??
-                                                      CupertinoColors
-                                                          .systemGrey,
-                                                ),
-                                              );
-                                      }),
+                                    valueListenable:
+                                        widget.hasDataValueNotifier,
+                                    builder:
+                                        (context, searchBarHasData, child) {
+                                      return searchBarHasData
+                                          ? const SizedBox()
+                                          : Text(
+                                              widget.searchFieldDecoration
+                                                      .placeholderText ??
+                                                  "Search",
+                                              style: TextStyle(
+                                                height: 3.7,
+                                                color: widget
+                                                        .searchFieldDecoration
+                                                        .placeholderColor ??
+                                                    CupertinoColors.systemGrey,
+                                              ),
+                                            );
+                                    },
+                                  ),
                                 )
                               ],
                             ),
@@ -174,7 +174,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                   .placeholderStyle?.color ??
                                               CupertinoColors.systemGrey)
                                           .withOpacity(widget._opacityRate))),*/
-                      decoration: const BoxDecoration(color: Colors.transparent),
+                      decoration:
+                          const BoxDecoration(color: Colors.transparent),
                       // borderRadius: widget.searchFieldDecoration.borderRadius,
                       keyboardType: widget.searchFieldDecoration.keyboardType,
                       padding: widget.searchFieldDecoration.padding
@@ -235,46 +236,4 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     searchFocus.unfocus();
     widget.hasFocusValueNotifier.value = false;
   }
-
-  /*_onTextChanged(String newText) async {
-  _debouncer =
-        Debouncer(duration: widget.searchFieldDecoration.debounceDuration);
-    if (newText.isNotEmpty) {
-      widget.hasDataValueNotifier.value = true;
-    } else {
-      widget.hasDataValueNotifier.value = false;
-    }
-    if (newText.length >= widget.searchFieldDecoration.minimumChars &&
-        widget.searchFieldDecoration.onSearchFuture != null) {
-      _cancelableOperation?.cancel();
-      _debouncer.run(() {
-        _search(newText, widget.searchFieldDecoration.onSearchFuture!);
-      });
-    } else {
-      Measures.searchListItems.value.clear();
-      Measures.searchHasError.value = false;
-      Measures.searchIsLoading.value = false;
-    }
-  }
-
-  void _search(
-      String text, Future<List<dynamic>> Function(String text) onSearch) async {
-    try {
-      _cancelableOperation = CancelableOperation.fromFuture(
-        onSearch(text),
-        onCancel: () {
-          print("canceled");
-        },
-      );
-
-      Measures.searchIsLoading.value = true;
-      final List<dynamic> items = await _cancelableOperation!.value;
-      Measures.searchListItems.value.clear();
-      Measures.searchListItems.value.addAll(items);
-      Measures.searchIsLoading.value = false;
-    } catch (error) {
-      Measures.searchHasError.value = true;
-      Measures.searchIsLoading.value = false;
-    }
-  }*/
 }
