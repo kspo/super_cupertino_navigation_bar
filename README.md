@@ -102,7 +102,7 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
 );
 ```
 
-#### SuperCupertinoNavigationBar Attributes
+### SuperCupertinoNavigationBar Attributes
 
 | Attribute                 | Type                          | Annotation                                                                                                                                                                                                                                                                      |
 |---------------------------|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -129,7 +129,7 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
 | searchFieldDecoration     | SearchFieldDecoration (Model) | This is Search Field Model which you can find extended information below                                                                                                                                                                                                        |
 | avatarModel               | AvatarModel (Model)           | This is Avatar Model which you can find extended information below                                                                                                                                                                                                              |
 
-##### AppBarType Enum
+#### AppBarType Enum
 
 AppBarType values below;
 ```dart
@@ -144,7 +144,7 @@ enum AppBarType {
 
 ---
 
-#### SearchFieldDecoration Attributes
+### SearchFieldDecoration Attributes
 
 | Attribute            | Type                        | Annotation                                                                                                                                                                                                     |
 |----------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -174,7 +174,7 @@ enum AppBarType {
 | searchResultHeader   | SearchResultHeader (Widget) | This is just model which is required to set height and child attributes                                                                                                                                        |
 | searchResultChildren | List[Widget]                | This appears according to SearchFieldBehaviour. You can set children here after desired action such as onChanged, onSubmitted etc.                                                                             |
 
-#### SearchFieldBehaviour Enum
+### SearchFieldBehaviour Enum
 
 SearchFieldBehaviour values below;
 ```dart
