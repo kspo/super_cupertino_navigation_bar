@@ -93,7 +93,7 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
       largeTitle: const Text('Home'),
       searchFieldDecoration: SearchFieldDecoration(
           hideSearchBarOnInit: true,
-          searchFieldBehaviour: SearchFieldBehaviour.ShowResultScreenAfterFieldInput,
+          searchFieldBehaviour: SearchFieldBehaviour.ShowResultScreenAfterFieldInput, // There are 3 SearchFieldBehaviour
       ),
       slivers: [
         // Any Sliver here
