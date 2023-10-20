@@ -12,8 +12,11 @@
 [![Github: Kspo](https://img.shields.io/badge/Kspo-white?logo=Github&logoColor=000)][github]
 ![GitHub Licence](https://img.shields.io/github/license/kspo/super_cupertino_navigation_bar?label=Licence)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kspo/super_cupertino_navigation_bar?label=Last+Commit)
-[![Pub.dev: Kspoyraz](https://img.shields.io/badge/pub.dev-Super_Cupertino_Navigation_Bar-magenta?logo=dart&logoColor=magenta)][pub.dev]
 
+</p>
+<p align="center" style="align: center;">
+
+[![Pub.dev: Kspoyraz](https://img.shields.io/badge/pub.dev-Super_Cupertino_Navigation_Bar-magenta?logo=dart&logoColor=magenta)][pub.dev]
 </p>
 </div>
 
