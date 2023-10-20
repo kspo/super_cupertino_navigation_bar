@@ -52,6 +52,10 @@ As a developer who appreciates Cupertino's elegant design, wouldn't you want to 
 
 ## Okay! Let's dive deep!
 
+#### [**Examples**](https://github.com/kspo/super_cupertino_navigation_bar/tree/main/example/lib/screens)
+
+Before the table of content, hereby, you can find all of example from [here](https://github.com/kspo/super_cupertino_navigation_bar/tree/main/example/lib/screens). Enjoy!
+
 #### Table of Content
 
 - [Getting Started](#getting-started)
