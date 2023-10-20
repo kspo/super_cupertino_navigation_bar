@@ -17,12 +17,12 @@ import 'measures.dart';
 /// Shows a back chevron and the previous route's title when available from
 /// the previous [CupertinoPageRoute.title]. If [previousPageTitle] is specified,
 /// it will be shown instead.
-class ExtendedCupertinoNavigationBarBackButton extends StatelessWidget {
+class SuperCupertinoNavigationBarBackButton extends StatelessWidget {
   /// Construct a [CupertinoNavigationBarBackButton] that can be used to pop
   /// the current route.
   ///
   /// The [color] parameter must not be null.
-  const ExtendedCupertinoNavigationBarBackButton({
+  const SuperCupertinoNavigationBarBackButton({
     super.key,
     this.color,
     this.previousPageTitle,
@@ -32,7 +32,7 @@ class ExtendedCupertinoNavigationBarBackButton extends StatelessWidget {
 
   // Allow the back chevron and label to be separately created (and keyed)
   // because they animate separately during page transitions.
-  const ExtendedCupertinoNavigationBarBackButton.assemble(
+  const SuperCupertinoNavigationBarBackButton.assemble(
       this.backChevron, this.backLabel,
       {super.key})
       : previousPageTitle = null,

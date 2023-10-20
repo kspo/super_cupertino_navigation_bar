@@ -25,7 +25,7 @@ class _RootScreenState extends State<RootScreen> {
     return CupertinoPageScaffold(
       child: SuperCupertinoNavigationBar(
         // transitionBetweenRoutes: false,
-        appBarType: AppBarType.LargeTitleWithFloatedSearch,
+        appBarType: AppBarType.LargeTitleWithPinnedSearch,
         avatarModel: AvatarModel(
           avatarUrl: null,
           avatarIsVisible: true,
@@ -33,6 +33,7 @@ class _RootScreenState extends State<RootScreen> {
         ),
         stretch: true,
         largeTitle: const Text('Home'),
+        alwaysShowMiddle: false,
         searchFieldDecoration: SearchFieldDecoration(
           hideSearchBarOnInit: true,
           searchFieldBehaviour:

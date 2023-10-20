@@ -18,7 +18,7 @@ class BackChevron extends StatelessWidget {
           style: TextStyle(
             inherit: false,
             color: textStyle.color,
-            fontSize: 30.0,
+            fontSize: 25.0,
             fontFamily: CupertinoIcons.back.fontFamily,
             package: CupertinoIcons.back.fontPackage,
           ),

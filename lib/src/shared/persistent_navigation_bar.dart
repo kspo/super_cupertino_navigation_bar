@@ -27,13 +27,18 @@ class PersistentNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget? middle = components.middle;
+    /*int? middleLength = 0;
+
+    if (middle != null) {
+      if (components.middle!.child is Text) {
+        middleLength = (components.middle!.child as Text).data!.length;
+
+      }
+    }*/
 
     if (middle != null) {
       middle = DefaultTextStyle(
-        style: CupertinoTheme.of(context)
-            .textTheme
-            .navTitleTextStyle
-            .copyWith(fontWeight: FontWeight.w700),
+        style: CupertinoTheme.of(context).textTheme.navTitleTextStyle,
         child: Semantics(header: true, child: middle),
       );
       // When the middle's visibility can change on the fly like with large title
@@ -52,7 +57,7 @@ class PersistentNavigationBar extends StatelessWidget {
     final Widget? backLabel = components.backLabel;
 
     if (leading == null && backChevron != null && backLabel != null) {
-      leading = ExtendedCupertinoNavigationBarBackButton.assemble(
+      leading = SuperCupertinoNavigationBarBackButton.assemble(
         backChevron,
         backLabel,
       );

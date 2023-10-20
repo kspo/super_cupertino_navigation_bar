@@ -20,11 +20,11 @@ class SuperCupertinoNavigationBar extends StatefulWidget {
   /// The [largeTitle] argument is required and must not be null.
   SuperCupertinoNavigationBar({
     Key? key,
-    required this.largeTitle,
+    this.largeTitle,
     this.leading,
     this.automaticallyImplyLeading = true,
     this.automaticallyImplyTitle = true,
-    this.alwaysShowMiddle = true,
+    this.alwaysShowMiddle = false,
     this.physics = const BouncingScrollPhysics(),
     this.previousPageTitle,
     this.middle,
@@ -242,6 +242,35 @@ class _SuperCupertinoNavigationBarState
 
   @override
   Widget build(BuildContext context) {
+    int? middleLength = 0;
+    Widget? _m = widget.middle;
+    if (widget.middle != null) {
+      if (widget.middle is Text) {
+        middleLength = (widget.middle as Text).data!.length;
+        String indentHorizontal =
+            List.generate(((12 - middleLength) / 2).round(), (index) => " ")
+                .join();
+        if (middleLength < 12) {
+          _m = Text(indentHorizontal +
+              (widget.middle as Text).data! +
+              indentHorizontal);
+        }
+      }
+    } else {
+      if (widget.largeTitle is Text) {
+        middleLength = (widget.largeTitle as Text).data!.length;
+        String indentHorizontal =
+            List.generate(((12 - middleLength) / 2).round(), (index) => " ")
+                .join();
+        // print(indentHorizontal.length);
+        if (middleLength < 12) {
+          _m = Text(indentHorizontal +
+              (widget.largeTitle as Text).data! +
+              indentHorizontal);
+        }
+      }
+    }
+    // print((_m as Text).data!.length);
     final NavigationBarStaticComponents components =
         NavigationBarStaticComponents(
       keys: keys,
@@ -250,7 +279,7 @@ class _SuperCupertinoNavigationBarState
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       automaticallyImplyTitle: widget.automaticallyImplyTitle,
       previousPageTitle: widget.previousPageTitle,
-      userMiddle: widget.middle,
+      userMiddle: _m,
       userTrailing: widget.trailing,
       userLargeTitle: widget.largeTitle,
       padding: widget.padding,
