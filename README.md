@@ -1,8 +1,20 @@
+
+<div align="center">
+  <a href="https://theksp.online" target="_blank">
+    <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/logo.png" width="100px"/>
+  </a>
+  <h3 align="center">Super Cupertino Navigation Bar</h3>
+  <p align="center">Flutter Extension</p>
+  <p align="center" style="align: center;">
+
 ![Static Badge](https://img.shields.io/badge/Author-KSPoyraz-blue)
 [![Linkedin: Kspoyraz](https://img.shields.io/badge/Kspoyraz-blue?logo=Linkedin&logoColor=fff)][linkedin]
 [![Github: Kspo](https://img.shields.io/badge/Kspo-white?logo=Github&logoColor=000)][github]
 ![GitHub Licence](https://img.shields.io/github/license/kspo/apple_stocks_app_clone?label=Licence)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kspo/apple_stocks_app_clone?label=Last+Commit)
+  
+</p>
+</div>
 
 # Super Cupertino Navigation Bar
 
@@ -229,7 +241,7 @@ CupertinoPageScaffold(
 );
 ```
 
-2. You can use SuperCupertinoNavigationBar without largeTitle. Simply use this value;
+2. Without using default navigation bar, You can use SuperCupertinoNavigationBar without largeTitle. Simply use this value;
 
 ```dart
 CupertinoPageScaffold(  //inside CupertinoPageScaffold
@@ -242,9 +254,10 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
   ),
 );
 ```
+in these case, you should be aware of you will use custom scroll view and sliver widgets.
 
 ## Contribute and Provide Feedback
-If you wish to contribute to this project, take a look at our GitHub repository and report any issues or bugs. You can help us further improve the project!
+If you wish to contribute to this project, take a look at my GitHub repository and report any issues or bugs. You can help me further improve the project!
 
 ## License
 This package is licensed under the MIT License. For detailed information, check the LICENSE file.

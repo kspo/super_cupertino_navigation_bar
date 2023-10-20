@@ -247,10 +247,11 @@ class _SuperCupertinoNavigationBarState
     if (widget.middle != null) {
       if (widget.middle is Text) {
         middleLength = (widget.middle as Text).data!.length;
-        String indentHorizontal =
-            List.generate(((12 - middleLength) / 2).round(), (index) => " ")
-                .join();
+
         if (middleLength < 12) {
+          String indentHorizontal =
+              List.generate(((12 - middleLength) / 2).round(), (index) => " ")
+                  .join();
           _m = Text(indentHorizontal +
               (widget.middle as Text).data! +
               indentHorizontal);
@@ -259,11 +260,12 @@ class _SuperCupertinoNavigationBarState
     } else {
       if (widget.largeTitle is Text) {
         middleLength = (widget.largeTitle as Text).data!.length;
-        String indentHorizontal =
-            List.generate(((12 - middleLength) / 2).round(), (index) => " ")
-                .join();
+
         // print(indentHorizontal.length);
         if (middleLength < 12) {
+          String indentHorizontal =
+              List.generate(((12 - middleLength) / 2).round(), (index) => " ")
+                  .join();
           _m = Text(indentHorizontal +
               (widget.largeTitle as Text).data! +
               indentHorizontal);
