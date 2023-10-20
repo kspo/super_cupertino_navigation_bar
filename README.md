@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://theksp.online" target="_blank">
-    <img style="border-radius: 20px;" src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/transparent.png" width="300px"/>
+    <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/transparent.png" width="350px"/>
   </a>
   <h3 align="center">Super Cupertino Navigation Bar</h3>
   <p align="center">Flutter Extension</p>
