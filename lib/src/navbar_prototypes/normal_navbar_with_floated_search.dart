@@ -59,11 +59,6 @@ class NormalNavbarWithFloatedSearch extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final bool showLargeTitle = scrollController.offset >
-        Measures.searchBarHeight +
-            Measures.navBarLargeTitleHeight -
-            Measures.navBarShowLargeTitleThreshold;
-
     final PersistentNavigationBar persistentNavigationBar =
         PersistentNavigationBar(
       components: components,

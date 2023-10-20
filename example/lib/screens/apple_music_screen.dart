@@ -19,7 +19,6 @@ class AppleMusicScreen extends StatefulWidget {
 
 class _AppleMusicScreenState extends State<AppleMusicScreen> {
   Options _selectedSegment = Options.music;
-  List<Widget> _results = [], _oldResult = [];
   List<Users> _users = [];
   bool onSubmitted = false;
 
@@ -292,7 +291,6 @@ class _AppleMusicScreenState extends State<AppleMusicScreen> {
 
       // Callback that sets the selected segmented control.
       onValueChanged: (Options? value) {
-        _oldResult = _results;
         if (value != null) {
           setState(() {
             _selectedSegment = value;
@@ -319,8 +317,9 @@ class _AppleMusicScreenState extends State<AppleMusicScreen> {
   }
 }
 
+//ignore: must_be_immutable
 class _headerOnSubmitResult extends StatelessWidget {
-  List<String> items = [
+  final List<String> _some = [
     "Best Matches",
     "Artists",
     "Albums",
@@ -337,7 +336,7 @@ class _headerOnSubmitResult extends StatelessWidget {
       height: 45,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: items.length,
+        itemCount: _some.length,
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
         itemBuilder: (BuildContext context, int index) {
           return Container(
@@ -350,7 +349,7 @@ class _headerOnSubmitResult extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                items[index],
+                _some[index],
               ),
             ),
           );
