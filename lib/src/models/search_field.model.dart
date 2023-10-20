@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.dart';
 
@@ -74,20 +72,30 @@ class SearchFieldDecoration {
 }
 
 enum AppBarType {
+  // ignore: constant_identifier_names
   LargeTitleWithPinnedSearch,
+  // ignore: constant_identifier_names
   LargeTitleWithFloatedSearch,
+  // ignore: constant_identifier_names
   LargeTitleWithoutSearch,
+  // ignore: constant_identifier_names
   NormalNavbarWithPinnedSearch,
+  // ignore: constant_identifier_names
   NormalNavbarWithFloatedSearch,
+  // ignore: constant_identifier_names
   NormalNavbarWithoutSearch,
 }
 
 enum SearchFieldBehaviour {
+  // ignore: constant_identifier_names
   ShowResultScreenAfterFieldInput,
+  // ignore: constant_identifier_names
   ShowResultScreenAfterFieldFocused,
+  // ignore: constant_identifier_names
   NeverShowResultScreen,
 }
 
+/*
 class Debouncer {
   final Duration duration;
   Timer? _timer;
@@ -103,3 +111,4 @@ class Debouncer {
     _timer?.cancel();
   }
 }
+*/

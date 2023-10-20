@@ -154,7 +154,6 @@ class _AppleMusicScreenState extends State<AppleMusicScreen> {
           }),
           onFocused: (focused) {
             if (focused) onSubmitted = false;
-            print(focused);
           },
           onChanged: (text) {
             search(text).then((value) {
@@ -216,7 +215,7 @@ class _AppleMusicScreenState extends State<AppleMusicScreen> {
                   child: AnimatedOpacity(
                     opacity: onSubmitted ? 1 : 0,
                     duration: const Duration(milliseconds: 400),
-                    child: _headerOnSubmitResult(),
+                    child: HeaderOnSubmitResult(),
                   ),
                 ),
               ],
@@ -318,7 +317,9 @@ class _AppleMusicScreenState extends State<AppleMusicScreen> {
 }
 
 //ignore: must_be_immutable
-class _headerOnSubmitResult extends StatelessWidget {
+class HeaderOnSubmitResult extends StatelessWidget {
+  HeaderOnSubmitResult({super.key});
+
   final List<String> _some = [
     "Best Matches",
     "Artists",

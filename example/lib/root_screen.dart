@@ -29,7 +29,7 @@ class _RootScreenState extends State<RootScreen> {
         avatarModel: AvatarModel(
           avatarUrl: null,
           avatarIsVisible: true,
-          onTap: () => print("object"),
+          onTap: () => _general.showSnackBar(context),
         ),
         stretch: true,
         largeTitle: const Text('Home'),
@@ -320,25 +320,25 @@ class _RootScreenState extends State<RootScreen> {
                       context,
                       CupertinoPageRoute<Widget>(
                         builder: (BuildContext context) {
-                          return DefaultNavbarActionsScreen();
+                          return const DefaultNavbarActionsScreen();
                         },
                       ),
                     ),
                     child: Container(
                       color: Colors.transparent,
                       padding: const EdgeInsets.all(15),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             CupertinoIcons.app_badge_fill,
                             color: Colors.amber,
                           ),
-                          const SizedBox(
+                          SizedBox(
                             width: 15,
                           ),
                           Text("Default Navbar"),
-                          const Spacer(),
-                          const Icon(
+                          Spacer(),
+                          Icon(
                             Icons.arrow_forward_rounded,
                           )
                         ],

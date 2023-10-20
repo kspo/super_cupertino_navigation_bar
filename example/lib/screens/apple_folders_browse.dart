@@ -16,7 +16,7 @@ class AppleFoldersBrowse extends StatelessWidget {
           children: [
             CupertinoButton(
               padding: EdgeInsets.zero,
-              onPressed: () => print("object"),
+              onPressed: null,
               child: Icon(
                 CupertinoIcons.ellipsis_circle,
                 color: CupertinoTheme.of(context).primaryColor,
@@ -36,18 +36,18 @@ class AppleFoldersBrowse extends StatelessWidget {
               // Create a grid with 2 columns. If you change the scrollDirection to
               // horizontal, this produces 2 rows.
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(vertical: 15),
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               crossAxisCount: 3,
               // Generate 100 widgets that display their index in the List.
               children: List.generate(100, (index) {
-                return Column(
+                return const Column(
                   children: [
                     Icon(
                       CupertinoIcons.folder_solid,
                       size: 90,
                     ),
-                    const Text(
+                    Text(
                       "Photos",
                       style:
                           TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
