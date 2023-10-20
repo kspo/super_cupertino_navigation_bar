@@ -10,8 +10,8 @@
 ![Static Badge](https://img.shields.io/badge/Author-KSPoyraz-blue)
 [![Linkedin: Kspoyraz](https://img.shields.io/badge/Kspoyraz-blue?logo=Linkedin&logoColor=fff)][linkedin]
 [![Github: Kspo](https://img.shields.io/badge/Kspo-white?logo=Github&logoColor=000)][github]
-![GitHub Licence](https://img.shields.io/github/license/kspo/apple_stocks_app_clone?label=Licence)
-![GitHub last commit](https://img.shields.io/github/last-commit/kspo/apple_stocks_app_clone?label=Last+Commit)
+![GitHub Licence](https://img.shields.io/github/license/kspo/super_cupertino_navigation_bar?label=Licence)
+![GitHub last commit](https://img.shields.io/github/last-commit/kspo/super_cupertino_navigation_bar?label=Last+Commit)
   
 </p>
 </div>
