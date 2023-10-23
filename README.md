@@ -75,6 +75,7 @@ Before the table of content, hereby, you can find all of example from [here](htt
 - [SearchFieldDecoration Attributes](#SearchFieldDecoration-Attributes)
   - [SearchFieldBehaviour Enum](#SearchFieldBehaviour-Enum)
   - [SearchResultHeader Attributes](#SearchResultHeader)
+  - [Search Field Action Buttons](#Search Field Action Buttons)
 - [AvatarModel Attributes](#AvatarModel-Attributes)
 
 ### Getting Started
@@ -223,28 +224,8 @@ const SearchResultHeader({
 });
 ```
 
-### AvatarModel Attributes
-You can set avatar like Apple Applications do. See the required model attributes;
 
-| Attribute        | Type         | Annotation                                                          |
-|------------------|--------------|---------------------------------------------------------------------|
-| avatarUrl        | String       | write here url string of Image.asset(url)                           |
-| avatarIsVisible  | bool         | default value is false                                              |
-| onTap            | VoidCallback | Callback, set event onTap                                           |
-| avatarIconColor  | Color        | avatar icon default color is CupertinoColors.link                   |
-| icon             | IconData     | you can change default icon which is CupertinoIcons.profile_circled |
-
-```dart
-AvatarModel({
-  this.avatarUrl,
-  this.avatarIsVisible = false,
-  this.onTap,
-  this.avatarIconColor = CupertinoColors.link,
-  this.icon = CupertinoIcons.profile_circled,
-});
-```
-
-### Search Field Action Buttons 
+### Search Field Action Buttons
 There is actionButtons attribute in SearchFieldDecoration. This is List of SearchBarActionButton.
 
 ```dart
@@ -273,6 +254,28 @@ You will have such kind of buttons;
 |                                                          Visible On UnFocus                                                           |                                                           Visible On Focus                                                            |
 |:-------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/action_button_1.png" width="250px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/action_button_2.png" width="250px"/> |
+
+
+### AvatarModel Attributes
+You can set avatar like Apple Applications do. See the required model attributes;
+
+| Attribute        | Type         | Annotation                                                          |
+|------------------|--------------|---------------------------------------------------------------------|
+| avatarUrl        | String       | write here url string of Image.asset(url)                           |
+| avatarIsVisible  | bool         | default value is false                                              |
+| onTap            | VoidCallback | Callback, set event onTap                                           |
+| avatarIconColor  | Color        | avatar icon default color is CupertinoColors.link                   |
+| icon             | IconData     | you can change default icon which is CupertinoIcons.profile_circled |
+
+```dart
+AvatarModel({
+  this.avatarUrl,
+  this.avatarIsVisible = false,
+  this.onTap,
+  this.avatarIconColor = CupertinoColors.link,
+  this.icon = CupertinoIcons.profile_circled,
+});
+```
 
 
 ### Some Notices
