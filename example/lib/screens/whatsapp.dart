@@ -253,14 +253,18 @@ class _WhatsAppScreenState extends State<WhatsAppScreen> {
                                               fontWeight: FontWeight.w700),
                                         ),
                                         const Spacer(),
-                                        const Opacity(
-                                          opacity: 0.5,
+                                        Opacity(
+                                          opacity: index == 1 ? 1 : 0.5,
                                           child: Text(
                                             "12:21",
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                             softWrap: false,
-                                            style: TextStyle(fontSize: 15),
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                color: index == 1
+                                                    ? Colors.blue
+                                                    : Colors.grey),
                                           ),
                                         ),
                                       ],
@@ -268,15 +272,44 @@ class _WhatsAppScreenState extends State<WhatsAppScreen> {
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Opacity(
-                                      opacity: 0.5,
-                                      child: Text(
-                                        "${snapshot.data![index].university} ${snapshot.data![index].company?.title}",
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                        softWrap: false,
-                                        style: const TextStyle(fontSize: 15),
-                                      ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Opacity(
+                                            opacity: 0.5,
+                                            child: Text(
+                                              "${snapshot.data![index].university} ${snapshot.data![index].company?.title}",
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                              softWrap: false,
+                                              style:
+                                                  const TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 35,
+                                        ),
+                                        index == 1
+                                            ? Container(
+                                                decoration: BoxDecoration(
+                                                  color: Colors.blue,
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                ),
+                                                width: 17,
+                                                height: 17,
+                                                child: const Center(
+                                                  child: Text(
+                                                    "1",
+                                                    style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                              )
+                                            : SizedBox(),
+                                      ],
                                     ),
                                   ],
                                 ),
