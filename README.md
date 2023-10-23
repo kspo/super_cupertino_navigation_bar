@@ -75,7 +75,7 @@ Before the table of content, hereby, you can find all of example from [here](htt
 - [SearchFieldDecoration Attributes](#SearchFieldDecoration-Attributes)
   - [SearchFieldBehaviour Enum](#SearchFieldBehaviour-Enum)
   - [SearchResultHeader Attributes](#SearchResultHeader)
-  - [Search Field Action Buttons](#Search Field Action Buttons)
+  - [Search Field Action Buttons](#Search-Field-Action-Buttons)
 - [AvatarModel Attributes](#AvatarModel-Attributes)
 
 ### Getting Started
