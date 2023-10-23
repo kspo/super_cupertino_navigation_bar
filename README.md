@@ -277,7 +277,7 @@ You will have such kind of buttons;
 
 ### Some Notices
 
-1. If you want to use default navigation bar, you can use simply this way;
+1. If you want to use default navigation bar, you can use simply this way; 
 
 ```dart
 CupertinoPageScaffold(
