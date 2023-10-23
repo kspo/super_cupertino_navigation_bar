@@ -19,8 +19,12 @@
 [![Pub.dev: Kspoyraz](https://img.shields.io/badge/pub.dev-Super_Cupertino_Navigation_Bar-magenta?logo=dart&logoColor=magenta)][pub.dev]
 
 [![GitHub Clones](https://img.shields.io/badge/dynamic/json?color=success&label=Github+Clone&query=count&url=https://gist.githubusercontent.com/kspo/42e4f655fdf010100a29e99faef8e918/raw/clone.json&logo=github)](https://github.com/kspo/super_cupertino_navigation_bar)
+![Pub Likes](https://img.shields.io/pub/likes/super_cupertino_navigation_bar?label=pub.dev+Likes)
+![Pub Points](https://img.shields.io/pub/points/super_cupertino_navigation_bar?label=Pub.dev%20Points)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/kspo/super_cupertino_navigation_bar?label=Github%20Commits)
 
 </p>
+
 </div>
 
 # Super Cupertino Navigation Bar
@@ -33,8 +37,8 @@ As a developer who appreciates Cupertino's elegant design, wouldn't you want to 
 |                                                       Floated Large Title                                                       |                                                       Pinned Large Title                                                       |                                                       Only Large Title                                                        |
 |:-------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|
 |   <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro.gif" width="150px"/>   | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_1.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_2.gif" width="150px"/> |
-|                                                      Normal Navbar Floated                                                      |                                                      Normal Navbar Pinned                                                      |                                                                                                                              
-| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_33.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_4.gif" width="150px"/>  |                                                                                                                              
+|                                                      Normal Navbar Floated                                                      |                                                      Normal Navbar Pinned                                                      |                                                          Only Navbar                                                          |                                                                                                                            
+| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_33.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_4.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/intro_5.gif" width="150px"/> |                                                                                                                           
 
 **It's been necessary from the beginning, and I just did it.**
 
