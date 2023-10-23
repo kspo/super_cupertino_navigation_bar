@@ -28,6 +28,8 @@ class General {
 
   General._init();
 
+  final ValueNotifier<Brightness> notifier = ValueNotifier(Brightness.light);
+
   List<Color> get colors => [
         const Color.fromARGB(255, 250, 158, 24),
         const Color.fromARGB(255, 154, 154, 154),
@@ -347,4 +349,46 @@ class General {
             )
         ],
       );
+
+  List<WPItem> get watssapp => [
+        WPItem(
+          iconData: CupertinoIcons.photo_camera,
+          title: "Photos",
+        ),
+        WPItem(
+          iconData: CupertinoIcons.gift,
+          title: "GIFs",
+        ),
+        WPItem(
+          iconData: CupertinoIcons.compass,
+          title: "Links",
+        ),
+        WPItem(
+          iconData: CupertinoIcons.video_camera,
+          title: "Videos",
+        ),
+        WPItem(
+          iconData: CupertinoIcons.doc,
+          title: "Documents",
+        ),
+        WPItem(
+          iconData: CupertinoIcons.music_note_2,
+          title: "Audio",
+        ),
+        WPItem(
+          iconData: CupertinoIcons.pencil_outline,
+          title: "Polls",
+        ),
+      ];
+}
+
+class WPItem {
+  final IconData iconData;
+
+  WPItem({
+    required this.iconData,
+    required this.title,
+  });
+
+  final String title;
 }

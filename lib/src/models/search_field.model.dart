@@ -18,8 +18,6 @@ class SearchFieldDecoration {
     this.suffixIcon = const Icon(CupertinoIcons.xmark_circle_fill),
     this.onSuffixTap,
     this.onCancelTap,
-    this.paddingLeft = 16,
-    this.paddingRight = 16,
     this.cancelButtonName = "Cancel",
     this.cancelButtonStyle = const TextStyle(
       color: CupertinoColors.systemBlue,
@@ -36,6 +34,7 @@ class SearchFieldDecoration {
       height: 0,
     ),
     this.searchResultChildren = const [],
+    this.actionButtons = const [],
   });
 
   final TextEditingController? controller;
@@ -54,8 +53,6 @@ class SearchFieldDecoration {
   final Icon suffixIcon;
   final VoidCallback? onSuffixTap;
   final ValueChanged<bool>? onFocused;
-  final double paddingLeft;
-  final double paddingRight;
   final String cancelButtonName;
   final TextStyle cancelButtonStyle;
   final bool hideSearchBarOnInit;
@@ -63,12 +60,47 @@ class SearchFieldDecoration {
   final SearchResultHeader searchResultHeader;
   final ValueChanged<String>? onChanged;
   final List<Widget> searchResultChildren;
-  // final TextStyle? style;
-// final TextStyle? placeholderStyle;
-// final Color? backgroundColor;
-// final BorderRadius? borderRadius;
-// final double itemSize;
-// final bool autofocus;
+  final List<SearchBarActionButton> actionButtons;
+}
+
+class SearchBarActionButton extends StatelessWidget {
+  const SearchBarActionButton({
+    super.key,
+    required this.icon,
+    this.onPressed,
+    this.actionButtonsBehaviour =
+        SearchFieldActionButtonsBehaviour.VisibleOnFocus,
+  });
+  final Icon icon;
+  final VoidCallback? onPressed;
+  final SearchFieldActionButtonsBehaviour actionButtonsBehaviour;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+        right: actionButtonsBehaviour ==
+                SearchFieldActionButtonsBehaviour.VisibleOnFocus
+            ? 15
+            : 0,
+        left: actionButtonsBehaviour ==
+                    SearchFieldActionButtonsBehaviour.AlwaysVisible ||
+                actionButtonsBehaviour ==
+                    SearchFieldActionButtonsBehaviour.VisibleOnUnFocus
+            ? 15
+            : 0,
+      ),
+      child: CupertinoButton(
+        padding: EdgeInsets.zero,
+        minSize: 0,
+        onPressed: onPressed,
+        child: SizedBox(
+          width: icon.size,
+          child: icon,
+        ),
+      ),
+    );
+  }
 }
 
 enum AppBarType {
@@ -93,6 +125,15 @@ enum SearchFieldBehaviour {
   ShowResultScreenAfterFieldFocused,
   // ignore: constant_identifier_names
   NeverShowResultScreen,
+}
+
+enum SearchFieldActionButtonsBehaviour {
+  // ignore: constant_identifier_names
+  AlwaysVisible,
+  // ignore: constant_identifier_names
+  VisibleOnFocus,
+  // ignore: constant_identifier_names
+  VisibleOnUnFocus,
 }
 
 /*

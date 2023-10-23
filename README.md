@@ -188,6 +188,7 @@ enum AppBarType {
 | searchFieldBehaviour | SearchFieldBehaviour (Enum) | This specifies result screen behavior. 3 behaviour may be set: <p>**ShowResultScreenAfterFieldInput, ShowResultScreenAfterFieldFocused, NeverShowResultScreen.**</p> [Shown below](#SearchFieldBehaviour-Enum) |
 | searchResultHeader   | SearchResultHeader (Widget) | This is just model which is required to set height and child attributes                                                                                                                                        |
 | searchResultChildren | List[Widget]                | This appears according to SearchFieldBehaviour. You can set children here after desired action such as onChanged, onSubmitted etc.                                                                             |
+| actionButtons        | List[SearchBarActionButton] | This is just SearchBarActionButton Widget List                                                                                                                                                                 |
 
 ### SearchFieldBehaviour Enum
 
@@ -242,6 +243,37 @@ AvatarModel({
   this.icon = CupertinoIcons.profile_circled,
 });
 ```
+
+### Search Field Action Buttons 
+There is actionButtons attribute in SearchFieldDecoration. This is List of SearchBarActionButton.
+
+```dart
+const SearchBarActionButton({
+  super.key,
+  required this.icon, // required attribute
+  this.onPressed, // can be null
+  this.actionButtonsBehaviour = 
+    SearchFieldActionButtonsBehaviour.VisibleOnFocus, // Default value VisibleOnFocus
+});
+```
+
+You can select action buttons behaviors also. There are 3 types of it's behavior.
+
+Values;
+```dart
+enum SearchFieldActionButtonsBehaviour {
+  AlwaysVisible, // This buttons will be always visible
+  VisibleOnFocus, // This buttons will be only visible on search field has focus
+  VisibleOnUnFocus, // This buttons will be only visible on search field has not focus
+}
+```
+
+You will have such kind of buttons;
+
+|                                                          Visible On UnFocus                                                           |                                                           Visible On Focus                                                            |
+|:-------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/action_button_1.png" width="250px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/action_button_2.png" width="250px"/> |
+
 
 ### Some Notices
 

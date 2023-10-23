@@ -26,6 +26,41 @@ class AppleFoldersBrowse extends StatelessWidget {
           ],
         ),
         searchFieldDecoration: SearchFieldDecoration(
+          actionButtons: [
+            SearchBarActionButton(
+              actionButtonsBehaviour:
+                  SearchFieldActionButtonsBehaviour.VisibleOnFocus,
+              icon: const Icon(CupertinoIcons.square_grid_2x2),
+              onPressed: () => showCupertinoModalPopup(
+                context: context,
+                builder: (BuildContext context) => Container(
+                  width: double.infinity,
+                  color: CupertinoColors.white,
+                  height: 500,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/heisenberg.jpeg",
+                        width: 250,
+                      ),
+                      const Text("I'm not in a danger, Skylar!"),
+                      const Text(
+                        "I'm the danger!",
+                        style: TextStyle(
+                          color: CupertinoColors.destructiveRed,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -1.2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
           searchFieldBehaviour:
               SearchFieldBehaviour.ShowResultScreenAfterFieldInput,
         ),

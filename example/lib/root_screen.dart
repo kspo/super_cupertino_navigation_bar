@@ -1,4 +1,5 @@
 import 'package:example/screens/default_navbar_actions_screen.dart';
+import 'package:example/screens/whatsapp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marvelous_carousel/marvelous_carousel.dart';
@@ -191,7 +192,7 @@ class _RootScreenState extends State<RootScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Examples",
+                            "Apple Examples",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
@@ -286,6 +287,84 @@ class _RootScreenState extends State<RootScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
+                            "Other Application' Example",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          Text(
+                            "Let's create other demos",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15.5,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: CupertinoTheme.of(context).barBackgroundColor,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute<Widget>(
+                        builder: (BuildContext context) {
+                          return const WhatsAppScreen();
+                        },
+                      ),
+                    ),
+                    child: Container(
+                      color: Colors.transparent,
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.asset("assets/app_icon_14.png"),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          const Text("Whatsapp > Chats"),
+                          const Spacer(),
+                          const Icon(
+                            Icons.arrow_forward_rounded,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
                             "Notices",
                             style: TextStyle(
                               fontSize: 20,
@@ -349,9 +428,28 @@ class _RootScreenState extends State<RootScreen> {
               ],
             ),
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: SizedBox(
-              height: 100,
+              height: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Light"),
+                  CupertinoSwitch(
+                    // This bool value toggles the switch.
+                    value: _general.notifier.value == Brightness.dark,
+                    activeColor: CupertinoColors.activeBlue,
+                    onChanged: (value) {
+                      if (value) {
+                        _general.notifier.value = Brightness.dark;
+                      } else {
+                        _general.notifier.value = Brightness.light;
+                      }
+                    },
+                  ),
+                  const Text("Dark"),
+                ],
+              ),
             ),
           ),
         ],
