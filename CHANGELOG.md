@@ -1,3 +1,6 @@
+## [1.1.1] - 2023-11-5
+* Android Platform bugs is now fixed
+
 ## [1.1.0] - 2023-10-23
 * Search Field Action Buttons is now usable.
 * 3 Behavior of search field action buttons can be used.

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -489,7 +490,8 @@ class _SuperCupertinoNavigationBarState
                                       ),
                                       top: Measures.searchBarHeight +
                                           Measures.collapsedBottomPadding +
-                                          MediaQuery.of(context).padding.top,
+                                          MediaQuery.of(context).padding.top +
+                                          (Platform.isAndroid ? 15 : 0),
                                       left: 0,
                                       right: 0,
                                     ),
@@ -506,6 +508,9 @@ class _SuperCupertinoNavigationBarState
                   if (searchBarHasFocus) {
                     _height = Measures.navBarPersistentHeight +
                         MediaQuery.paddingOf(context).top;
+                    if (Platform.isAndroid) {
+                      _height = _height + 15;
+                    }
                   } else {
                     if (widget.appBarType ==
                         AppBarType.LargeTitleWithFloatedSearch) {
@@ -820,7 +825,8 @@ class _SuperCupertinoNavigationBarState
           left: 0,
           top: Measures.navBarPersistentHeight +
               MediaQuery.paddingOf(context).top +
-              widget.searchFieldDecoration.searchResultHeader.height,
+              widget.searchFieldDecoration.searchResultHeader.height +
+              (Platform.isAndroid ? 15 : 0),
         ),
         children: widget.searchFieldDecoration.searchResultChildren,
       ),
