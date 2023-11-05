@@ -84,7 +84,7 @@ Before the table of content, hereby, you can find all of example from [here](htt
 
 ```yaml
 dependencies:
-  super_cupertino_navigation_bar: ^1.0.0
+  super_cupertino_navigation_bar: latest_version
 ```
 
 #### Add import package
@@ -305,6 +305,14 @@ CupertinoPageScaffold(  //inside CupertinoPageScaffold
 );
 ```
 in these case, you should be aware of you will use custom scroll view and sliver widgets.
+
+## Questions
+
+[Ask a question](https://stackoverflow.com/questions/ask) and ping me "k.s poyraz"
+
+## Found an issue or have a proposal?
+
+[Create an issue](https://github.com/kspo/super_cupertino_navigation_bar/issues/new)
 
 ## Contribute and Provide Feedback
 If you wish to contribute to this project, take a look at my GitHub repository and report any issues or bugs. You can help me further improve the project!

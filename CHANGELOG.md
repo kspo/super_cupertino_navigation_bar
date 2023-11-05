@@ -1,3 +1,6 @@
+## [1.1.2] - 2023-11-5
+* Some Milestones added to Readme
+
 ## [1.1.1] - 2023-11-5
 * Android Platform bugs is now fixed
 
