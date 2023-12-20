@@ -287,7 +287,7 @@ class _WhatsAppScreenState extends State<WhatsAppScreen> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 35,
                                         ),
                                         index == 1
@@ -308,7 +308,7 @@ class _WhatsAppScreenState extends State<WhatsAppScreen> {
                                                   ),
                                                 ),
                                               )
-                                            : SizedBox(),
+                                            : const SizedBox(),
                                       ],
                                     ),
                                   ],
