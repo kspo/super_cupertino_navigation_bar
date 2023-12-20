@@ -130,14 +130,17 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     widget.searchFieldDecoration
                                                             .placeholderText ??
                                                         "Search",
-                                                    style: TextStyle(
-                                                      height: 3.7,
-                                                      color: widget
-                                                              .searchFieldDecoration
-                                                              .placeholderColor ??
-                                                          CupertinoColors
-                                                              .systemGrey,
-                                                    ),
+                                                    style: widget
+                                                            .searchFieldDecoration
+                                                            .placeholderTextStyle ??
+                                                        TextStyle(
+                                                          height: 3.7,
+                                                          color: widget
+                                                                  .searchFieldDecoration
+                                                                  .placeholderColor ??
+                                                              CupertinoColors
+                                                                  .systemGrey,
+                                                        ),
                                                   );
                                           },
                                         ),
@@ -157,7 +160,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                             suffixIcon: widget.searchFieldDecoration.suffixIcon,
                             focusNode: widget.focusNode,
                             autocorrect: false,
-                            // style: widget.searchFieldDecoration.style,
+                            style: widget.searchFieldDecoration.textStyle,
                             controller: widget.textEditingController,
                             onChanged: (text) {
                               if (text.isNotEmpty) {

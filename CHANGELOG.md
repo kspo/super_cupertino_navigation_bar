@@ -1,3 +1,8 @@
+## [1.1.3] - 2023-12-21
+* "textStyle" added to searchDecorationModel
+* "placeholderTextStyle" added to searchDecorationModel
+* README.md updated 
+
 ## [1.1.2] - 2023-11-5
 * Some Milestones added to Readme
 

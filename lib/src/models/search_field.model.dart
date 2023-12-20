@@ -35,8 +35,12 @@ class SearchFieldDecoration {
     ),
     this.searchResultChildren = const [],
     this.actionButtons = const [],
+    this.textStyle,
+    this.placeholderTextStyle,
   });
 
+  final TextStyle? textStyle;
+  final TextStyle? placeholderTextStyle;
   final TextEditingController? controller;
   final Color cursorColor;
   final ValueChanged<String>? onSubmitted;

@@ -37,6 +37,9 @@ class _RootScreenState extends State<RootScreen> {
         alwaysShowMiddle: false,
         searchFieldDecoration: SearchFieldDecoration(
           hideSearchBarOnInit: true,
+          // placeholderTextStyle:
+          //    TextStyle(fontSize: 20, fontWeight: FontWeight.w800, height: 3),
+          // textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
           searchFieldBehaviour:
               SearchFieldBehaviour.ShowResultScreenAfterFieldFocused,
           onCancelTap: setClosed,
