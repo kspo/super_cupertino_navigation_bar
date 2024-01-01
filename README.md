@@ -61,7 +61,7 @@ Using `SuperScaffold` provides several advantages and additional features compar
 
 #### [**Examples**](https://github.com/kspo/super_cupertino_navigation_bar/tree/main/example/lib/samples)
 
-Before the table of content, hereby, you can find all of example from [here](https://github.com/kspo/super_cupertino_navigation_bar/tree/main/example/lib/screens). Enjoy!
+Before the table of content, hereby, you can find all of example from [here](https://github.com/kspo/super_cupertino_navigation_bar/tree/main/example/lib/samples). Enjoy!
 
 # Super Cupertino Navigation Bar
 
