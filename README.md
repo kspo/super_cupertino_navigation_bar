@@ -7,7 +7,6 @@
   <p align="center">Flutter Extension</p>
   <p align="center" style="align: center;">
 
-![Static Badge](https://img.shields.io/badge/Author-KSPoyraz-blue)
 [![Linkedin: Kspoyraz](https://img.shields.io/badge/Kspoyraz-blue?logo=Linkedin&logoColor=fff)][linkedin]
 [![Github: Kspo](https://img.shields.io/badge/Kspo-white?logo=Github&logoColor=000)][github]
 ![GitHub Licence](https://img.shields.io/github/license/kspo/super_cupertino_navigation_bar?label=Licence)
