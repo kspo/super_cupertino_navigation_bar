@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// An enhanced version of [WillPopScope] that adds additional functionality.
 class ConditionalWillPopScope extends StatefulWidget {
   /// Creates a widget that registers a callback to veto attempts by the user to
   /// dismiss the enclosing [ModalRoute].
