@@ -1,9 +1,9 @@
 
 <div align="center">
   <a href="https://theksp.online" target="_blank">
-    <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/transparent.png" width="350px"/>
-  </a>
-  <h3 align="center">Super Cupertino Navigation Bar</h3>
+    <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/transparentv2.png" width="350px"/>
+  </a> 
+  <h3 align="center">Super Cupertino Navigation Bar V2</h3>
   <p align="center">Flutter Extension</p>
   <p align="center" style="align: center;">
 
@@ -29,10 +29,8 @@
 
 # Super Cupertino Navigation Bar
 
-Customize your iOS-style navigation bar and elevate the user experience of your project.
+As a developer passionate about Apple UI/UX designs, I felt that Flutter lacked sufficient support for a widget that I wanted to develop. CupertinoSliverNavigationBar does not provide support for a search bar and a bottom app bar. Additionally, even if you were to add them as Slivers, creating a built-in animation and, furthermore, implementing Apple transition animations during page transitions would be challenging. This plugin frees you from this burden.
 
-
-As a developer who appreciates Cupertino's elegant design, wouldn't you want to add this custom package to your app in development? The Super Cupertino Navigation Bar helps you create an iOS-style navigation bar while allowing you to add a search field and customize avatars.
 
 |                                                       Floated Large Title                                                       |                                                       Pinned Large Title                                                       |                                                       Only Large Title                                                        |
 |:-------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|
@@ -46,20 +44,19 @@ As a developer who appreciates Cupertino's elegant design, wouldn't you want to 
 
 ### Why Should You Use Super Cupertino Navigation Bar?
 
-1. **iOS-Style Navigation Bar**: Offer a more familiar experience to your iOS users. The Super Cupertino Navigation Bar reflects the native look and feel of iOS devices.
+Using `SuperScaffold` provides several advantages and additional features compared to the standard `Scaffold` in Flutter. Here are some reasons why you might consider using `SuperScaffold`:
 
+1. **Extended Functionality**: `SuperScaffold` extends the functionality of the standard `Scaffold` by providing additional features such as a customizable `SuperAppBar` with built-in support for large titles, search bars, and bottom bars.
 
-2. **Search Field**: Help users find content in your app more quickly and easily. Provide users with the ability to search.
+2. **Configurability**: `SuperScaffold` allows you to easily configure and customize various parts of the app bar, including the title, large title, search bar, and bottom bar. This provides flexibility in adapting the app bar to the specific design requirements of your application.
 
+3. **Search Bar Integration**: With `SuperScaffold`, you can integrate a search bar (`SuperSearchBar`) directly into the app bar, complete with customizable behavior, animation, and callbacks for handling user input.
 
-3. **Avatar Customization**: Empower users to personalize their profiles. Customizable avatar addition is a fantastic way to recognize and customize users.
+4. **Large Title Support**: The `SuperLargeTitle` feature enables the use of large titles in the app bar, which can be particularly useful in applications with a prominent navigation hierarchy.
 
+5. **Bottom Bar Options**: The `SuperAppBarBottom` feature allows you to add a bottom bar below the app bar, providing additional space for interactive elements or navigation controls.
 
-4. **Perfect Compatibility**: Seamlessly integrates with the Cupertino library. It works harmoniously with other components of your Flutter app.
-
-
-5. **Transition Animations**: With this extension, you can have all transition animation on page route.
-
+6. **Consistent Theming**: `SuperScaffold` includes theming options to ensure a consistent look and feel throughout your application. You can customize colors, borders, and other visual aspects easily.
 
 ## Okay! Let's dive deep!
 
@@ -67,18 +64,33 @@ As a developer who appreciates Cupertino's elegant design, wouldn't you want to 
 
 Before the table of content, hereby, you can find all of example from [here](https://github.com/kspo/super_cupertino_navigation_bar/tree/main/example/lib/screens). Enjoy!
 
-#### Table of Content
+# Super Cupertino Navigation Bar
 
 - [Getting Started](#getting-started)
-- [SuperCupertinoNavigationBar Attributes](#SuperCupertinoNavigationBar-Attributes)
-  - [AppBarType Enum](#AppBarType-Enum)
-- [SearchFieldDecoration Attributes](#SearchFieldDecoration-Attributes)
-  - [SearchFieldBehaviour Enum](#SearchFieldBehaviour-Enum)
-  - [SearchResultHeader Attributes](#SearchResultHeader)
-  - [Search Field Action Buttons](#Search-Field-Action-Buttons)
-- [AvatarModel Attributes](#AvatarModel-Attributes)
+  - [Add Dependency](#add-dependency)
+  - [Import Package](#import-package)
+  - [Easy to Use](#easy-to-use)
 
-### Getting Started
+# SuperScaffold
+
+- [Additional Features and Customization Options](#additional-features-and-customization-options)
+- [SuperAppBar](#superappbar)
+  - [Parameters](#parameters)
+  - [Example Usage](#example-usage)
+- [SuperLargeTitle](#superlargetitle)
+  - [Parameters](#parameters-1)
+  - [Example Usage](#example-usage-1)
+- [SuperSearchBar](#supersearchbar)
+  - [Parameters](#parameters-2)
+  - [SearchResultHeader Class](#searchresultheader-class)
+  - [Enums](#enums)
+  - [Example Usage](#example-usage-2)
+- [SuperAppBarBottom](#superappbarbottom)
+  - [Parameters](#parameters-3)
+  - [Example Usage](#example-usage-3)
+
+
+# Getting Started
 
 #### Add dependency
 
@@ -95,114 +107,255 @@ import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.da
 
 #### Easy to use
 
-**SuperCupertinoNavigationBar** widget has **CustomScrollView** widget in it so you should place your children in **slivers** key whose type List.
-
 ```dart
-CupertinoPageScaffold(  //inside CupertinoPageScaffold
-  child: SuperCupertinoNavigationBar(
-      appBarType: AppBarType.LargeTitleWithFloatedSearch, // Set desired AppBarType
-      avatarModel: AvatarModel(
-        avatarUrl: null,
-        avatarIsVisible: true, // Avatar is hidden as default, if you want to set visible, simply set true
-        onTap: () => print("some event"),
-      ),
-      largeTitle: const Text('Home'),
-      searchFieldDecoration: SearchFieldDecoration(
-          hideSearchBarOnInit: true,
-          searchFieldBehaviour: SearchFieldBehaviour.ShowResultScreenAfterFieldInput, // There are 3 SearchFieldBehaviour
-      ),
-      slivers: [
-        // Any Sliver here
-      ],
+SuperScaffold(
+  appBar: SuperAppBar(
+    title: Text("Hello SuperScaffold"),
+    largeTitle: SuperLargeTitle(
+      enabled: true,
+      largeTitle: "Welcome",
+    ),
+    searchBar: SuperSearchBar(
+      enabled: true,
+      resultBehavior: SearchBarResultBehavior.visibleOnInput,
+      onChanged: (query) {
+        // Search Bar Changes
+      },
+      onSubmitted: (query) {
+        // On Search Bar submitted
+      },
+    ),
+    bottom: SuperAppBarBottom(
+      enabled: true,
+      height: 40,
+      child: YourCustomBottomWidget(), // Any widget of yours
+    ),
   ),
+  body: [
+    Container(
+      alignment: Alignment.center,
+      child: Text("This is the body of SuperScaffold"),
+    ),
+  ],
+  backgroundColor: Colors.white,
 );
 ```
 
-### SuperCupertinoNavigationBar Attributes
+# SuperScaffold
 
-| Attribute                 | Type                          | Annotation                                                                                                                                                                                                                                                                      |
-|---------------------------|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| largeTitle                | Widget                        | Supply Text widget in order to get right transition animation                                                                                                                                                                                                                   |
-| leading                   | Widget                        | You can add desired Widget left top of Navbar                                                                                                                                                                                                                                   |
-| automaticallyImplyLeading | bool                          | used for removing the back button, from the second screen after navigating to route                                                                                                                                                                                             |
-| automaticallyImplyTitle   | bool                          | If true and [largeTitle] is null, automatically fill in a Text() widget with the current route's title                                                                                                                                                                          |
-| alwaysShowMiddle          | bool                          | This should be set to false if you only want to show [largeTitle] in expanded state and [middle] in collapsed state                                                                                                                                                             |
-| physics                   | ScrollPhysics                 | SuperCupertinoNavigationBar has CustomScrollView in it. Physic is used to set CustomScrollView's physics                                                                                                                                                                        |
-| previousPageTitle         | String                        | Manually specify the previous route's title when automatically implying the leading back button                                                                                                                                                                                 |
-| middle                    | Widget                        | Widget to place in the middle of the navigation bar. Normally a title or a segmented control.                                                                                                                                                                                   |
-| trailing                  | Widget                        | Widget to place at the end of the navigation bar. Normally additional actions taken on the page such as a search or edit function.                                                                                                                                              |
-| border                    | Border                        | The direction in which the widget content will line up                                                                                                                                                                                                                          |
-| backgroundColor           | Color                         | The background color of the navigation bar. If it contains transparency, the tab bar will automatically produce a blurring effect to the content behind it. Defaults to CupertinoTheme's scaffoldBackgroundColor if null.                                                       |
-| collapsedBackgroundColor  | Color                         | The background color of the collapsed navigation bar. If it contains transparency, the tab bar will automatically produce a blurring effect to the content behind it. Defaults to CupertinoTheme's barBackgroundColor if null.                                                  |
-| brightness                | Brightness                    | The brightness of the specified backgroundColor. Setting this value changes the style of the system status bar.                                                                                                                                                                 |
-| padding                   | EdgeInsetsDirectional         | Padding for the contents of the navigation bar. Defaults: Vertically, sized to the same height as the navigation bar itself minus the status bar. Horizontally, padding will be 16 pixels                                                                                       |
-| transitionBetweenRoutes   | bool                          | Set true for transition between navigation bars                                                                                                                                                                                                                                 |
-| heroTag                   | Object                        | Tag for the navigation bar's Hero widget if transitionBetweenRoutes is true                                                                                                                                                                                                     |
-| stretch                   | bool                          | This specifies navbar behavior when negative scroll has been done. It moves with scroll contents when it's true. But it will be static on scrolling.                                                                                                                            |
-| slivers                   | List[Widget]                  | SuperCupertinoNavigationBar has CustomScrollView so place all of your children place here as Sliver Widget such as SliverToBoxAdapter etc.                                                                                                                                      |
-| scrollController          | ScrollController              | SuperCupertinoNavigationBar has own scrollController but if you want to add scrollController as custom, you can set here. this will be used as primary scrollController                                                                                                         |
-| appBarType                | AppBarType (Enum)             | AppBarType is an enum and it sets Appbar as Large Title or Normal Navbar and whether it has Search Bar or not. <p>**Values:** LargeTitleWithPinnedSearch, LargeTitleWithFloatedSearch, LargeTitleWithoutSearch, NormalNavbarWithPinnedSearch, NormalNavbarWithFloatedSearch</p> |
-| searchFieldDecoration     | SearchFieldDecoration (Model) | This is Search Field Model which you can find extended information below                                                                                                                                                                                                        |
-| avatarModel               | AvatarModel (Model)           | This is Avatar Model which you can find extended information below                                                                                                                                                                                                              |
+`SuperScaffold` is an extended version of the Flutter `Scaffold` widget with additional features and customization options.
 
-#### AppBarType Enum
+## Additional Features and Customization Options
 
-AppBarType values below;
+- **`stretch`**: If `true`, the `SuperScaffold` will stretch to occupy the available space.
+- **`transitionBetweenRoutes`**: If `true`, enables transition animations between routes.
+- **`measures`**: Additional measures for various components inside the `SuperScaffold`.
+- **`appBar`**: An instance of `SuperAppBar` for customizing the app bar.
+- **`onCollapsed`**: A callback function invoked when the app bar is collapsed.
+- **`backgroundColor`**: The background color of the `SuperScaffold`.
+- **`scrollController`**: A custom scroll controller for the body of the `SuperScaffold`.
+- **`body`**: is a List<Widget> .
+- ... (All other attributes of the default `Scaffold` are available)
+
+Feel free to use this extended `SuperScaffold` in your Flutter application for enhanced customization and additional features. Adjust the parameters according to your application's requirements.
+
+## SuperAppBar
+
+`SuperAppBar` is a customizable Flutter widget that extends the functionality of the default `AppBar`. It provides enhanced features such as a search bar, large title, and additional customization options.
+
+### Constructor
+
+| Parameter                   | Description                                                                                                                 | Default Value    |
+|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------|------------------|
+| `title`                     | The main title of the app bar. If a `Text` widget is provided, it ensures that a default style is set if none is provided.  | -                |
+| `actions`                   | Additional widgets to display on the app bar, typically icons or buttons.                                                   | -                |
+| `height`                    | The height of the app bar.                                                                                                  | `kToolbarHeight` |
+| `leadingWidth`              | The width of the leading widget.                                                                                            | -                |
+| `leading`                   | A widget to display before the `title`. If `automaticallyImplyLeading` is true, this widget will represent the back button. | -                |
+| `automaticallyImplyLeading` | Whether to automatically include a leading widget (typically a back button).                                                | `true`           |
+| `titleSpacing`              | The space between the leading widget and the title.                                                                         | `15`             |
+| `previousPageTitle`         | The title of the previous page when using the back button.                                                                  | "Back"           |
+| `alwaysShowTitle`           | Whether to always show the title, regardless of whether it fits within the app bar.                                         | `false`          |
+| `searchBar`                 | An optional `SuperSearchBar` widget for search functionality.                                                               | -                |
+| `largeTitle`                | An optional `SuperLargeTitle` widget for displaying a large title.                                                          | -                |
+| `bottom`                    | An optional `SuperAppBarBottom` widget for additional content at the bottom of the app bar.                                 | -                |
+| `backgroundColor`           | The background color of the app bar.                                                                                        | -                |
+| `bottomBorder`              | The border at the bottom of the app bar.                                                                                    | -                |
+| `shadowColor`               | The color of the app bar's shadow.                                                                                          | -                |
+
+### Example Usage
+
 ```dart
-enum AppBarType {
-  LargeTitleWithPinnedSearch,
-  LargeTitleWithFloatedSearch,
-  LargeTitleWithoutSearch,
-  NormalNavbarWithPinnedSearch,
-  NormalNavbarWithFloatedSearch,
-}
+SuperAppBar(
+  title: Text("My App"),
+  actions: const [Icon(Icons.search), Icon(Icons.more_vert)],
+  height: 80,
+  leading: const Icon(Icons.arrow_back),
+  automaticallyImplyLeading: true,
+  titleSpacing: 20,
+  previousPageTitle: "Home",
+  alwaysShowTitle: false,
+  searchBar: SuperSearchBar(),
+  largeTitle: SuperLargeTitle(),
+  bottom: SuperAppBarBottom(),
+  backgroundColor: Colors.blue,
+  bottomBorder: const BorderSide(color: Colors.black, width: 1),
+  shadowColor: Colors.grey,
+);
 ```
+
+Feel free to customize the `SuperAppBar` based on your specific design requirements in your Flutter application!
 
 ---
 
-### SearchFieldDecoration Attributes
+# SuperLargeTitle
 
-| Attribute             | Type                        | Annotation                                                                                                                                                                                                     |
-|-----------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| controller            | TextEditingController       | SearchField TextEditingController                                                                                                                                                                              |
-| onChanged             | ValueChanged[String]        | get Text value onChange and do some Event                                                                                                                                                                      |
-| onSubmitted           | ValueChanged[String]        | get Text value onSubmit and do some Event                                                                                                                                                                      |
-| placeholderText       | String                      | SearchField Placeholder Text Value                                                                                                                                                                             |
-| decoration            | BoxDecoration               | Style your search field                                                                                                                                                                                        |
-| keyboardType          | TextInputType               | Select TextInputType                                                                                                                                                                                           |
-| padding               | EdgeInsetsGeometry          | only horizontal padding is applicable                                                                                                                                                                          |
-| prefixIconColor       | Color                       |                                                                                                                                                                                                                |
-| placeholderColor      | Color                       |                                                                                                                                                                                                                |
-| prefixInsets          | EdgeInsetsGeometry          | padding around prefix icon                                                                                                                                                                                     |
-| prefixIcon            | Widget                      | Select desired Icon, default is Icon(CupertinoIcons.search)                                                                                                                                                    |
-| suffixInsets          | EdgeInsetsGeometry          | padding around suffix icon                                                                                                                                                                                     |
-| suffixIcon            | Icon                        | Select desired Icon, default is Icon(CupertinoIcons.xmark_circle_fill)                                                                                                                                         |
-| onSuffixTap           | VoidCallback                | No return value supplied. Just Clears th search field and you can do some event                                                                                                                                |
-| onCancelTap           | VoidCallback                | No return value supplied. Just Clears th search field and cancels search actions. Also you can do some event                                                                                                   |
-| paddingLeft           | double                      |                                                                                                                                                                                                                |
-| paddingRight          | double                      |                                                                                                                                                                                                                |
-| cancelButtonName      | String                      |                                                                                                                                                                                                                |
-| cancelButtonStyle     | TextStyle                   |                                                                                                                                                                                                                |
-| cursorColor           | Color                       |                                                                                                                                                                                                                |
-| onFocused             | ValueChanged[bool]          | triggers desired event on search field focus                                                                                                                                                                   |
-| hideSearchBarOnInit   | bool                        | this is applicable only LargeTitleWithFloatedSearch and NormalNavbarWithFloatedSearch                                                                                                                          |
-| searchFieldBehaviour  | SearchFieldBehaviour (Enum) | This specifies result screen behavior. 3 behaviour may be set: <p>**ShowResultScreenAfterFieldInput, ShowResultScreenAfterFieldFocused, NeverShowResultScreen.**</p> [Shown below](#SearchFieldBehaviour-Enum) |
-| searchResultHeader    | SearchResultHeader (Widget) | This is just model which is required to set height and child attributes                                                                                                                                        |
-| searchResultChildren  | List[Widget]                | This appears according to SearchFieldBehaviour. You can set children here after desired action such as onChanged, onSubmitted etc.                                                                             |
-| actionButtons         | List[SearchBarActionButton] | This is just SearchBarActionButton Widget List                                                                                                                                                                 |
-| textStyle             | TextStyle                   | Search field text style                                                                                                                                                                                        |
-| placeholderTextStyle  | TextStyle                   | Search field placeholder text style                                                                                                                                                                            |
+`SuperLargeTitle` is a Flutter widget designed to display a large and prominent title. It offers customization options for styling and layout.
 
-### SearchFieldBehaviour Enum
+### Parameters:
 
-SearchFieldBehaviour values below;
+| Parameter    | Description                                                                      | Default Value                            |
+|--------------|----------------------------------------------------------------------------------|------------------------------------------|
+| `enabled`    | Whether the large title is enabled or disabled.                                  | `true`                                   |
+| `largeTitle` | The text to be displayed as the large title.                                     | "Hello Super Human"                      |
+| `actions`    | A list of additional widgets or actions to be displayed next to the large title. | `null`                                   |
+| `textStyle`  | The style of the large title text.                                               | See default values below                 |
+| `height`     | The height of the large title.                                                   | `kToolbarHeight`                         |
+| `padding`    | The padding around the large title.                                              | `EdgeInsets.symmetric(horizontal: 15.0)` |
+
+## Example Usage
+
 ```dart
-enum SearchFieldBehaviour {
-  ShowResultScreenAfterFieldInput,
-  ShowResultScreenAfterFieldFocused,
-  NeverShowResultScreen,
+SuperLargeTitle(
+  enabled: true,
+  largeTitle: "Hello Flutter",
+  actions: [
+    IconButton(
+      icon: Icon(Icons.settings),
+      onPressed: () {
+        // Handle settings button press
+      },
+    ),
+    IconButton(
+      icon: Icon(Icons.search),
+      onPressed: () {
+        // Handle search button press
+      },
+    ),
+  ],
+  textStyle: TextStyle(
+    color: Colors.blue,
+    fontSize: 40.0,
+    fontWeight: FontWeight.bold,
+  ),
+  height: 80.0,
+  padding: EdgeInsets.symmetric(horizontal: 20.0),
+)
+```
+
+Feel free to customize the `SuperLargeTitle` in your Flutter application to create visually appealing and informative large titles.
+
+# SuperSearchBar
+
+`SuperSearchBar` is a customizable Flutter widget that provides a flexible and feature-rich search bar for your application. It includes various options for styling, behavior, and interaction.
+
+### Parameters:
+
+| Parameter              | Description                                                             | Default Value                                          |
+|------------------------|-------------------------------------------------------------------------|--------------------------------------------------------|
+| `cancelButtonText`     | The text displayed on the cancel button.                                | "Cancel"                                               |
+| `cancelTextStyle`      | The style of the cancel button's text.                                  | TextStyle(color: CupertinoColors.systemBlue)           |
+| `placeholderTextStyle` | The style of the placeholder text.                                      | TextStyle(color: CupertinoColors.systemGrey)           |
+| `placeholderText`      | The placeholder text displayed in the search bar.                       | "Search"                                               |
+| `prefixIcon`           | The icon displayed as a prefix in the search bar.                       | Icon(CupertinoIcons.search)                            |
+| `actions`              | Additional actions displayed in the search bar.                         | []                                                     |
+| `scrollBehavior`       | The scroll behavior of the search bar.                                  | SearchBarScrollBehavior.floated                        |
+| `height`               | The height of the search bar.                                           | 35.0                                                   |
+| `padding`              | The padding of the search bar.                                          | EdgeInsets.symmetric(horizontal: 15.0)                 |
+| `animationBehavior`    | The animation behavior of the search bar.                               | SearchBarAnimationBehavior.top                         |
+| `animationDuration`    | The duration of the search bar animation.                               | Duration(milliseconds: 250)                            |
+| `searchResult`         | The widget displayed as a search result.                                | Text(".", style: TextStyle(color: Colors.transparent)) |
+| `resultBehavior`       | The visibility behavior of the search result.                           | SearchBarResultBehavior.visibleOnFocus                 |
+| `enabled`              | Whether the search bar is enabled or disabled.                          | true                                                   |
+| `textStyle`            | The style of the text entered in the search bar.                        | TextStyle()                                            |
+| `onChanged`            | Callback function triggered when the text in the search bar changes.    | -                                                      |
+| `onFocused`            | Callback function triggered when the search bar gains or loses focus.   | -                                                      |
+| `onSubmitted`          | Callback function triggered when the user submits the search bar.       | -                                                      |
+| `searchController`     | The `TextEditingController` for controlling the text in the search bar. | -                                                      |
+| `searchFocusNode`      | The `FocusNode` for controlling the focus state of the search bar.      | -                                                      |
+| `backgroundColor`      | The background color of the search bar.                                 | CupertinoColors.tertiarySystemFill                     |
+| `resultColor`          | The color of the search result.                                         | -                                                      |
+
+## SearchResultHeader Class
+
+```dart
+class SearchResultHeader extends StatelessWidget {
+  const SearchResultHeader({
+    super.key,
+    required this.height,
+    required this.child,
+  });
+  final double height;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      child: child,
+    );
+  }
 }
 ```
+
+### Parameters:
+
+| Parameter   | Description                                  |
+| ----------- | -------------------------------------------- |
+| `height`    | The height of the `SearchResultHeader`.       | 
+| `child`     | The child widget to be displayed in the header. |
+
+## Enums
+
+### SearchBarScrollBehavior
+
+```dart
+enum SearchBarScrollBehavior {
+  pinned,
+  floated,
+}
+```
+
+### SearchBarAnimationBehavior
+
+```dart
+enum SearchBarAnimationBehavior {
+  top,
+  steady,
+}
+```
+
+### SearchBarResultBehavior
+
+```dart
+enum SearchBarResultBehavior {
+  visibleOnFocus,
+  visibleOnInput,
+  neverVisible,
+}
+```
+
+### SuperActionBehavior
+
+```dart
+enum SuperActionBehavior {
+  alwaysVisible,
+  visibleOnFocus,
+  visibleOnUnFocus,
+}
+```
+
+Feel free to integrate and customize the `SuperSearchBar` in your Flutter application to create a powerful and visually appealing search experience!
 
 Let's look at expected behaviour;
 
@@ -210,103 +363,53 @@ Let's look at expected behaviour;
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_1.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_2.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_3.gif" width="150px"/>  |
 
-### SearchResultHeader
+# SuperAppBarBottom
 
-After search field action, result screen will appear and in this screen below the search bar you can place any widget you want! Let's look at picture
+`SuperAppBarBottom` is a Flutter widget designed to provide additional content at the bottom of the `SuperAppBar`. It offers customization options for content, height, visibility, and color.
 
-|                                                            Example 1 Apple Music                                                             |                                                            Example 2 Apple Music                                                             |
-|:--------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_2.png" width="250px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_result_header_3.png" width="250px"/> |
+### Parameters:
 
-```dart
-const SearchResultHeader({
-  super.key,
-  required this.height,
-  required this.child,
-});
-```
+| Parameter | Description                                                               | Default Value        |
+|-----------|---------------------------------------------------------------------------|----------------------|
+| `child`   | The widget or content to be displayed at the bottom of the `SuperAppBar`. | `SizedBox()`         |
+| `height`  | The height of the content at the bottom.                                  | `35`                 |
+| `enabled` | Whether the `SuperAppBarBottom` is enabled or disabled.                   | `false`              |
+| `color`   | The background color of the `SuperAppBarBottom`.                          | `Colors.transparent` |
 
-
-### Search Field Action Buttons
-There is actionButtons attribute in SearchFieldDecoration. This is List of SearchBarActionButton.
+## Example Usage
 
 ```dart
-const SearchBarActionButton({
-  super.key,
-  required this.icon, // required attribute
-  this.onPressed, // can be null
-  this.actionButtonsBehaviour = 
-    SearchFieldActionButtonsBehaviour.VisibleOnFocus, // Default value VisibleOnFocus
-});
-```
-
-You can select action buttons behaviors also. There are 3 types of it's behavior.
-
-Values;
-```dart
-enum SearchFieldActionButtonsBehaviour {
-  AlwaysVisible, // This buttons will be always visible
-  VisibleOnFocus, // This buttons will be only visible on search field has focus
-  VisibleOnUnFocus, // This buttons will be only visible on search field has not focus
-}
-```
-
-You will have such kind of buttons;
-
-|                                                          Visible On UnFocus                                                           |                                                           Visible On Focus                                                            |
-|:-------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/action_button_1.png" width="250px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/action_button_2.png" width="250px"/> |
-
-
-### AvatarModel Attributes
-You can set avatar like Apple Applications do. See the required model attributes;
-
-| Attribute        | Type         | Annotation                                                          |
-|------------------|--------------|---------------------------------------------------------------------|
-| avatarUrl        | String       | write here url string of Image.asset(url)                           |
-| avatarIsVisible  | bool         | default value is false                                              |
-| onTap            | VoidCallback | Callback, set event onTap                                           |
-| avatarIconColor  | Color        | avatar icon default color is CupertinoColors.link                   |
-| icon             | IconData     | you can change default icon which is CupertinoIcons.profile_circled |
-
-```dart
-AvatarModel({
-  this.avatarUrl,
-  this.avatarIsVisible = false,
-  this.onTap,
-  this.avatarIconColor = CupertinoColors.link,
-  this.icon = CupertinoIcons.profile_circled,
-});
-```
-
-
-### Some Notices
-
-1. If you want to use default navigation bar, you can use simply this way; 
-
-```dart
-CupertinoPageScaffold(
-  navigationBar: DefaultCupertinoNavigationBar( // same as CupertinoNavigationBar but little differencies
-  backgroundColor: CupertinoColors.systemGrey.withOpacity(0.5),
-  middle: const Text('CupertinoNavigationBar Sample'),
-  )
-);
-```
-
-2. Without using default navigation bar, You can use SuperCupertinoNavigationBar without largeTitle. Simply use this value;
-
-```dart
-CupertinoPageScaffold(  //inside CupertinoPageScaffold
-  child: SuperCupertinoNavigationBar(
-    largeTitleType: AppBarType.NormalNavbarWithoutSearch, // This will make appbar like CupertinoNavigationBar
-    middle: Text("Home")
-    slivers: [
-      // Any Sliver here
+SuperAppBarBottom(
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      IconButton(
+        icon: Icon(Icons.home),
+        onPressed: () {
+          // Handle home button press
+        },
+      ),
+      IconButton(
+        icon: Icon(Icons.notifications),
+        onPressed: () {
+          // Handle notifications button press
+        },
+      ),
+      IconButton(
+        icon: Icon(Icons.person),
+        onPressed: () {
+          // Handle profile button press
+        },
+      ),
     ],
   ),
-);
+  height: 50.0,
+  enabled: true,
+  color: Colors.blue,
+)
 ```
-in these case, you should be aware of you will use custom scroll view and sliver widgets.
+
+Feel free to customize the `SuperAppBarBottom` in your Flutter application to add additional functionality or navigation options to your app bar.
 
 ## Questions
 

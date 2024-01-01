@@ -1,3 +1,11 @@
+## [2.0.0] - 2024-01-01
+* Breaking change was made
+* slivers are not available currently
+* height of any widget can be adjustable now
+* bottom app bar feature added
+* transition between routes functionality improved
+* events improved
+
 ## [1.1.3] - 2023-12-21
 * "textStyle" added to searchDecorationModel
 * "placeholderTextStyle" added to searchDecorationModel

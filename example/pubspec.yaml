@@ -1,31 +1,25 @@
-name: example
+name: untitled
 description: A new Flutter project.
-publish_to: 'none'
-version: 0.1.0
+version: 1.0.0+1
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
-
 dependencies:
-  cupertino_icons: ^1.0.6
-  lottie: ^2.6.0
-  flutter_sticky_header: ^0.6.5
   flutter:
-    sdk: flutter
-
-  flutter_localizations:
     sdk: flutter
   super_cupertino_navigation_bar:
     path: ./..
-  marvelous_carousel: ^0.0.16
+  cupertino_icons: ^1.0.2
+  modal_bottom_sheet: ^3.0.0-pre
   http: ^1.1.0
   flutter_rating_stars: ^1.0.3+4
+  lottie: ^2.7.0
+  marvelous_carousel: ^0.0.16
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
 flutter:
   uses-material-design: true
   assets:
