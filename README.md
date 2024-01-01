@@ -67,7 +67,6 @@ Before the table of content, hereby, you can find all of example from [here](htt
 
 - [Getting Started](#getting-started)
   - [Add Dependency](#add-dependency)
-  - [Import Package](#import-package)
   - [Easy to Use](#easy-to-use)
 
 # SuperScaffold
@@ -162,7 +161,7 @@ Feel free to use this extended `SuperScaffold` in your Flutter application for e
 
 `SuperAppBar` is a customizable Flutter widget that extends the functionality of the default `AppBar`. It provides enhanced features such as a search bar, large title, and additional customization options.
 
-### Constructor
+### Parameters
 
 | Parameter                   | Description                                                                                                                 | Default Value    |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------------------------|------------------|
