@@ -11,7 +11,7 @@ jobs:
       my_secret: ${{secrets.commit_secret}}
     defaults:
       run:
-        working-directory: super_cupertino_navigation_bar/example
+        working-directory: example
     runs-on: ubuntu-latest
     steps:
       - name: 📚 Git Checkout
