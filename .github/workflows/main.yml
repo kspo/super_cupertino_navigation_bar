@@ -8,7 +8,7 @@ jobs:
   build:
     name: Build Web
     env:
-      my_secret: ${{secrets.commit_secret}}
+      my_secret: ${{secrets.INSIGHT_TOKEN}}
     defaults:
       run:
         working-directory: example
@@ -33,8 +33,8 @@ jobs:
         run: |
           cd build/web
           git init
-          git config --global user.name 'Selman Poyraz'
-          git config --global user.email '3223poyraz@gmail.com'
+          git config --global user.name 'kspo'
+          git config --global user.email '<>'
           git status
           git remote add origin https://${{secrets.INSIGHT_TOKEN}}@github.com/kspo/super_cupertino_navigation_bar.git
           git checkout -b gh-pages
