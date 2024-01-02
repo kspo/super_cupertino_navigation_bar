@@ -8,7 +8,7 @@ jobs:
   build:
     name: Build Web
     env:
-      my_secret: ${{secrets.INSIGHT_TOKEN}}
+      INSIGHT_TOKEN: ${{secrets.INSIGHT_TOKEN}}
     defaults:
       run:
         working-directory: example
@@ -30,7 +30,7 @@ jobs:
         run: flutter build web --dart-define=FLUTTER_WEB_USE_SKIA=true
 
       - name: gh login
-        run: echo "${{ secrets.INSIGHT_TOKEN }}" | gh auth login --with-token
+        run: echo "$INSIGHT_TOKEN"
 
       - name: 🚀 Deploy to github pages
         run: |
@@ -39,7 +39,7 @@ jobs:
           git config --global user.email "<>"
           git config --global user.name "kspo"
           git status
-          git remote add origin https://${{secrets.INSIGHT_TOKEN}}@github.com/kspo/super_cupertino_navigation_bar.git
+          git remote add origin https://${{INSIGHT_TOKEN}}@github.com/kspo/super_cupertino_navigation_bar.git
           git checkout -b gh-pages
           git add --all
           git commit -m "Update web"
