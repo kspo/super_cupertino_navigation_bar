@@ -24,7 +24,7 @@ jobs:
 
       - run: flutter config --enable-web
       - run: flutter pub get
-      - run: flutter build web --release
+      - run: flutter build web --release --web-renderer html --base-href /super_cupertino_navigation_bar/
       - run: |
           cd build/web
           git init
