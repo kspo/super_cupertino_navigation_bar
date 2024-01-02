@@ -22,12 +22,9 @@ jobs:
         with:
           cache: true
 
-      - name: 📦 Install Dependencies
-        run: |
-          flutter pub global activate very_good_cli
-
-      - name: 🛠 Build web
-        run: flutter build web --dart-define=FLUTTER_WEB_USE_SKIA=true
+      - run: flutter config --enable-web
+      - run: flutter pub get
+      - run: flutter build web --release
 
       - name: 🚀 Deploy to github pages
         run: |
