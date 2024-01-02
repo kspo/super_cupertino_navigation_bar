@@ -35,7 +35,7 @@ jobs:
           git init
           git config --global user.name kspo
           git status
-          git remote add origin https://${{secrets.INSIGHT_TOKEN}}@github.com/kspo/super_cupertino_navigation_bar.git
+          git remote add origin https://${{secrets.SECRET_TOKEN}}@github.com/kspo/super_cupertino_navigation_bar.git
           git checkout -b gh-pages
           git add --all
           git commit -m "Update web"
