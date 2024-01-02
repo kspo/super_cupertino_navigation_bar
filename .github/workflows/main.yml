@@ -34,7 +34,7 @@ jobs:
           cd build/web
           git init
           git config --global user.name 'kspo'
-          git config --global user.email '<>'
+          git config --global user.email '3223poyraz@gmail.com'
           git status
           git remote add origin https://${{secrets.SECRET_TOKEN}}@github.com/kspo/super_cupertino_navigation_bar.git
           git checkout -b gh-pages
