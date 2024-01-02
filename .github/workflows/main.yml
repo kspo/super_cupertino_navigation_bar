@@ -29,6 +29,9 @@ jobs:
       - name: 🛠 Build web
         run: flutter build web --dart-define=FLUTTER_WEB_USE_SKIA=true
 
+      - name: gh login
+        run: echo "${{ secrets.INSIGHT_TOKEN }}" | gh auth login --with-token
+
       - name: 🚀 Deploy to github pages
         run: |
           cd build/web
