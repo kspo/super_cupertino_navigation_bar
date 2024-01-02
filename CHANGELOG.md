@@ -1,3 +1,6 @@
+## [2.0.1] - 2024-01-02
+* ReadMe.md updated
+
 ## [2.0.0] - 2024-01-01
 * Breaking change was made
 * slivers are not available currently

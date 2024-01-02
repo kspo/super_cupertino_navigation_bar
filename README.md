@@ -151,7 +151,6 @@ SuperScaffold(
 
 - **`stretch`**: If `true`, the `SuperScaffold` will stretch to occupy the available space.
 - **`transitionBetweenRoutes`**: If `true`, enables transition animations between routes.
-- **`measures`**: Additional measures for various components inside the `SuperScaffold`.
 - **`appBar`**: An instance of `SuperAppBar` for customizing the app bar.
 - **`onCollapsed`**: A callback function invoked when the app bar is collapsed.
 - **`backgroundColor`**: The background color of the `SuperScaffold`.
@@ -191,17 +190,12 @@ Feel free to use this extended `SuperScaffold` in your Flutter application for e
 SuperAppBar(
   title: Text("My App"),
   actions: const [Icon(Icons.search), Icon(Icons.more_vert)],
-  height: 80,
-  leading: const Icon(Icons.arrow_back),
-  automaticallyImplyLeading: true,
-  titleSpacing: 20,
   previousPageTitle: "Home",
-  alwaysShowTitle: false,
   searchBar: SuperSearchBar(),
   largeTitle: SuperLargeTitle(),
   bottom: SuperAppBarBottom(),
-  backgroundColor: Colors.blue,
-  bottomBorder: const BorderSide(color: Colors.black, width: 1),
+  backgroundColor: Colors.black,
+  bottomBorder: const BorderSide(color: Colors.grey, width: 1),
   shadowColor: Colors.grey,
 );
 ```
@@ -229,8 +223,8 @@ Feel free to customize the `SuperAppBar` based on your specific design requireme
 
 ```dart
 SuperLargeTitle(
-  enabled: true,
-  largeTitle: "Hello Flutter",
+  enabled: true, // default value is true
+  largeTitle: "Super Human",
   actions: [
     IconButton(
       icon: Icon(Icons.settings),
@@ -250,8 +244,6 @@ SuperLargeTitle(
     fontSize: 40.0,
     fontWeight: FontWeight.bold,
   ),
-  height: 80.0,
-  padding: EdgeInsets.symmetric(horizontal: 20.0),
 )
 ```
 
@@ -270,7 +262,7 @@ Feel free to customize the `SuperLargeTitle` in your Flutter application to crea
 | `placeholderTextStyle` | The style of the placeholder text.                                      | TextStyle(color: CupertinoColors.systemGrey)           |
 | `placeholderText`      | The placeholder text displayed in the search bar.                       | "Search"                                               |
 | `prefixIcon`           | The icon displayed as a prefix in the search bar.                       | Icon(CupertinoIcons.search)                            |
-| `actions`              | Additional actions displayed in the search bar.                         | []                                                     |
+| `actions`              | Additional actions displayed in the search bar. Type `SuperAction`      | []                                                     |
 | `scrollBehavior`       | The scroll behavior of the search bar.                                  | SearchBarScrollBehavior.floated                        |
 | `height`               | The height of the search bar.                                           | 35.0                                                   |
 | `padding`              | The padding of the search bar.                                          | EdgeInsets.symmetric(horizontal: 15.0)                 |
@@ -288,34 +280,32 @@ Feel free to customize the `SuperLargeTitle` in your Flutter application to crea
 | `backgroundColor`      | The background color of the search bar.                                 | CupertinoColors.tertiarySystemFill                     |
 | `resultColor`          | The color of the search result.                                         | -                                                      |
 
-## SearchResultHeader Class
+### Example Usage:
 
 ```dart
-class SearchResultHeader extends StatelessWidget {
-  const SearchResultHeader({
-    super.key,
-    required this.height,
-    required this.child,
-  });
-  final double height;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      child: child,
-    );
-  }
-}
+SuperSearchBar(
+  enabled: true,
+  resultBehavior: SearchBarResultBehavior.visibleOnInput,
+  onChanged: (query) {
+    // Handle changes in the search bar
+    print("Search bar changed: $query");
+  },
+  onSubmitted: (query) {
+    // Handle submission of the search bar
+    print("Search bar submitted: $query");
+  },
+),
 ```
 
-### Parameters:
+Feel free to integrate and customize the `SuperSearchBar` in your Flutter application to create a powerful and visually appealing search experience! Adjust the parameters according to your application's requirements.
 
-| Parameter   | Description                                  |
-| ----------- | -------------------------------------------- |
-| `height`    | The height of the `SearchResultHeader`.       | 
-| `child`     | The child widget to be displayed in the header. |
+## SuperAction
+
+| Parameter  | Description                                                | Default Value    |
+|------------|------------------------------------------------------------|------------------|
+| `child`    | The widget to be displayed.                                | -                |
+| `behavior` | The behavior of the widget based on `SuperActionBehavior`. | `visibleOnFocus` |
+
 
 ## Enums
 
@@ -361,9 +351,9 @@ Feel free to integrate and customize the `SuperSearchBar` in your Flutter applic
 
 Let's look at expected behaviour;
 
-|                                                      ShowResultScreenAfterFieldInput                                                      |                                                     ShowResultScreenAfterFieldFocused                                                     |                                                           NeverShowResultScreen                                                           |
-|:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_1.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_2.gif" width="150px"/>  | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_3.gif" width="150px"/>  |
+|                                                  SearchBarResultBehavior.visibleOnInput                                                  |                                                  SearchBarResultBehavior.visibleOnFocus                                                  |                                                           NeverShowResultScreen                                                           |
+|:----------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_1.gif" width="150px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_2.gif" width="150px"/> | <img src="https://raw.githubusercontent.com/kspo/super_cupertino_navigation_bar/main/screenshots/search_behaviour_3.gif" width="150px"/>  |
 
 # SuperAppBarBottom
 
