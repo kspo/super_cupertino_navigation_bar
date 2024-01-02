@@ -8,7 +8,7 @@ jobs:
   build:
     name: Build Web
     env:
-      my_secret: ${{secrets.INSIGHT_TOKEN}}
+      my_secret: ${{secrets.SECRET_KEYS_2024}}
     defaults:
       run:
         working-directory: example
@@ -36,7 +36,7 @@ jobs:
           git config --global user.email "3223poyraz@gmail.com"
           git config --global user.name "poyraz"
           git status
-          git remote add origin https://${{secrets.INSIGHT_TOKEN}}github.com/kspo/super_cupertino_navigation_bar.git
+          git remote add origin https://${{secrets.SECRET_KEYS_2024}}github.com/kspo/super_cupertino_navigation_bar.git
           git checkout -b gh-pages
           git add --all
           git commit -m "Update web"
