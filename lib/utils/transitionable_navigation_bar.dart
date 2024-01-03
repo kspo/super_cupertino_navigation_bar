@@ -199,7 +199,8 @@ class NavigationBarTransition extends StatelessWidget {
     // the animation, such as the topLargeTitle. The textScaleFactor is kept
     // at 1 to avoid odd transitions between pages.
     return MediaQuery(
-      data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),
+      data: MediaQuery.of(context)
+          .copyWith(textScaler: const TextScaler.linear(1)),
       child: SizedBox(
         height: max(heightTween.begin!, heightTween.end!) +
             MediaQuery.paddingOf(context).top,
@@ -693,10 +694,6 @@ class _NavigationBarComponentsTransition {
     final KeyedSubtree? topMiddle =
         topComponents.middleKey.currentWidget as KeyedSubtree?;
 
-    if (topSearchBarHasFocus) {
-      return null;
-    }
-
     if (topMiddle == null) {
       return null;
     }
@@ -995,6 +992,10 @@ class _NavigationBarComponentsTransition {
         topComponents.largeTitleActionsKey.currentWidget as KeyedSubtree?;
 
     if (topLargeTitleActions == null) {
+      return null;
+    }
+
+    if (!topLargeExpanded) {
       return null;
     }
 

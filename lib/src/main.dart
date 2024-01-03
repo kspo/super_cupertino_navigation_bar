@@ -282,39 +282,48 @@ class _SuperScaffoldState extends State<SuperScaffold> with RouteAware {
   }
 
   checkIfCollapsed() {
-    if (widget.onCollapsed != null) {
-      if (widget.appBar!.largeTitle!.enabled ||
-          widget.appBar!.searchBar!.enabled) {
-        if (widget.appBar!.searchBar!.scrollBehavior ==
-            SearchBarScrollBehavior.floated) {
-          if (_scrollOffset >=
-              widget.measures!.thirthToolbarHeight +
-                  widget.measures!.secondaryToolbarHeight) {
-            if (!_collapsed) {
-              widget.onCollapsed!(true);
-              _collapsed = true;
-            }
-          } else {
-            if (_collapsed) {
-              widget.onCollapsed!(false);
-              _collapsed = false;
-            }
+    if (widget.appBar!.searchBar!.scrollBehavior ==
+        SearchBarScrollBehavior.floated) {
+      if (_scrollOffset >=
+          widget.measures!.thirthToolbarHeight +
+              widget.measures!.secondaryToolbarHeight) {
+        if (!_collapsed) {
+          if (widget.onCollapsed != null) {
+            widget.onCollapsed!(true);
           }
-        } else {
-          if (_scrollOffset >= widget.measures!.thirthToolbarHeight) {
-            if (!_collapsed) {
-              widget.onCollapsed!(true);
-              _collapsed = true;
-            }
-          } else {
-            if (_collapsed) {
-              widget.onCollapsed!(false);
-              _collapsed = false;
-            }
+          _collapsed = true;
+        }
+      } else {
+        if (_collapsed) {
+          if (widget.onCollapsed != null) {
+            widget.onCollapsed!(false);
           }
+          _collapsed = false;
+        }
+      }
+    } else {
+      if (_scrollOffset >= widget.measures!.thirthToolbarHeight) {
+        if (!_collapsed) {
+          if (widget.onCollapsed != null) {
+            widget.onCollapsed!(true);
+          }
+          _collapsed = true;
+        }
+      } else {
+        if (_collapsed) {
+          if (widget.onCollapsed != null) {
+            widget.onCollapsed!(false);
+          }
+          _collapsed = false;
         }
       }
     }
+    /*if (widget.onCollapsed != null) {
+      if (widget.appBar!.largeTitle!.enabled ||
+          widget.appBar!.searchBar!.enabled) {
+
+      }
+    }*/
   }
 
   setMagnifier() {
@@ -375,6 +384,7 @@ class _SuperScaffoldState extends State<SuperScaffold> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
+    // print(widget.appBar!.title);
     final NavigationBarStaticComponents components =
         NavigationBarStaticComponents(
       keys: keys,
@@ -1317,10 +1327,11 @@ class _SuperScaffoldState extends State<SuperScaffold> with RouteAware {
                                     componentsKeys: keys,
                                     backgroundColor:
                                         CupertinoDynamicColor.maybeResolve(
-                                                widget.backgroundColor,
+                                                widget.appBar!.backgroundColor,
                                                 context) ??
                                             Theme.of(context)
-                                                .scaffoldBackgroundColor,
+                                                .appBarTheme
+                                                .backgroundColor,
                                     backButtonTextStyle:
                                         CupertinoTheme.of(context)
                                             .textTheme
@@ -1336,6 +1347,10 @@ class _SuperScaffoldState extends State<SuperScaffold> with RouteAware {
                                               fontSize: 20,
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: 0,
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .color,
                                             )
                                         : const TextStyle(),
                                     largeTitleTextStyle:

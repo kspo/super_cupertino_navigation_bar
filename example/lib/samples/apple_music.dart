@@ -28,37 +28,16 @@ class _AppleMusicState extends State<AppleMusic> {
       backgroundColor: Colors.black,
       appBar: SuperAppBar(
         backgroundColor: Colors.black.withOpacity(0.5),
-        leading: const SizedBox(),
-        bottom: SuperAppBarBottom(
-          enabled: bottomEnabled,
-          height: 35,
-          child: Stack(
-            children: [
-              AnimatedContainer(
-                transform:
-                    Matrix4.translationValues(0, !onSubmitted ? 0 : -20, 0),
-                duration: const Duration(milliseconds: 200),
-                width: MediaQuery.of(context).size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0),
-                child: AnimatedOpacity(
-                  opacity: !onSubmitted ? 1 : 0,
-                  duration: const Duration(milliseconds: 200),
-                  child: _headerResult(),
-                ),
-              ),
-              AnimatedContainer(
-                transform:
-                    Matrix4.translationValues(0, onSubmitted ? 0 : -20, 0),
-                duration: const Duration(milliseconds: 200),
-                child: AnimatedOpacity(
-                  opacity: onSubmitted ? 1 : 0,
-                  duration: const Duration(milliseconds: 200),
-                  child: HeaderOnSubmitResult(),
-                ),
-              ),
-            ],
-          ),
+        automaticallyImplyLeading: false,
+        largeTitle: SuperLargeTitle(
+          largeTitle: "Search",
+          actions: [
+            const Icon(
+              CupertinoIcons.profile_circled,
+              size: 35,
+              color: Colors.redAccent,
+            ),
+          ],
         ),
         searchBar: SuperSearchBar(
           resultColor: Colors.black,
@@ -113,15 +92,36 @@ class _AppleMusicState extends State<AppleMusic> {
                   ),
           ),
         ),
-        largeTitle: SuperLargeTitle(
-          largeTitle: "Search",
-          actions: [
-            const Icon(
-              CupertinoIcons.profile_circled,
-              size: 35,
-              color: Colors.redAccent,
-            ),
-          ],
+        bottom: SuperAppBarBottom(
+          enabled: bottomEnabled,
+          height: 35,
+          child: Stack(
+            children: [
+              AnimatedContainer(
+                transform:
+                    Matrix4.translationValues(0, !onSubmitted ? 0 : -20, 0),
+                duration: const Duration(milliseconds: 200),
+                width: MediaQuery.of(context).size.width,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0),
+                child: AnimatedOpacity(
+                  opacity: !onSubmitted ? 1 : 0,
+                  duration: const Duration(milliseconds: 200),
+                  child: _headerResult(),
+                ),
+              ),
+              AnimatedContainer(
+                transform:
+                    Matrix4.translationValues(0, onSubmitted ? 0 : -20, 0),
+                duration: const Duration(milliseconds: 200),
+                child: AnimatedOpacity(
+                  opacity: onSubmitted ? 1 : 0,
+                  duration: const Duration(milliseconds: 200),
+                  child: HeaderOnSubmitResult(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       body: [

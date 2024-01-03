@@ -76,6 +76,10 @@ class _WhatsappState extends State<Whatsapp> {
             ),
           ],
         ),
+        largeTitle: SuperLargeTitle(
+          // height: 0,
+          largeTitle: "Whatsapp",
+        ),
         searchBar: SuperSearchBar(
           resultColor: Colors.black,
           onFocused: (value) => setState(() {
@@ -159,10 +163,6 @@ class _WhatsappState extends State<Whatsapp> {
               ),
             )
           ],
-        ),
-        largeTitle: SuperLargeTitle(
-          // height: 0,
-          largeTitle: "Whatsapp",
         ),
       ),
       body: [
