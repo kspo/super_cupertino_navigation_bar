@@ -119,7 +119,7 @@ class WebFrame extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Super\nCupertino\nNavigation\nBar',
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
@@ -129,7 +129,7 @@ class WebFrame extends StatelessWidget {
                           maxLines: 4,
                           overflow: TextOverflow.clip,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         CupertinoButton(
                           onPressed: () => launchUrlString(
                               'https://github.com/kspo/super_cupertino_navigation_bar'),
@@ -142,10 +142,10 @@ class WebFrame extends StatelessWidget {
                                   height: 60,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 25,
                               ),
-                              Expanded(
+                              const Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
