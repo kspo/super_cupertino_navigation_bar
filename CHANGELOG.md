@@ -1,3 +1,6 @@
+## [2.0.4] - 2024-01-03
+* web demo activated
+
 ## [2.0.3] - 2024-01-02
 * ReadMe.md updated
 

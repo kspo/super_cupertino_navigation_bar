@@ -122,9 +122,8 @@ class WebFrame extends StatelessWidget {
                         const Text(
                           'Super\nCupertino\nNavigation\nBar',
                           style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 80,
-                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 70,
                           ),
                           maxLines: 4,
                           overflow: TextOverflow.clip,
