@@ -1,0 +1,38 @@
+name: deploy web
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Web
+    env:
+      my_secret: ${{secrets.commit_secret}}
+    defaults:
+      run:
+        working-directory: example
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - name: 🐦 Setup Flutter 
+        uses: subosito/flutter-action@v2
+        with:
+          cache: true
+
+      - run: flutter config --enable-web
+      - run: flutter pub get
+      - run: flutter build web --release --web-renderer html --base-href /super_cupertino_navigation_bar/
+      - run: |
+          cd build/web
+          git init
+          git config --global user.email 3223poyraz@gmail.com
+          git config --global user.name poyraz
+          git status
+          git remote add origin https://${{secrets.commit_secret}}@github.com/kspo/super_cupertino_navigation_bar.git
+          git checkout -b gh-pages
+          git add --all
+          git commit -m "update"
+          git push origin gh-pages -f
