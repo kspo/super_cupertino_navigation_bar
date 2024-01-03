@@ -15,6 +15,7 @@ import 'package:untitled/samples/github_issues.dart';
 import 'package:untitled/samples/home.dart';
 import 'package:untitled/samples/playground.dart';
 import 'package:untitled/samples/whatsapp.dart';
+import 'package:untitled/web_frame.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
             ),
           )),
       themeMode: ThemeMode.dark,
+      builder: (context, Widget? child) => WebFrame(
+        child: child!,
+      ),
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':

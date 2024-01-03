@@ -15,6 +15,7 @@ dependencies:
   flutter_rating_stars: ^1.0.3+4
   lottie: ^2.7.0
   marvelous_carousel: ^0.0.16
+  url_launcher: ^6.2.2
 
 dev_dependencies:
   flutter_test:
