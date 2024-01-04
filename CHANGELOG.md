@@ -1,3 +1,6 @@
+## [2.0.4] - 2024-01-04
+* transition collapse bug on title and largetitle
+
 ## [2.0.4] - 2024-01-03
 * web demo activated
 
