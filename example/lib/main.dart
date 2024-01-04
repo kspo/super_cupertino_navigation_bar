@@ -49,48 +49,48 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
               builder: (_) => const Home(title: 'Flutter Demo Home Page'),
               settings: settings,
             );
           case '/play':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const Playground(), settings: settings);
           case '/githubinbox':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const GithubInbox(), settings: settings);
           case '/githubissues':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const GithubIssues(), settings: settings);
           case '/apple_music':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleMusic(), settings: settings);
           case '/store':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleStore(), settings: settings);
           case '/contacts':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleContacts(), settings: settings);
           case '/messages':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleMessages(), settings: settings);
           case '/allshorts':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleAllShortcuts(), settings: settings);
           case '/whatsapp':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const Whatsapp(), settings: settings);
           case '/clock':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleClock(), settings: settings);
           case '/folders':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleFolders(), settings: settings);
           case '/tips':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const AppleTips(), settings: settings);
           case '/gallery':
-            return MaterialWithModalsPageRoute(
+            return CustomPageRoute(
                 builder: (_) => const ShortcutsGallery(), settings: settings);
         }
         return null;
@@ -100,9 +100,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class CustomPageRoute extends CupertinoPageRoute {
+class CustomPageRoute extends MaterialWithModalsPageRoute {
   @override
   Duration get transitionDuration => const Duration(milliseconds: 600);
 
-  CustomPageRoute({builder}) : super(builder: builder);
+  CustomPageRoute({builder, RouteSettings? settings}) : super(builder: builder);
 }

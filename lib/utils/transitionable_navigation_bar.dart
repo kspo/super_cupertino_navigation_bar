@@ -181,8 +181,6 @@ class NavigationBarTransition extends StatelessWidget {
         componentsTransition.topBackLabel!,
       if (componentsTransition.topMiddle != null)
         componentsTransition.topMiddle!,
-      if (componentsTransition.topLargeTitle != null)
-        componentsTransition.topLargeTitle!,
       if (componentsTransition.topTrailing != null)
         componentsTransition.topTrailing!,
       if (componentsTransition.topSearchBar != null)
@@ -191,6 +189,8 @@ class NavigationBarTransition extends StatelessWidget {
         componentsTransition.topLargeTitleActions!,
       if (componentsTransition.topAppbarBottom != null)
         componentsTransition.topAppbarBottom!,
+      if (componentsTransition.topLargeTitle != null)
+        componentsTransition.topLargeTitle!,
     ];
 
     // The actual outer box is big enough to contain both the bottom and top

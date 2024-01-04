@@ -255,7 +255,7 @@ class SuperScaffold extends StatefulWidget {
   State<SuperScaffold> createState() => _SuperScaffoldState();
 }
 
-class _SuperScaffoldState extends State<SuperScaffold> with RouteAware {
+class _SuperScaffoldState extends State<SuperScaffold> {
   double _scrollOffset = 0;
   bool _collapsed = false;
   bool isSubmitted = false;

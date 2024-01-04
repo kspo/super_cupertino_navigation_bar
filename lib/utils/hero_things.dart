@@ -108,7 +108,7 @@ Widget navBarHeroLaunchPadBuilder(
     maintainSize: true,
     maintainAnimation: true,
     maintainState: true,
-    visible: false,
+    visible: false, // ModalRoute.of(context)!.isCurrent,
     child: child,
   );
 }
