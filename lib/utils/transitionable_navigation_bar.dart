@@ -915,7 +915,7 @@ class _NavigationBarComponentsTransition {
         begin: from,
         end: from.shift(
           Offset(
-            -1 * forwardDirection * bottomNavBarBox.size.width,
+            -4.65 * forwardDirection * bottomNavBarBox.size.width,
             0.0,
           ),
         ),
@@ -926,7 +926,7 @@ class _NavigationBarComponentsTransition {
       return PositionedTransition(
         rect: animation.drive(positionTween),
         child: FadeTransition(
-          opacity: fadeOutBy(0.7),
+          opacity: fadeOutBy(0.1),
           child: bottomSearchBar.child,
         ),
       );
@@ -974,6 +974,10 @@ class _NavigationBarComponentsTransition {
         bottomComponents.largeTitleActionsKey.currentWidget as KeyedSubtree?;
 
     if (bottomLargeTitleActions == null) {
+      return null;
+    }
+
+    if (!bottomLargeExpanded) {
       return null;
     }
 
@@ -1028,7 +1032,7 @@ class _NavigationBarComponentsTransition {
         begin: from,
         end: from.shift(
           Offset(
-            -1 * forwardDirection * bottomNavBarBox.size.width,
+            -4.65 * forwardDirection * bottomNavBarBox.size.width,
             0.0,
           ),
         ),
