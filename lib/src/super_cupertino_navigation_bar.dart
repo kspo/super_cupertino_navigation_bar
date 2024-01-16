@@ -26,7 +26,6 @@ class SuperScaffold extends StatefulWidget {
     this.brightness,
     this.scrollController,
     this.transitionBetweenRoutes = true,
-    this.backgroundColor,
   }) : super(key: key) {
     measures = Measures(
       searchTextFieldHeight: appBar.searchBar!.height,
@@ -44,7 +43,6 @@ class SuperScaffold extends StatefulWidget {
   final SuperAppBar appBar;
   final Widget body;
   final Function(bool)? onCollapsed;
-  final Color? backgroundColor;
   late final ScrollController? scrollController;
   final Brightness? brightness;
 
@@ -115,13 +113,6 @@ class _SuperScaffoldState extends State<SuperScaffold> {
         }
       }
     }
-  }
-
-  Future<bool> _onWillPop() async {
-    if (Store.instance.searchBarHasFocus.value) {
-      return false;
-    }
-    return true;
   }
 
   @override

@@ -66,6 +66,10 @@ class _HomeState extends State<Home> {
                   child: Text(
                     "This search field has no search action. This is just show off 😎",
                     textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
                 const Padding(
@@ -88,7 +92,11 @@ class _HomeState extends State<Home> {
                     width: MediaQuery.of(context).size.width,
                     child: const Text(
                       "This can be placeholder",
-                      style: TextStyle(color: Colors.green),
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w900,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),

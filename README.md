@@ -53,17 +53,15 @@ Before the table of content, hereby, you can find all of example from [here](htt
 
 Using `SuperScaffold` provides several advantages and additional features compared to the standard `Scaffold` in Flutter. Here are some reasons why you might consider using `SuperScaffold`:
 
-1. **Extended Functionality**: `SuperScaffold` extends the functionality of the standard `Scaffold` by providing additional features such as a customizable `SuperAppBar` with built-in support for large titles, search bars, and bottom bars.
+1. **Configurability**: `SuperScaffold` allows you to easily configure and customize various parts of the app bar, including the title, large title, search bar, and bottom bar. This provides flexibility in adapting the app bar to the specific design requirements of your application.
 
-2. **Configurability**: `SuperScaffold` allows you to easily configure and customize various parts of the app bar, including the title, large title, search bar, and bottom bar. This provides flexibility in adapting the app bar to the specific design requirements of your application.
+2. **Search Bar Integration**: With `SuperScaffold`, you can integrate a search bar (`SuperSearchBar`) directly into the app bar, complete with customizable behavior, animation, and callbacks for handling user input.
 
-3. **Search Bar Integration**: With `SuperScaffold`, you can integrate a search bar (`SuperSearchBar`) directly into the app bar, complete with customizable behavior, animation, and callbacks for handling user input.
+3. **Large Title Support**: The `SuperLargeTitle` feature enables the use of large titles in the app bar, which can be particularly useful in applications with a prominent navigation hierarchy.
 
-4. **Large Title Support**: The `SuperLargeTitle` feature enables the use of large titles in the app bar, which can be particularly useful in applications with a prominent navigation hierarchy.
+4. **Bottom Bar Options**: The `SuperAppBarBottom` feature allows you to add a bottom bar below the app bar, providing additional space for interactive elements or navigation controls.
 
-5. **Bottom Bar Options**: The `SuperAppBarBottom` feature allows you to add a bottom bar below the app bar, providing additional space for interactive elements or navigation controls.
-
-6. **Consistent Theming**: `SuperScaffold` includes theming options to ensure a consistent look and feel throughout your application. You can customize colors, borders, and other visual aspects easily.
+5. **Consistent Theming**: `SuperScaffold` includes theming options to ensure a consistent look and feel throughout your application. You can customize colors, borders, and other visual aspects easily.
 
 ## Okay! Let's dive deep!
 
@@ -114,37 +112,47 @@ import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.da
 #### Easy to use
 
 ```dart
-SuperScaffold(
-  appBar: SuperAppBar(
-    title: Text("Hello SuperScaffold"),
-    largeTitle: SuperLargeTitle(
-      enabled: true,
-      largeTitle: "Welcome",
-    ),
-    searchBar: SuperSearchBar(
-      enabled: true,
-      resultBehavior: SearchBarResultBehavior.visibleOnInput,
-      onChanged: (query) {
-        // Search Bar Changes
-      },
-      onSubmitted: (query) {
-        // On Search Bar submitted
-      },
-    ),
-    bottom: SuperAppBarBottom(
-      enabled: true,
-      height: 40,
-      child: YourCustomBottomWidget(), // Any widget of yours
-    ),
-  ),
-  body: [
-    Container(
-      alignment: Alignment.center,
-      child: Text("This is the body of SuperScaffold"),
-    ),
-  ],
-  backgroundColor: Colors.white,
-);
+Scaffold(
+  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+  body: SuperScaffold(
+      appBar: SuperAppBar(
+        title: Text("Hello SuperScaffold"),
+        largeTitle: SuperLargeTitle(
+          enabled: true,
+          largeTitle: "Welcome",
+        ),
+        searchBar: SuperSearchBar(
+          enabled: true,
+          onChanged: (query) {
+            // Search Bar Changes
+          },
+          onSubmitted: (query) {
+            // On Search Bar submitted
+          },
+          searchResult: /* ... */,
+          // Add other search bar properties as needed
+        ),
+        bottom: SuperAppBarBottom(
+          enabled: true,
+          height: 40,
+          child: YourCustomBottomWidget(), // Any widget of yours
+        ),
+      ),
+      body: SingleChildScrollView( // You can use CustomScrollView or any Widget desired
+        child: Column(
+          children: [
+              Card(
+                // Playground card
+                // Add your onTap logic for Playground card
+              ),
+              Card(
+                // List of example cards
+                // Add your ListView.separated logic for example cards
+              ),
+            ],
+          ),
+        ),
+    );
 ```
 
 # SuperScaffold
@@ -157,10 +165,8 @@ SuperScaffold(
 - **`transitionBetweenRoutes`**: If `true`, enables transition animations between routes.
 - **`appBar`**: An instance of `SuperAppBar` for customizing the app bar.
 - **`onCollapsed`**: A callback function invoked when the app bar is collapsed.
-- **`backgroundColor`**: The background color of the `SuperScaffold`.
 - **`scrollController`**: A custom scroll controller for the body of the `SuperScaffold`.
-- **`body`**: is a List<Widget> .
-- ... (All other attributes of the default `Scaffold` are available)
+- **`body`**: body attribute can now be any widget you want. SingleChildScrollView, CustomScrollView or etc...
 
 Feel free to use this extended `SuperScaffold` in your Flutter application for enhanced customization and additional features. Adjust the parameters according to your application's requirements.
 

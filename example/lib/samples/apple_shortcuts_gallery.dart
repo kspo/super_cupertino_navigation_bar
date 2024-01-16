@@ -17,7 +17,6 @@ class _ShortcutsGalleryState extends State<ShortcutsGallery> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SuperScaffold(
-        backgroundColor: Colors.black,
         onCollapsed: (val) {
           print("collapsed => $val");
         },

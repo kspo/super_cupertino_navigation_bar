@@ -1,3 +1,14 @@
+## [2.1.0] - 2024-01-17
+* Dart analyze pub.dev score upgraded
+* Deprecated methods fixed
+* Material widgets removed. So package can be usable both CupertinoApp and MaterialApp
+* Animation Background transition corruption fixed
+* The error that occurred when using another widget other than the text widget in the middle section has been fixed.
+* Aimed to increase flexibility in package usage so that Package can be usable within Scaffold or CupertinoPageScaffold
+* Some corruptions on collapsed appbar fixed
+* SuperScaffold body attribute can now be any widget you want. SingleChildScrollView, CustomScrollView or etc...
+* Readme.md updated
+
 ## [2.0.4] - 2024-01-04
 * transition collapse bug on title and largetitle
 
