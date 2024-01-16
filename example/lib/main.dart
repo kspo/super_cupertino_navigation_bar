@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ).copyWith(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xff000000),
-        cardColor: const Color(0xff0E0E10),
+        cardColor: const Color(0xff1B1B1B),
         shadowColor: Colors.transparent,
         iconTheme: const IconThemeData(color: CupertinoColors.systemBlue),
         cardTheme: CardTheme(
