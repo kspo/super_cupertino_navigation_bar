@@ -42,6 +42,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      localizationsDelegates: const <LocalizationsDelegate<Object>>[
+        DefaultMaterialLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const <Locale>[
+        Locale('en', 'US'),
+      ],
       title: 'Flutter Demo',
       builder: (context, Widget? child) => WebFrame(
         child: child!,

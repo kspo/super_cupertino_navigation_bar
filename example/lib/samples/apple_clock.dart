@@ -12,68 +12,12 @@ class AppleClock extends StatefulWidget {
 class _AppleClockState extends State<AppleClock> {
   @override
   Widget build(BuildContext context) {
-    return SuperScaffold(
-      backgroundColor: Colors.black,
-      onCollapsed: (val) {
-        print("collapsed => $val");
-      },
-      stretch: true,
-      appBar: SuperAppBar(
-        title: Text(
-          "World Clock",
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyMedium!.color,
-          ),
-        ),
+    return CupertinoTabScaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      tabBar: CupertinoTabBar(
+        activeColor: CupertinoColors.systemOrange,
         backgroundColor: Colors.black,
-        height: 45,
-        automaticallyImplyLeading: true,
-        previousPageTitle: "Home",
-        actions: const Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              CupertinoIcons.add,
-              color: CupertinoColors.systemOrange,
-              size: 27,
-            ),
-            SizedBox(
-              width: 15,
-            )
-          ],
-        ),
-        leading: GestureDetector(
-          onTap: null,
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: Text(
-              "Edit",
-              style: TextStyle(
-                fontSize: 18,
-                color: CupertinoColors.systemOrange,
-              ),
-            ),
-          ),
-        ),
-        searchBar: SuperSearchBar(
-          // height: 190,
-          enabled: false,
-          scrollBehavior: SearchBarScrollBehavior.pinned,
-          resultBehavior: SearchBarResultBehavior.neverVisible,
-        ),
-        largeTitle: SuperLargeTitle(
-          enabled: true,
-          height: 50,
-          largeTitle: "World Clock",
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: CupertinoColors.systemOrange,
-        type: BottomNavigationBarType.fixed,
-        selectedFontSize: 10,
-        unselectedFontSize: 10,
-        items: const [
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.placemark), label: "World Wlock"),
           BottomNavigationBarItem(
@@ -84,61 +28,121 @@ class _AppleClockState extends State<AppleClock> {
               icon: Icon(CupertinoIcons.speedometer), label: "Alarms")
         ],
       ),
-      body: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        separatorBuilder: (context, index) => Divider(
-          color: CupertinoColors.systemGrey.withOpacity(0.35),
-          height: 25,
-        ),
-        shrinkWrap: true,
-        itemCount: 25,
-        itemBuilder: (context, index) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+      tabBuilder: (BuildContext context, int index) {
+        return Material(
+          color: Colors.transparent,
+          child: SuperScaffold(
+            onCollapsed: (val) {
+              print("collapsed => $val");
+            },
+            stretch: true,
+            appBar: SuperAppBar(
+              title: Text(
+                "World Clock",
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.bodyMedium!.color,
+                ),
+              ),
+              backgroundColor: Colors.black,
+              height: 45,
+              automaticallyImplyLeading: true,
+              previousPageTitle: "Home",
+              actions: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    CupertinoIcons.add,
+                    color: CupertinoColors.systemOrange,
+                    size: 27,
+                  ),
+                  SizedBox(
+                    width: 15,
+                  )
+                ],
+              ),
+              leading: GestureDetector(
+                onTap: null,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+                  child: Text(
+                    "Edit",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: CupertinoColors.systemOrange,
+                    ),
+                  ),
+                ),
+              ),
+              searchBar: SuperSearchBar(
+                // height: 190,
+                enabled: false,
+                scrollBehavior: SearchBarScrollBehavior.pinned,
+                resultBehavior: SearchBarResultBehavior.neverVisible,
+              ),
+              largeTitle: SuperLargeTitle(
+                enabled: true,
+                height: 50,
+                largeTitle: "World Clock",
+              ),
+            ),
+            body: ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              separatorBuilder: (context, index) => Divider(
+                color: CupertinoColors.systemGrey.withOpacity(0.35),
+                height: 25,
+              ),
+              shrinkWrap: true,
+              itemCount: 25,
+              itemBuilder: (context, index) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Opacity(
-                      opacity: 0.5,
-                      child: Text(
-                        "TODAY, +3HRS",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        softWrap: false,
-                        style: TextStyle(fontSize: 15),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Opacity(
+                            opacity: 0.5,
+                            child: Text(
+                              "TODAY, +3HRS",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              softWrap: false,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                          Text(
+                            "New York",
+                            style: TextStyle(fontSize: 30),
+                          ),
+                        ],
                       ),
                     ),
                     Text(
-                      "New York",
-                      style: TextStyle(fontSize: 30),
+                      "${12 + index}:32",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: false,
+                      style: const TextStyle(fontSize: 45),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 5.0),
+                      child: Text(
+                        "PM",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                        style: TextStyle(fontSize: 25),
+                      ),
                     ),
                   ],
-                ),
-              ),
-              Text(
-                "${12 + index}:32",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                softWrap: false,
-                style: const TextStyle(fontSize: 45),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
-                child: Text(
-                  "PM",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  softWrap: false,
-                  style: TextStyle(fontSize: 25),
-                ),
-              ),
-            ],
-          );
-        },
-      ),
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

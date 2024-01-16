@@ -12,82 +12,84 @@ class GithubInbox extends StatefulWidget {
 class _GithubInboxState extends State<GithubInbox> {
   @override
   Widget build(BuildContext context) {
-    return SuperScaffold(
+    return Scaffold(
       backgroundColor: const Color(0xff050505),
-      onCollapsed: (val) {
-        print("collapsed => $val");
-      },
-      stretch: true,
-      appBar: SuperAppBar(
-        backgroundColor: const Color(0xff17161b),
-        automaticallyImplyLeading: true,
-        title: Text(
-          "Github",
-          style:
-              TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
-        ),
-        leading: const SizedBox(),
-        bottom: SuperAppBarBottom(
-          enabled: true,
-          height: 40,
-          child: const GithubHeader(),
-        ),
-        searchBar: SuperSearchBar(
-          // height: 190,
-          enabled: false,
-        ),
-        largeTitle: SuperLargeTitle(
-          // height: 0,
-          enabled: true,
-          largeTitle: "Inbox",
-        ),
-      ),
-      body: ListView.separated(
-        padding: EdgeInsets.zero,
-        itemBuilder: (c, i) => Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: const Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(
-                CupertinoIcons.check_mark_circled,
-                color: CupertinoColors.systemIndigo,
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Opacity(
-                        opacity: 0.5,
-                        child: Text("kspo/super_cupertino_navigation_bar")),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                        "Placeholder text offset when scaling up system accessibility text size"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Opacity(
-                      opacity: 0.5,
-                      child: Text(
-                        "@kspo, actually, if you have no urgency with your project,",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+      body: SuperScaffold(
+        onCollapsed: (val) {
+          print("collapsed => $val");
+        },
+        stretch: true,
+        appBar: SuperAppBar(
+          backgroundColor: const Color(0xff17161b),
+          automaticallyImplyLeading: true,
+          title: Text(
+            "Github",
+            style:
+                TextStyle(color: Theme.of(context).textTheme.bodyMedium!.color),
+          ),
+          leading: const SizedBox(),
+          bottom: SuperAppBarBottom(
+            enabled: true,
+            height: 40,
+            child: const GithubHeader(),
+          ),
+          searchBar: SuperSearchBar(
+            // height: 190,
+            enabled: false,
+          ),
+          largeTitle: SuperLargeTitle(
+            // height: 0,
+            enabled: true,
+            largeTitle: "Inbox",
           ),
         ),
-        separatorBuilder: (c, i) => const Divider(),
-        itemCount: 15,
+        body: ListView.separated(
+          padding: EdgeInsets.zero,
+          itemBuilder: (c, i) => Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            child: const Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  CupertinoIcons.check_mark_circled,
+                  color: CupertinoColors.systemIndigo,
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Opacity(
+                          opacity: 0.5,
+                          child: Text("kspo/super_cupertino_navigation_bar")),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                          "Placeholder text offset when scaling up system accessibility text size"),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Opacity(
+                        opacity: 0.5,
+                        child: Text(
+                          "@kspo, actually, if you have no urgency with your project,",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          separatorBuilder: (c, i) => const Divider(),
+          itemCount: 15,
+        ),
       ),
     );
   }

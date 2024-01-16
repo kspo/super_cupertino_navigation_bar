@@ -12,85 +12,87 @@ class GithubIssues extends StatefulWidget {
 class _GithubIssuesState extends State<GithubIssues> {
   @override
   Widget build(BuildContext context) {
-    return SuperScaffold(
+    return Scaffold(
       backgroundColor: const Color(0xff050505),
-      onCollapsed: (val) {
-        print("collapsed => $val");
-      },
-      stretch: true,
-      appBar: SuperAppBar(
-        backgroundColor: const Color(0xff17161b),
-        automaticallyImplyLeading: true,
-        title: Text(
-          "Issues",
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyMedium!.color,
+      body: SuperScaffold(
+        onCollapsed: (val) {
+          print("collapsed => $val");
+        },
+        stretch: true,
+        appBar: SuperAppBar(
+          backgroundColor: const Color(0xff17161b),
+          automaticallyImplyLeading: true,
+          title: Text(
+            "Issues",
+            style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+            ),
+          ),
+          previousPageTitle: "Home",
+          bottom: SuperAppBarBottom(
+            enabled: true,
+            height: 40,
+            child: const GithubIssuesHeader(),
+          ),
+          searchBar: SuperSearchBar(
+            // height: 190,
+            enabled: true,
+            scrollBehavior: SearchBarScrollBehavior.pinned,
+            resultBehavior: SearchBarResultBehavior.neverVisible,
+          ),
+          largeTitle: SuperLargeTitle(
+            height: 50,
+            enabled: true,
+            largeTitle: "Issues",
           ),
         ),
-        previousPageTitle: "Home",
-        bottom: SuperAppBarBottom(
-          enabled: true,
-          height: 40,
-          child: const GithubIssuesHeader(),
-        ),
-        searchBar: SuperSearchBar(
-          // height: 190,
-          enabled: true,
-          scrollBehavior: SearchBarScrollBehavior.pinned,
-          resultBehavior: SearchBarResultBehavior.neverVisible,
-        ),
-        largeTitle: SuperLargeTitle(
-          height: 50,
-          enabled: true,
-          largeTitle: "Issues",
-        ),
-      ),
-      body: ListView.separated(
-        padding: EdgeInsets.zero,
-        itemBuilder: (c, i) => Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: const Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(
-                CupertinoIcons.check_mark_circled,
-                color: CupertinoColors.systemIndigo,
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Opacity(
-                        opacity: 0.5,
-                        child: Text("kspo/super_cupertino_navigation_bar")),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                        "Placeholder text offset when scaling up system accessibility text size"),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Opacity(
-                      opacity: 0.5,
-                      child: Text(
-                        "@kspo, actually, if you have no urgency with your project,",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
+        body: ListView.separated(
+          padding: EdgeInsets.zero,
+          itemBuilder: (c, i) => Container(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            child: const Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  CupertinoIcons.check_mark_circled,
+                  color: CupertinoColors.systemIndigo,
                 ),
-              )
-            ],
+                SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Opacity(
+                          opacity: 0.5,
+                          child: Text("kspo/super_cupertino_navigation_bar")),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                          "Placeholder text offset when scaling up system accessibility text size"),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Opacity(
+                        opacity: 0.5,
+                        child: Text(
+                          "@kspo, actually, if you have no urgency with your project,",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
+          separatorBuilder: (c, i) => const Divider(),
+          itemCount: 15,
         ),
-        separatorBuilder: (c, i) => const Divider(),
-        itemCount: 15,
       ),
     );
   }

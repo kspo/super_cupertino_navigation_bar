@@ -24,172 +24,181 @@ class _AppleMusicState extends State<AppleMusic> {
 
   @override
   Widget build(BuildContext context) {
-    return SuperScaffold(
-      backgroundColor: Colors.black,
-      appBar: SuperAppBar(
-        backgroundColor: Colors.black.withOpacity(0.95),
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Search",
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyMedium!.color,
-          ),
-        ),
-        largeTitle: SuperLargeTitle(
-          largeTitle: "Search",
-          actions: [
-            const Icon(
-              CupertinoIcons.profile_circled,
-              size: 35,
-              color: Colors.redAccent,
+    return CupertinoPageScaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      child: Material(
+        color: Colors.transparent,
+        child: SuperScaffold(
+          appBar: SuperAppBar(
+            backgroundColor: Colors.black.withOpacity(0.95),
+            automaticallyImplyLeading: false,
+            title: Text(
+              "Search",
+              style: TextStyle(
+                color: Theme.of(context).textTheme.bodyMedium!.color,
+              ),
             ),
-          ],
-        ),
-        searchBar: SuperSearchBar(
-          resultColor: Colors.black,
-          onFocused: (hasfocus) async {
-            await Future.delayed(
-                hasfocus ? const Duration(milliseconds: 400) : Duration.zero,
-                () => bottomEnabled = hasfocus);
-            setState(() {});
-          },
-          onChanged: (text) {
-            print(text);
-            search(text).then((value) {
-              _users = value;
-              onSubmitted = false;
-              setState(() {});
-            });
-          },
-          onSubmitted: (text) {
-            search(text).then((value) {
-              _users = value;
-              onSubmitted = true;
-              setState(() {});
-            });
-          },
-          searchResult: SingleChildScrollView(
-            child: _selectedSegment == Options.music
-                ? Column(children: [
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    !onSubmitted ? createSuggestionList() : const SizedBox(),
-                    _users.isNotEmpty
-                        ? Divider(
-                            indent: 15,
-                            endIndent: 15,
-                            color: Colors.grey.withOpacity(0.25),
-                            height: 20,
-                          )
-                        : const SizedBox(),
-                    createResultList(),
-                  ])
-                : const Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15.0),
-                        child: Text(
-                          "this is archive section",
-                          style: TextStyle(color: Colors.white),
+            largeTitle: SuperLargeTitle(
+              largeTitle: "Search",
+              actions: [
+                const Icon(
+                  CupertinoIcons.profile_circled,
+                  size: 35,
+                  color: Colors.redAccent,
+                ),
+              ],
+            ),
+            searchBar: SuperSearchBar(
+              resultColor: Colors.black,
+              onFocused: (hasfocus) async {
+                await Future.delayed(
+                    hasfocus
+                        ? const Duration(milliseconds: 400)
+                        : Duration.zero,
+                    () => bottomEnabled = hasfocus);
+                setState(() {});
+              },
+              onChanged: (text) {
+                print(text);
+                search(text).then((value) {
+                  _users = value;
+                  onSubmitted = false;
+                  setState(() {});
+                });
+              },
+              onSubmitted: (text) {
+                search(text).then((value) {
+                  _users = value;
+                  onSubmitted = true;
+                  setState(() {});
+                });
+              },
+              searchResult: SingleChildScrollView(
+                child: _selectedSegment == Options.music
+                    ? Column(children: [
+                        const SizedBox(
+                          height: 5,
                         ),
-                      )
-                    ],
-                  ),
-          ),
-        ),
-        bottom: SuperAppBarBottom(
-          enabled: bottomEnabled,
-          height: 35,
-          child: Stack(
-            children: [
-              AnimatedContainer(
-                transform:
-                    Matrix4.translationValues(0, !onSubmitted ? 0 : -20, 0),
-                duration: const Duration(milliseconds: 200),
-                width: MediaQuery.of(context).size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0),
-                child: AnimatedOpacity(
-                  opacity: !onSubmitted ? 1 : 0,
-                  duration: const Duration(milliseconds: 200),
-                  child: _headerResult(),
-                ),
+                        !onSubmitted
+                            ? createSuggestionList()
+                            : const SizedBox(),
+                        _users.isNotEmpty
+                            ? Divider(
+                                indent: 15,
+                                endIndent: 15,
+                                color: Colors.grey.withOpacity(0.25),
+                                height: 20,
+                              )
+                            : const SizedBox(),
+                        createResultList(),
+                      ])
+                    : const Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Text(
+                              "this is archive section",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )
+                        ],
+                      ),
               ),
-              AnimatedContainer(
-                transform:
-                    Matrix4.translationValues(0, onSubmitted ? 0 : -20, 0),
-                duration: const Duration(milliseconds: 200),
-                child: AnimatedOpacity(
-                  opacity: onSubmitted ? 1 : 0,
-                  duration: const Duration(milliseconds: 200),
-                  child: HeaderOnSubmitResult(),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 10.0, bottom: 15),
-              child: Row(
+            ),
+            bottom: SuperAppBarBottom(
+              enabled: bottomEnabled,
+              height: 35,
+              child: Stack(
                 children: [
-                  Text(
-                    "Browse Categories",
-                    style: General.instance.getSubtitle(context),
-                    textAlign: TextAlign.left,
+                  AnimatedContainer(
+                    transform:
+                        Matrix4.translationValues(0, !onSubmitted ? 0 : -20, 0),
+                    duration: const Duration(milliseconds: 200),
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 0),
+                    child: AnimatedOpacity(
+                      opacity: !onSubmitted ? 1 : 0,
+                      duration: const Duration(milliseconds: 200),
+                      child: _headerResult(),
+                    ),
+                  ),
+                  AnimatedContainer(
+                    transform:
+                        Matrix4.translationValues(0, onSubmitted ? 0 : -20, 0),
+                    duration: const Duration(milliseconds: 200),
+                    child: AnimatedOpacity(
+                      opacity: onSubmitted ? 1 : 0,
+                      duration: const Duration(milliseconds: 200),
+                      child: HeaderOnSubmitResult(),
+                    ),
                   ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: GridView.count(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                crossAxisSpacing: 20,
-                childAspectRatio: 1.5,
-                mainAxisSpacing: 20,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                children: List.generate(100, (index) {
-                  return SizedBox(
-                    width: double.infinity,
-                    height: 125,
-                    child: Stack(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          height: 125,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              "assets/apple_music_${index % 6}.jpeg",
-                              fit: BoxFit.cover,
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 15.0, right: 15.0, top: 10.0, bottom: 15),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Browse Categories",
+                        style: General.instance.getSubtitle(context),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: GridView.count(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    crossAxisSpacing: 20,
+                    childAspectRatio: 1.5,
+                    mainAxisSpacing: 20,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    children: List.generate(100, (index) {
+                      return SizedBox(
+                        width: double.infinity,
+                        height: 125,
+                        child: Stack(
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              height: 125,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  "assets/apple_music_${index % 6}.jpeg",
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
+                            const Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Apple Music",
+                                  style: TextStyle(fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        const Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              "Apple Music",
-                              style: TextStyle(fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }),
-              ),
+                      );
+                    }),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

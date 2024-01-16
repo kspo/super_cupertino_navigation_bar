@@ -233,56 +233,269 @@ class _AppleStoreState extends State<AppleStore> {
 
   @override
   Widget build(BuildContext context) {
-    return SuperScaffold(
-      backgroundColor: Colors.black,
-      onCollapsed: (val) {
-        print("collapsed => $val");
-      },
-      stretch: true,
-      appBar: SuperAppBar(
-        backgroundColor: Colors.black,
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Search",
-          style: TextStyle(
-            color: Theme.of(context).textTheme.bodyMedium!.color,
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: SuperScaffold(
+        onCollapsed: (val) {
+          print("collapsed => $val");
+        },
+        stretch: true,
+        appBar: SuperAppBar(
+          backgroundColor: Colors.black,
+          automaticallyImplyLeading: false,
+          title: Text(
+            "Search",
+            style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+            ),
+          ),
+          height: 40,
+          searchBar: SuperSearchBar(
+            resultColor: Colors.black,
+            enabled: true,
+            scrollBehavior: SearchBarScrollBehavior.pinned,
+            resultBehavior: SearchBarResultBehavior.visibleOnInput,
+            placeholderText: "Game, Apps, Stories and More",
+            onChanged: (text) {
+              search(text).then((value) {
+                _products = value;
+                onSubmitted = false;
+                setState(() {});
+              });
+            },
+            onSubmitted: (text) {
+              search(text).then((value) {
+                _products = value;
+                onSubmitted = true;
+                setState(() {});
+              });
+            },
+            searchResult:
+                onSubmitted ? createSearchList() : createSuggestionList(),
+          ),
+          largeTitle:
+              SuperLargeTitle(height: 45, largeTitle: "Search", actions: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                "assets/profile.png",
+                width: 35,
+                height: 35,
+                fit: BoxFit.cover,
+              ),
+            )
+          ]),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "Explore",
+                      style: general.getSubtitle(context),
+                    ),
+                  ],
+                ),
+              ),
+              GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                childAspectRatio: 4,
+                padding:
+                    const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
+                crossAxisCount: 2,
+                children: <Widget>[
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 17,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Just Another Game",
+                        style: general.getLinkStyle(context),
+                      ),
+                    ],
+                  ),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 17,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Nur ein weiteres Spiel",
+                        style: general.getLinkStyle(context),
+                      ),
+                    ],
+                  ),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 17,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "또 다른 게임",
+                        style: general.getLinkStyle(context),
+                      ),
+                    ],
+                  ),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 17,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Just Alius Ludus",
+                        style: general.getLinkStyle(context),
+                      ),
+                    ],
+                  ),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 17,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Juste un autre jeu",
+                        style: general.getLinkStyle(context),
+                      ),
+                    ],
+                  ),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        size: 17,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Solo un altro gioco",
+                        style: general.getLinkStyle(context),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15.0,
+                  right: 15.0,
+                  bottom: 15.0,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      "Suggested",
+                      style: general.getSubtitle(context),
+                    ),
+                  ],
+                ),
+              ),
+              ListView.separated(
+                shrinkWrap: true,
+                separatorBuilder: (context, index) => Divider(
+                  color: Colors.grey.withOpacity(0.25),
+                  indent: 85,
+                ),
+                physics: const NeverScrollableScrollPhysics(),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                itemBuilder: (c, index) => Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 70,
+                      height: 70,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset("assets/app_icon_${index % 8}.png"),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Apple App",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Opacity(
+                            opacity: 0.75,
+                            child: Text(
+                              "Start a custom timer and turn on your focus until it's done",
+                              style: TextStyle(fontSize: 15),
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: CupertinoTheme.of(context).barBackgroundColor,
+                        ),
+                        child: Text(
+                          "Download",
+                          style: general
+                              .getLinkStyle(context)
+                              .copyWith(fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                itemCount: 50,
+              ),
+            ],
           ),
         ),
-        height: 40,
-        searchBar: SuperSearchBar(
-          resultColor: Colors.black,
-          enabled: true,
-          scrollBehavior: SearchBarScrollBehavior.pinned,
-          resultBehavior: SearchBarResultBehavior.visibleOnInput,
-          placeholderText: "Game, Apps, Stories and More",
-          onChanged: (text) {
-            search(text).then((value) {
-              _products = value;
-              onSubmitted = false;
-              setState(() {});
-            });
-          },
-          onSubmitted: (text) {
-            search(text).then((value) {
-              _products = value;
-              onSubmitted = true;
-              setState(() {});
-            });
-          },
-          searchResult:
-              onSubmitted ? createSearchList() : createSuggestionList(),
-        ),
-        largeTitle: SuperLargeTitle(height: 45, largeTitle: "Search", actions: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.asset(
-              "assets/profile.png",
-              width: 35,
-              height: 35,
-              fit: BoxFit.cover,
-            ),
-          )
-        ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
@@ -305,215 +518,6 @@ class _AppleStoreState extends State<AppleStore> {
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.search), label: "Alarms")
         ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Explore",
-                    style: general.getSubtitle(context),
-                  ),
-                ],
-              ),
-            ),
-            GridView.count(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              childAspectRatio: 4,
-              padding:
-                  const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
-              crossAxisCount: 2,
-              children: <Widget>[
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      size: 17,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Just Another Game",
-                      style: general.getLinkStyle(context),
-                    ),
-                  ],
-                ),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      size: 17,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Nur ein weiteres Spiel",
-                      style: general.getLinkStyle(context),
-                    ),
-                  ],
-                ),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      size: 17,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "또 다른 게임",
-                      style: general.getLinkStyle(context),
-                    ),
-                  ],
-                ),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      size: 17,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Just Alius Ludus",
-                      style: general.getLinkStyle(context),
-                    ),
-                  ],
-                ),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      size: 17,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Juste un autre jeu",
-                      style: general.getLinkStyle(context),
-                    ),
-                  ],
-                ),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.search,
-                      size: 17,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      "Solo un altro gioco",
-                      style: general.getLinkStyle(context),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 15.0,
-                right: 15.0,
-                bottom: 15.0,
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    "Suggested",
-                    style: general.getSubtitle(context),
-                  ),
-                ],
-              ),
-            ),
-            ListView.separated(
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => Divider(
-                color: Colors.grey.withOpacity(0.25),
-                indent: 85,
-              ),
-              physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-              itemBuilder: (c, index) => Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 70,
-                    height: 70,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset("assets/app_icon_${index % 8}.png"),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  const Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Apple App",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Opacity(
-                          opacity: 0.75,
-                          child: Text(
-                            "Start a custom timer and turn on your focus until it's done",
-                            style: TextStyle(fontSize: 15),
-                            maxLines: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: CupertinoTheme.of(context).barBackgroundColor,
-                      ),
-                      child: Text(
-                        "Download",
-                        style: general
-                            .getLinkStyle(context)
-                            .copyWith(fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              itemCount: 50,
-            ),
-          ],
-        ),
       ),
     );
   }
