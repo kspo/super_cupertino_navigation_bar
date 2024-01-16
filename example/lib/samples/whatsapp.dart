@@ -165,136 +165,130 @@ class _WhatsappState extends State<Whatsapp> {
           ],
         ),
       ),
-      body: [
-        FutureBuilder(
-          builder: (BuildContext context, AsyncSnapshot<List<Users>> snapshot) {
-            if (snapshot.hasData) {
-              return ListView.separated(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                separatorBuilder: (context, index) => Divider(
-                  color: CupertinoColors.systemGrey.withOpacity(0.35),
-                  height: 25,
-                ),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      Container(
+      body: FutureBuilder(
+        builder: (BuildContext context, AsyncSnapshot<List<Users>> snapshot) {
+          if (snapshot.hasData) {
+            return ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              separatorBuilder: (context, index) => Divider(
+                color: CupertinoColors.systemGrey.withOpacity(0.35),
+                height: 25,
+              ),
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                return Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      padding: const EdgeInsets.all(2.5),
+                      child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(50),
                         ),
-                        padding: const EdgeInsets.all(2.5),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
+                        padding: const EdgeInsets.all(2),
+                        child: SizedBox(
+                          height: 55,
+                          width: 55,
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(50),
-                          ),
-                          padding: const EdgeInsets.all(2),
-                          child: SizedBox(
-                            height: 55,
-                            width: 55,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Image.network(
-                                snapshot.data![index].image,
-                                fit: BoxFit.cover,
-                              ),
+                            child: Image.network(
+                              snapshot.data![index].image,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "${snapshot.data![index].firstName} ${snapshot.data![index].lastName}",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w700),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "${snapshot.data![index].firstName} ${snapshot.data![index].lastName}",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              const Spacer(),
+                              Opacity(
+                                opacity: index == 1 ? 1 : 0.5,
+                                child: Text(
+                                  "12:21",
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: index == 1
+                                          ? Colors.blue
+                                          : Colors.grey),
                                 ),
-                                const Spacer(),
-                                Opacity(
-                                  opacity: index == 1 ? 1 : 0.5,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Opacity(
+                                  opacity: 0.5,
                                   child: Text(
-                                    "12:21",
+                                    "${snapshot.data![index].university} ${snapshot.data![index].company?.title}",
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                     softWrap: false,
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: index == 1
-                                            ? Colors.blue
-                                            : Colors.grey),
+                                    style: const TextStyle(fontSize: 15),
                                   ),
                                 ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Opacity(
-                                    opacity: 0.5,
-                                    child: Text(
-                                      "${snapshot.data![index].university} ${snapshot.data![index].company?.title}",
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      softWrap: false,
-                                      style: const TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 35,
-                                ),
-                                index == 1
-                                    ? Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                          borderRadius:
-                                              BorderRadius.circular(50),
+                              ),
+                              const SizedBox(
+                                width: 35,
+                              ),
+                              index == 1
+                                  ? Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      width: 17,
+                                      height: 17,
+                                      child: const Center(
+                                        child: Text(
+                                          "1",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: Colors.black),
                                         ),
-                                        width: 17,
-                                        height: 17,
-                                        child: const Center(
-                                          child: Text(
-                                            "1",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                      )
-                                    : const SizedBox(),
-                              ],
-                            ),
-                          ],
-                        ),
+                                      ),
+                                    )
+                                  : const SizedBox(),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  );
-                },
-              );
-            } else {
-              return const CupertinoActivityIndicator(
-                radius: 13,
-              );
-            }
-          },
-          future: General.instance.getUsers(),
-        ),
-      ],
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            return const CupertinoActivityIndicator(
+              radius: 13,
+            );
+          }
+        },
+        future: General.instance.getUsers(),
+      ),
     );
   }
 }

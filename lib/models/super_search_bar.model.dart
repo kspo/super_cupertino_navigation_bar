@@ -43,7 +43,7 @@ class SuperSearchBar {
       CupertinoIcons.search,
     ),
     this.actions = const <SuperAction>[],
-    this.height = 35,
+    this.height = 40,
     this.padding = const EdgeInsets.symmetric(horizontal: 15.0),
     this.searchResult = const Text(
       ".",

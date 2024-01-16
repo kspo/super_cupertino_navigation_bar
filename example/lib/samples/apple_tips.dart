@@ -37,108 +37,113 @@ class _AppleTipsState extends State<AppleTips> {
           largeTitle: "Tips",
         ),
       ),
-      body: [
-        Container(
-          margin: const EdgeInsets.all(15),
-          padding: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          height: 200,
-          child: Stack(
-            children: [
-              const Text(
-                "Photos",
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: BorderRadius.circular(15),
               ),
-              Lottie.asset('assets/favorite.json',
-                  height: 225, width: MediaQuery.of(context).size.width),
-            ],
-          ),
-        ),
-        ListView.builder(
-          shrinkWrap: true,
-          padding: EdgeInsets.zero,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (c, i) => Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 15.0, right: 15.0, top: 15.0, bottom: 15),
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      "Placeholder",
-                      style: General.instance.getSubtitle(context),
-                    ),
-                  ],
-                ),
+              height: 200,
+              child: Stack(
+                children: [
+                  const Text(
+                    "Photos",
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                  ),
+                  Lottie.asset('assets/favorite.json',
+                      height: 225, width: MediaQuery.of(context).size.width),
+                ],
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                //padding: EdgeInsets.symmetric(horizontal: 15),
-                child: ListView.separated(
-                    scrollDirection: Axis.vertical,
-                    itemCount: 3,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    separatorBuilder: (context, index) => Divider(
-                          color: CupertinoColors.systemGrey.withOpacity(0.35),
-                          height: 15,
-                          indent: 45,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (c, i) => Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15.0, bottom: 15),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 15,
                         ),
-                    padding: const EdgeInsets.all(15),
-                    itemBuilder: (context, index) {
-                      return Row(
-                        children: [
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) =>
-                                const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomLeft,
-                              stops: [0, 1],
-                              colors: [
-                                Colors.yellow,
-                                Colors.green,
-                              ],
-                            ).createShader(bounds),
-                            child: const Icon(
-                              CupertinoIcons.rectangle_stack_badge_minus,
-                              color: Colors.white,
-                              size: 30,
+                        Text(
+                          "Placeholder",
+                          style: General.instance.getSubtitle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    //padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: ListView.separated(
+                        scrollDirection: Axis.vertical,
+                        itemCount: 3,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) => Divider(
+                              color:
+                                  CupertinoColors.systemGrey.withOpacity(0.35),
+                              height: 15,
+                              indent: 45,
                             ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          const Text(
-                            "Camera",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          const Spacer(),
-                          const Icon(
-                            CupertinoIcons.chevron_forward,
-                            color: CupertinoColors.systemGrey,
-                            size: 30,
-                          ),
-                        ],
-                      );
-                    }),
+                        padding: const EdgeInsets.all(15),
+                        itemBuilder: (context, index) {
+                          return Row(
+                            children: [
+                              ShaderMask(
+                                blendMode: BlendMode.srcIn,
+                                shaderCallback: (Rect bounds) =>
+                                    const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomLeft,
+                                  stops: [0, 1],
+                                  colors: [
+                                    Colors.yellow,
+                                    Colors.green,
+                                  ],
+                                ).createShader(bounds),
+                                child: const Icon(
+                                  CupertinoIcons.rectangle_stack_badge_minus,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              const Text(
+                                "Camera",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              const Spacer(),
+                              const Icon(
+                                CupertinoIcons.chevron_forward,
+                                color: CupertinoColors.systemGrey,
+                                size: 30,
+                              ),
+                            ],
+                          );
+                        }),
+                  ),
+                ],
               ),
-            ],
-          ),
-          itemCount: 15,
+              itemCount: 15,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

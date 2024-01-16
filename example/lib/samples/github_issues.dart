@@ -45,57 +45,53 @@ class _GithubIssuesState extends State<GithubIssues> {
           largeTitle: "Issues",
         ),
       ),
-      body: [
-        ListView.separated(
-          shrinkWrap: true,
-          padding: EdgeInsets.zero,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (c, i) => Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: const Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(
-                  CupertinoIcons.check_mark_circled,
-                  color: CupertinoColors.systemIndigo,
-                ),
-                SizedBox(
-                  width: 15,
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Opacity(
-                          opacity: 0.5,
-                          child: Text("kspo/super_cupertino_navigation_bar")),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                          "Placeholder text offset when scaling up system accessibility text size"),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Opacity(
+      body: ListView.separated(
+        padding: EdgeInsets.zero,
+        itemBuilder: (c, i) => Container(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: const Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(
+                CupertinoIcons.check_mark_circled,
+                color: CupertinoColors.systemIndigo,
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Opacity(
                         opacity: 0.5,
-                        child: Text(
-                          "@kspo, actually, if you have no urgency with your project,",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                        child: Text("kspo/super_cupertino_navigation_bar")),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                        "Placeholder text offset when scaling up system accessibility text size"),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        "@kspo, actually, if you have no urgency with your project,",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
-          separatorBuilder: (c, i) => const Divider(),
-          itemCount: 15,
         ),
-      ],
+        separatorBuilder: (c, i) => const Divider(),
+        itemCount: 15,
+      ),
     );
   }
 }

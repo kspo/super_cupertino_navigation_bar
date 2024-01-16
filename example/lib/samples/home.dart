@@ -63,88 +63,93 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: [
-        Card(
-          color: Theme.of(context).cardColor,
-          margin: const EdgeInsets.all(15),
-          child: GestureDetector(
-            onTap: () => Navigator.of(context).pushNamed("/play"),
-            child: Container(
-              color: Colors.transparent,
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: Image.asset(
-                      "assets/heisenberg.jpeg",
-                      width: 35,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  const Text(
-                    "Playground",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    CupertinoIcons.arrow_right,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          color: Theme.of(context).cardColor,
-          margin: const EdgeInsets.all(15),
-          child: ListView.separated(
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (c, i) => GestureDetector(
-              onTap: () => Navigator.of(context)
-                  .pushNamed(General.instance.examples[i].screen),
-              child: Container(
-                color: Colors.transparent,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: Image.asset(
-                        "${General.instance.examples[i].imageUrl}",
-                        width: 35,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Card(
+              color: Theme.of(context).cardColor,
+              margin: const EdgeInsets.all(15),
+              child: GestureDetector(
+                onTap: () => Navigator.of(context).pushNamed("/play"),
+                child: Container(
+                  color: Colors.transparent,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Image.asset(
+                          "assets/heisenberg.jpeg",
+                          width: 35,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      General.instance.examples[i].title,
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                    const Spacer(),
-                    const Icon(
-                      CupertinoIcons.arrow_right,
-                      color: Colors.grey,
-                    ),
-                  ],
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Text(
+                        "Playground",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        CupertinoIcons.arrow_right,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            separatorBuilder: (c, i) => const Divider(
-              indent: 65,
-              height: 0,
+            Card(
+              color: Theme.of(context).cardColor,
+              margin: const EdgeInsets.all(15),
+              child: ListView.separated(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (c, i) => GestureDetector(
+                  onTap: () => Navigator.of(context)
+                      .pushNamed(General.instance.examples[i].screen),
+                  child: Container(
+                    color: Colors.transparent,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 15),
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image.asset(
+                            "${General.instance.examples[i].imageUrl}",
+                            width: 35,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          General.instance.examples[i].title,
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                        const Spacer(),
+                        const Icon(
+                          CupertinoIcons.arrow_right,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                separatorBuilder: (c, i) => const Divider(
+                  indent: 65,
+                  height: 0,
+                ),
+                itemCount: General.instance.examples.length,
+              ),
             ),
-            itemCount: General.instance.examples.length,
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

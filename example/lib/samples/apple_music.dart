@@ -130,64 +130,68 @@ class _AppleMusicState extends State<AppleMusic> {
           ),
         ),
       ),
-      body: [
-        Padding(
-          padding: const EdgeInsets.only(
-              left: 15.0, right: 15.0, top: 10.0, bottom: 15),
-          child: Row(
-            children: [
-              Text(
-                "Browse Categories",
-                style: General.instance.getSubtitle(context),
-                textAlign: TextAlign.left,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 10.0, bottom: 15),
+              child: Row(
+                children: [
+                  Text(
+                    "Browse Categories",
+                    style: General.instance.getSubtitle(context),
+                    textAlign: TextAlign.left,
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: GridView.count(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            crossAxisSpacing: 20,
-            childAspectRatio: 1.5,
-            mainAxisSpacing: 20,
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: 2,
-            children: List.generate(100, (index) {
-              return SizedBox(
-                width: double.infinity,
-                height: 125,
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      height: 125,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          "assets/apple_music_${index % 6}.jpeg",
-                          fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: GridView.count(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                crossAxisSpacing: 20,
+                childAspectRatio: 1.5,
+                mainAxisSpacing: 20,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                children: List.generate(100, (index) {
+                  return SizedBox(
+                    width: double.infinity,
+                    height: 125,
+                    child: Stack(
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          height: 125,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              "assets/apple_music_${index % 6}.jpeg",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
+                        const Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "Apple Music",
+                              style: TextStyle(fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                    const Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "Apple Music",
-                          style: TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }),
-          ),
+                  );
+                }),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 

@@ -192,6 +192,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0-pre"
+  nested_scroll_view_plus:
+    dependency: transitive
+    description:
+      name: nested_scroll_view_plus
+      sha256: "0ea1f0d1c43adc5ba769891eb4bacef6878053c2d383503f6365f29ec5b2d3cf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   path:
     dependency: transitive
     description:

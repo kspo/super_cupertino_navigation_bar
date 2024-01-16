@@ -135,23 +135,19 @@ class _PlaygroundState extends State<Playground> {
           largeTitle: "Playground",
         ),
       ),
-      body: [
-        ListView.separated(
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (c, i) => Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                  child: Row(
-                    children: [
-                      Text("$i"),
-                    ],
-                  ),
+      body: ListView.separated(
+          padding: EdgeInsets.zero,
+          itemBuilder: (c, i) => Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: Row(
+                  children: [
+                    Text("$i"),
+                  ],
                 ),
-            separatorBuilder: (c, i) => const Divider(),
-            itemCount: 100),
-      ],
+              ),
+          separatorBuilder: (c, i) => const Divider(),
+          itemCount: 100),
       floatingActionButton: FloatingActionButton(
         backgroundColor: CupertinoColors.systemBlue,
         onPressed: () async {

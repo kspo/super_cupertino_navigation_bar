@@ -108,31 +108,27 @@ class _AppleFoldersState extends State<AppleFolders> {
               icon: Icon(CupertinoIcons.folder_solid), label: "Browse"),
         ],
       ),
-      body: [
-        GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this produces 2 rows.
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.symmetric(vertical: 15),
-          crossAxisCount: 3,
-          // Generate 100 widgets that display their index in the List.
-          children: List.generate(100, (index) {
-            return const Column(
-              children: [
-                Icon(
-                  CupertinoIcons.folder_solid,
-                  size: 90,
-                ),
-                Text(
-                  "Photos",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
-                ),
-              ],
-            );
-          }),
-        )
-      ],
+      body: GridView.count(
+        // Create a grid with 2 columns. If you change the scrollDirection to
+        // horizontal, this produces 2 rows.
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        crossAxisCount: 3,
+        // Generate 100 widgets that display their index in the List.
+        children: List.generate(100, (index) {
+          return const Column(
+            children: [
+              Icon(
+                CupertinoIcons.folder_solid,
+                size: 90,
+              ),
+              Text(
+                "Photos",
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+              ),
+            ],
+          );
+        }),
+      ),
     );
   }
 }

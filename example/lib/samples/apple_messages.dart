@@ -167,104 +167,99 @@ class _AppleMessagesState extends State<AppleMessages> {
           largeTitle: "Messages",
         ),
       ),
-      body: [
-        FutureBuilder(
-          builder: (BuildContext context, AsyncSnapshot<List<Users>> snapshot) {
-            if (snapshot.hasData) {
-              return ListView.separated(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                separatorBuilder: (context, index) => Divider(
-                  color: CupertinoColors.systemGrey.withOpacity(0.35),
-                  height: 25,
-                ),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      index < 3
-                          ? Container(
-                              height: 10,
-                              width: 10,
-                              margin: const EdgeInsets.only(top: 15),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: CupertinoColors.systemBlue,
-                              ),
-                            )
-                          : const SizedBox(
-                              height: 10,
-                              width: 10,
+      body: FutureBuilder(
+        builder: (BuildContext context, AsyncSnapshot<List<Users>> snapshot) {
+          if (snapshot.hasData) {
+            return ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              separatorBuilder: (context, index) => Divider(
+                color: CupertinoColors.systemGrey.withOpacity(0.35),
+                height: 25,
+              ),
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                return Row(
+                  children: [
+                    index < 3
+                        ? Container(
+                            height: 10,
+                            width: 10,
+                            margin: const EdgeInsets.only(top: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: CupertinoColors.systemBlue,
                             ),
-                      SizedBox(
-                        height: 40,
-                        width: 40,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image.network(
-                            snapshot.data![index].image,
-                            fit: BoxFit.cover,
+                          )
+                        : const SizedBox(
+                            height: 10,
+                            width: 10,
                           ),
+                    SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.network(
+                          snapshot.data![index].image,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "${snapshot.data![index].firstName} ${snapshot.data![index].lastName}",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                const Spacer(),
-                                const Opacity(
-                                  opacity: 0.5,
-                                  child: Text(
-                                    "12:21",
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    softWrap: false,
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Opacity(
-                              opacity: 0.5,
-                              child: Text(
-                                "${snapshot.data![index].university} ${snapshot.data![index].company?.title}",
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                                softWrap: false,
-                                style: const TextStyle(fontSize: 15),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "${snapshot.data![index].firstName} ${snapshot.data![index].lastName}",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w700),
                               ),
+                              const Spacer(),
+                              const Opacity(
+                                opacity: 0.5,
+                                child: Text(
+                                  "12:21",
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Opacity(
+                            opacity: 0.5,
+                            child: Text(
+                              "${snapshot.data![index].university} ${snapshot.data![index].company?.title}",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              softWrap: false,
+                              style: const TextStyle(fontSize: 15),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  );
-                },
-              );
-            } else {
-              return const CupertinoActivityIndicator(
-                radius: 13,
-              );
-            }
-          },
-          future: General.instance.getUsers(),
-        )
-      ],
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            return const CupertinoActivityIndicator(
+              radius: 13,
+            );
+          }
+        },
+        future: General.instance.getUsers(),
+      ),
     );
   }
 }

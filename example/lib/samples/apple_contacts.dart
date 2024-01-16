@@ -62,115 +62,118 @@ class _AppleContactsState extends State<AppleContacts> {
     return Stack(
       children: [
         SuperScaffold(
-          backgroundColor: Colors.black,
-          appBar: SuperAppBar(
-            backgroundColor: Colors.black.withOpacity(0.5),
-            previousPageTitle: "Lists",
-            leadingWidth: 100,
-            actions: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [Icon(Icons.add)],
-            ),
-            searchBar: SuperSearchBar(
-              resultColor: Colors.black,
-              scrollBehavior: SearchBarScrollBehavior.pinned,
-              resultBehavior: SearchBarResultBehavior.visibleOnInput,
-              onFocused: (value) => setState(() {
-                focused = value;
-                if (!value) _users = [];
-              }),
-              onChanged: (text) {
-                search(text).then((value) {
-                  _users = value;
-                  setState(() {});
-                });
-              },
-              onSubmitted: (text) {
-                search(text).then((value) {
-                  _users = value;
-                  setState(() {});
-                });
-              },
-              searchResult: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    createResultList(),
-                  ],
+            backgroundColor: Colors.black,
+            appBar: SuperAppBar(
+              backgroundColor: Colors.black.withOpacity(0.5),
+              previousPageTitle: "Lists",
+              leadingWidth: 100,
+              actions: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [Icon(Icons.add)],
+              ),
+              searchBar: SuperSearchBar(
+                resultColor: Colors.black,
+                scrollBehavior: SearchBarScrollBehavior.pinned,
+                resultBehavior: SearchBarResultBehavior.visibleOnInput,
+                onFocused: (value) => setState(() {
+                  focused = value;
+                  if (!value) _users = [];
+                }),
+                onChanged: (text) {
+                  search(text).then((value) {
+                    _users = value;
+                    setState(() {});
+                  });
+                },
+                onSubmitted: (text) {
+                  search(text).then((value) {
+                    _users = value;
+                    setState(() {});
+                  });
+                },
+                searchResult: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      createResultList(),
+                    ],
+                  ),
                 ),
               ),
+              largeTitle: SuperLargeTitle(
+                largeTitle: "Contacts",
+              ),
             ),
-            largeTitle: SuperLargeTitle(
-              largeTitle: "Contacts",
-            ),
-          ),
-          body: [
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
-              child: Row(
+            body: SingleChildScrollView(
+              child: Column(
                 children: [
-                  SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(89),
-                      child: Image.asset(
-                        "assets/profile.png",
-                        fit: BoxFit.cover,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 15.0),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(89),
+                            child: Image.asset(
+                              "assets/profile.png",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Will Smith",
+                              style: General.instance.getSubtitle(context),
+                            ),
+                            const Opacity(
+                              opacity: 0.5,
+                              child: Text(
+                                "My Card",
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Will Smith",
-                        style: General.instance.getSubtitle(context),
-                      ),
-                      const Opacity(
-                        opacity: 0.5,
-                        child: Text(
-                          "My Card",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                    ],
+                  FutureBuilder(
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Users>> snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.separated(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 25),
+                          separatorBuilder: (context, index) => Divider(
+                            color: CupertinoColors.systemGrey.withOpacity(0.35),
+                            height: 25,
+                          ),
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            return Text(
+                                "${snapshot.data![index].firstName} ${snapshot.data![index].lastName}");
+                          },
+                        );
+                      } else {
+                        return const CupertinoActivityIndicator(
+                          radius: 13,
+                        );
+                      }
+                    },
+                    future: General.instance.getUsers(),
                   ),
                 ],
               ),
-            ),
-            FutureBuilder(
-              builder:
-                  (BuildContext context, AsyncSnapshot<List<Users>> snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.separated(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 25),
-                    separatorBuilder: (context, index) => Divider(
-                      color: CupertinoColors.systemGrey.withOpacity(0.35),
-                      height: 25,
-                    ),
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      return Text(
-                          "${snapshot.data![index].firstName} ${snapshot.data![index].lastName}");
-                    },
-                  );
-                } else {
-                  return const CupertinoActivityIndicator(
-                    radius: 13,
-                  );
-                }
-              },
-              future: General.instance.getUsers(),
-            ),
-          ],
-        ),
+            )),
         focused
             ? const SizedBox()
             : Container(

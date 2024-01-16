@@ -78,64 +78,61 @@ class _AppleClockState extends State<AppleClock> {
               icon: Icon(CupertinoIcons.speedometer), label: "Alarms")
         ],
       ),
-      body: [
-        ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          separatorBuilder: (context, index) => Divider(
-            color: CupertinoColors.systemGrey.withOpacity(0.35),
-            height: 25,
-          ),
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 25,
-          itemBuilder: (context, index) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Opacity(
-                        opacity: 0.5,
-                        child: Text(
-                          "TODAY, +3HRS",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          softWrap: false,
-                          style: TextStyle(fontSize: 15),
-                        ),
+      body: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        separatorBuilder: (context, index) => Divider(
+          color: CupertinoColors.systemGrey.withOpacity(0.35),
+          height: 25,
+        ),
+        shrinkWrap: true,
+        itemCount: 25,
+        itemBuilder: (context, index) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Opacity(
+                      opacity: 0.5,
+                      child: Text(
+                        "TODAY, +3HRS",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: false,
+                        style: TextStyle(fontSize: 15),
                       ),
-                      Text(
-                        "New York",
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ],
-                  ),
+                    ),
+                    Text(
+                      "New York",
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  ],
                 ),
-                Text(
-                  "${12 + index}:32",
+              ),
+              Text(
+                "${12 + index}:32",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                softWrap: false,
+                style: const TextStyle(fontSize: 45),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 5.0),
+                child: Text(
+                  "PM",
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   softWrap: false,
-                  style: const TextStyle(fontSize: 45),
+                  style: TextStyle(fontSize: 25),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 5.0),
-                  child: Text(
-                    "PM",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    softWrap: false,
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-              ],
-            );
-          },
-        )
-      ],
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

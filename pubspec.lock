@@ -107,6 +107,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  nested_scroll_view_plus:
+    dependency: "direct main"
+    description:
+      name: nested_scroll_view_plus
+      sha256: "0ea1f0d1c43adc5ba769891eb4bacef6878053c2d383503f6365f29ec5b2d3cf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   path:
     dependency: transitive
     description:
@@ -194,4 +202,4 @@ packages:
     version: "0.3.0"
 sdks:
   dart: ">=3.2.0-194.0.dev <4.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=3.7.0-13.0.pre"
