@@ -242,6 +242,12 @@ class _AppleStoreState extends State<AppleStore> {
       appBar: SuperAppBar(
         backgroundColor: Colors.black,
         automaticallyImplyLeading: false,
+        title: Text(
+          "Search",
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
+        ),
         height: 40,
         searchBar: SuperSearchBar(
           resultColor: Colors.black,

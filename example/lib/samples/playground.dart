@@ -34,8 +34,11 @@ class _PlaygroundState extends State<Playground> {
       stretch: stretch,
       appBar: SuperAppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        title: const Text(
+        title: Text(
           "Wanna Play?",
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
         ),
         previousPageTitle: "Home",
         actions: Row(

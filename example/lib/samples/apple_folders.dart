@@ -24,6 +24,12 @@ class _AppleFoldersState extends State<AppleFolders> {
           height: 45,
           automaticallyImplyLeading: true,
           previousPageTitle: "Home",
+          title: Text(
+            "My iPhone",
+            style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+            ),
+          ),
           actions: const Row(
             mainAxisSize: MainAxisSize.min,
             children: [

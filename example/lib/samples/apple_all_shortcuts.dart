@@ -19,6 +19,12 @@ class _AppleAllShortcutsState extends State<AppleAllShortcuts> {
           backgroundColor: Colors.black.withOpacity(0.5),
           leadingWidth: 100,
           previousPageTitle: "Home",
+          title: Text(
+            "All Shortcuts",
+            style: TextStyle(
+              color: Theme.of(context).textTheme.bodyMedium!.color,
+            ),
+          ),
           actions: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

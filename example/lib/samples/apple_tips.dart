@@ -23,6 +23,12 @@ class _AppleTipsState extends State<AppleTips> {
       appBar: SuperAppBar(
         backgroundColor: Colors.black.withOpacity(0.5),
         height: 45,
+        title: Text(
+          "Tips",
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
+        ),
         automaticallyImplyLeading: false,
         previousPageTitle: "Home",
         searchBar: SuperSearchBar(

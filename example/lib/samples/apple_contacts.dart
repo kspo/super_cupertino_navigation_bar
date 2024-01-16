@@ -67,6 +67,12 @@ class _AppleContactsState extends State<AppleContacts> {
               backgroundColor: Colors.black.withOpacity(0.5),
               previousPageTitle: "Lists",
               leadingWidth: 100,
+              title: Text(
+                "Contacts",
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.bodyMedium!.color,
+                ),
+              ),
               actions: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [Icon(Icons.add)],

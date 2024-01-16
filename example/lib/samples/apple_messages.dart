@@ -42,6 +42,12 @@ class _AppleMessagesState extends State<AppleMessages> {
       appBar: SuperAppBar(
         backgroundColor: Colors.black.withOpacity(0.5),
         leadingWidth: 100,
+        title: Text(
+          "Messages",
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
+        ),
         actions: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [

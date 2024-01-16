@@ -19,6 +19,12 @@ class _AppleClockState extends State<AppleClock> {
       },
       stretch: true,
       appBar: SuperAppBar(
+        title: Text(
+          "World Clock",
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
+        ),
         backgroundColor: Colors.black,
         height: 45,
         automaticallyImplyLeading: true,

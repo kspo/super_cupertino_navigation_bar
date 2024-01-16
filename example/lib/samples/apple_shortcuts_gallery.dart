@@ -23,6 +23,12 @@ class _ShortcutsGalleryState extends State<ShortcutsGallery> {
       appBar: SuperAppBar(
         backgroundColor: Colors.black.withOpacity(0.5),
         height: 45,
+        title: Text(
+          "Gallery",
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
+        ),
         automaticallyImplyLeading: false,
         previousPageTitle: "Home",
         searchBar: SuperSearchBar(
