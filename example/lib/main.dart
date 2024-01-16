@@ -5,6 +5,7 @@ import 'package:untitled/samples/apple_all_shortcuts.dart';
 import 'package:untitled/samples/apple_clock.dart';
 import 'package:untitled/samples/apple_contacts.dart';
 import 'package:untitled/samples/apple_folders.dart';
+import 'package:untitled/samples/apple_itunes.dart';
 import 'package:untitled/samples/apple_messages.dart';
 import 'package:untitled/samples/apple_music.dart';
 import 'package:untitled/samples/apple_shortcuts_gallery.dart';
@@ -60,6 +61,9 @@ class MyApp extends StatelessWidget {
               builder: (_) => const Home(title: 'Flutter Demo Home Page'),
               settings: settings,
             );
+          case '/apple_tunes':
+            return CustomPageRoute(
+                builder: (_) => const AppleItunes(), settings: settings);
           case '/play':
             return CustomPageRoute(
                 builder: (_) => const Playground(), settings: settings);

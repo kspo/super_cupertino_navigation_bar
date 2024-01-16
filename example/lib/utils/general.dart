@@ -36,6 +36,14 @@ class General {
     SubListItem(
       icon: Icons.star,
       iconColor: Colors.amberAccent,
+      title: "Apple iTunes",
+      screen: "/apple_tunes",
+      imageUrl: "assets/app_icon_15.png",
+      subtitle: "Only Navbar & Title Widget",
+    ),
+    SubListItem(
+      icon: Icons.star,
+      iconColor: Colors.amberAccent,
       title: "Apple Music",
       screen: "/apple_music",
       imageUrl: "assets/app_icon_7.png",
