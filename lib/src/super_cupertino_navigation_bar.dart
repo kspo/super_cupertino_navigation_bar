@@ -288,8 +288,8 @@ class _SuperScaffoldState extends State<SuperScaffold> {
     if (widget.appBar!.searchBar!.scrollBehavior ==
         SearchBarScrollBehavior.floated) {
       if (_scrollOffset >=
-          widget.measures!.largeTitleContainerHeight +
-              widget.measures!.searchContainerHeight) {
+          widget.measures.largeTitleContainerHeight +
+              widget.measures.searchContainerHeight) {
         if (!_collapsed) {
           if (widget.onCollapsed != null) {
             widget.onCollapsed!(true);
@@ -305,7 +305,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
         }
       }
     } else {
-      if (_scrollOffset >= widget.measures!.largeTitleContainerHeight) {
+      if (_scrollOffset >= widget.measures.largeTitleContainerHeight) {
         if (!_collapsed) {
           if (widget.onCollapsed != null) {
             widget.onCollapsed!(true);
@@ -394,17 +394,17 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                   snaps: [
                     if (widget.appBar!.searchBar!.scrollBehavior ==
                         SearchBarScrollBehavior.floated)
-                      Snap.avoidZone(0, widget.measures!.searchContainerHeight),
+                      Snap.avoidZone(0, widget.measures.searchContainerHeight),
                     if (widget.appBar!.searchBar!.scrollBehavior ==
                         SearchBarScrollBehavior.floated)
                       Snap.avoidZone(
-                          widget.measures!.searchContainerHeight,
-                          widget.measures!.largeTitleContainerHeight +
-                              widget.measures!.searchContainerHeight),
+                          widget.measures.searchContainerHeight,
+                          widget.measures.largeTitleContainerHeight +
+                              widget.measures.searchContainerHeight),
                     if (widget.appBar!.searchBar!.scrollBehavior ==
                         SearchBarScrollBehavior.pinned)
                       Snap.avoidZone(
-                          0, widget.measures!.largeTitleContainerHeight),
+                          0, widget.measures.largeTitleContainerHeight),
                   ],
                 ),
                 controller: _scrollController,
@@ -420,19 +420,19 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                               duration: animationStatus ==
                                       SearchBarAnimationStatus.paused
                                   ? Duration.zero
-                                  : widget.measures!.searchBarAnimationDuration,
+                                  : widget.measures.searchBarAnimationDuration,
                               height: Store.instance.searchBarHasFocus.value
                                   ? (widget.appBar!.searchBar!
                                               .animationBehavior ==
                                           SearchBarAnimationBehavior.top
                                       ? topPadding +
                                           widget
-                                              .measures!.searchContainerHeight +
-                                          widget.measures!.bottomToolbarHeight
+                                              .measures.searchContainerHeight +
+                                          widget.measures.bottomToolbarHeight
                                               .toDouble()
                                       : topPadding +
-                                          widget.measures!.appbarHeight)
-                                  : topPadding + widget.measures!.appbarHeight,
+                                          widget.measures.appbarHeight)
+                                  : topPadding + widget.measures.appbarHeight,
                             );
                           }),
                     ),
@@ -446,7 +446,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                     return IgnorePointer(
                       ignoring: !searchBarResultVisible,
                       child: AnimatedOpacity(
-                        duration: widget.measures!.searchBarAnimationDuration,
+                        duration: widget.measures.searchBarAnimationDuration,
                         opacity: searchBarResultVisible ? 1 : 0,
                         child: Container(
                           width: MediaQuery.of(context).size.width,
@@ -458,9 +458,9 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                   .scaffoldBackgroundColor,
                           padding: EdgeInsets.only(
                             top: topPadding +
-                                widget.measures!.searchContainerHeight
+                                widget.measures.searchContainerHeight
                                     .toDouble() +
-                                widget.measures!.bottomToolbarHeight.toDouble(),
+                                widget.measures.bottomToolbarHeight.toDouble(),
                           ),
                           child: Stack(
                             children: [
@@ -484,55 +484,55 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                               SearchBarScrollBehavior.floated
                           ? clampDouble(
                               topPadding +
-                                  widget.measures!.appbarHeight -
+                                  widget.measures.appbarHeight -
                                   _scrollOffset,
                               topPadding +
-                                  widget.measures!.primaryToolbarHeight +
+                                  widget.measures.primaryToolbarHeight +
                                   widget.appBar!.bottom!.height,
                               widget.stretch
                                   ? 3000
-                                  : topPadding + widget.measures!.appbarHeight)
+                                  : topPadding + widget.measures.appbarHeight)
                           : clampDouble(
                               topPadding +
-                                  widget.measures!.appbarHeight -
+                                  widget.measures.appbarHeight -
                                   _scrollOffset,
                               topPadding +
-                                  widget.measures!.appbarHeight -
-                                  widget.measures!.largeTitleContainerHeight,
+                                  widget.measures.appbarHeight -
+                                  widget.measures.largeTitleContainerHeight,
                               widget.stretch
                                   ? 3000
-                                  : topPadding + widget.measures!.appbarHeight);
+                                  : topPadding + widget.measures.appbarHeight);
 
                   // large title height
                   double largeTitleHeight = widget
                               .appBar!.searchBar!.scrollBehavior ==
                           SearchBarScrollBehavior.floated
-                      ? (_scrollOffset > widget.measures!.searchContainerHeight
+                      ? (_scrollOffset > widget.measures.searchContainerHeight
                           ? clampDouble(
-                              widget.measures!.largeTitleContainerHeight -
+                              widget.measures.largeTitleContainerHeight -
                                   (_scrollOffset -
-                                      widget.measures!.searchContainerHeight),
+                                      widget.measures.searchContainerHeight),
                               0,
-                              widget.measures!.largeTitleContainerHeight)
-                          : widget.measures!.largeTitleContainerHeight)
+                              widget.measures.largeTitleContainerHeight)
+                          : widget.measures.largeTitleContainerHeight)
                       : clampDouble(
-                          widget.measures!.largeTitleContainerHeight -
+                          widget.measures.largeTitleContainerHeight -
                               _scrollOffset,
                           0,
-                          widget.measures!.largeTitleContainerHeight);
+                          widget.measures.largeTitleContainerHeight);
 
                   // searchbar height
                   double searchBarHeight =
                       widget.appBar!.searchBar!.scrollBehavior ==
                               SearchBarScrollBehavior.floated
                           ? (Store.instance.searchBarHasFocus.value
-                              ? widget.measures!.searchContainerHeight
+                              ? widget.measures.searchContainerHeight
                               : clampDouble(
-                                  widget.measures!.searchContainerHeight -
+                                  widget.measures.searchContainerHeight -
                                       _scrollOffset,
                                   0,
-                                  widget.measures!.searchContainerHeight))
-                          : widget.measures!.searchContainerHeight;
+                                  widget.measures.searchContainerHeight))
+                          : widget.measures.searchContainerHeight;
 
                   double opacity = widget.appBar!.searchBar!.scrollBehavior ==
                           SearchBarScrollBehavior.floated
@@ -545,22 +545,22 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                       widget.appBar!.searchBar!.scrollBehavior ==
                               SearchBarScrollBehavior.floated
                           ? (_scrollOffset >=
-                                  (widget.measures!
+                                  (widget.measures
                                           .appbarHeightExceptPrimaryToolbar -
                                       widget.appBar!.bottom!.height)
                               ? 1
-                              : (widget.measures!.largeTitleContainerHeight > 0
+                              : (widget.measures.largeTitleContainerHeight > 0
                                   ? 0
                                   : 1))
                           : (_scrollOffset >=
-                                  (widget.measures!.largeTitleContainerHeight)
+                                  (widget.measures.largeTitleContainerHeight)
                               ? 1
-                              : (widget.measures!.largeTitleContainerHeight > 0
+                              : (widget.measures.largeTitleContainerHeight > 0
                                   ? 0
                                   : 1));
 
                   double focussedToolbar = topPadding +
-                      widget.measures!.searchContainerHeight +
+                      widget.measures.searchContainerHeight +
                       widget.appBar!.bottom!.height;
 
                   double scaleTitle = _scrollOffset < 0
@@ -571,9 +571,9 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                           SearchBarAnimationBehavior.steady &&
                       Store.instance.searchBarHasFocus.value) {
                     fullappbarheight =
-                        topPadding + widget.measures!.appbarHeight;
+                        topPadding + widget.measures.appbarHeight;
                     largeTitleHeight =
-                        widget.measures!.largeTitleContainerHeight;
+                        widget.measures.largeTitleContainerHeight;
                     scaleTitle = 1;
                     titleOpacity = 0;
                   }
@@ -588,7 +588,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                           duration:
                               animationStatus == SearchBarAnimationStatus.paused
                                   ? Duration.zero
-                                  : widget.measures!.searchBarAnimationDuration,
+                                  : widget.measures.searchBarAnimationDuration,
                           top: 0,
                           left: 0,
                           right: 0,
@@ -615,17 +615,17 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                     .animationBehavior ==
                                                 SearchBarAnimationBehavior.top
                                             ? MediaQuery.paddingOf(context).top
-                                            : widget.measures!
+                                            : widget.measures
                                                     .primaryToolbarHeight +
                                                 MediaQuery.paddingOf(context)
                                                     .top)
-                                        : widget.measures!
+                                        : widget.measures
                                                 .primaryToolbarHeight +
                                             MediaQuery.paddingOf(context).top,
                                     duration: animationStatus ==
                                             SearchBarAnimationStatus.paused
                                         ? Duration.zero
-                                        : widget.measures!
+                                        : widget.measures
                                             .searchBarAnimationDuration,
                                     child: PersistentNavigationBar(
                                       components: components,
@@ -642,7 +642,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                       duration: animationStatus ==
                                               SearchBarAnimationStatus.paused
                                           ? Duration.zero
-                                          : widget.measures!
+                                          : widget.measures
                                               .titleOpacityAnimationDuration,
                                       opacity: Store
                                               .instance.searchBarHasFocus.value
@@ -665,11 +665,11 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                         duration: animationStatus ==
                                                 SearchBarAnimationStatus.paused
                                             ? Duration.zero
-                                            : widget.measures!
+                                            : widget.measures
                                                 .searchBarAnimationDuration,
                                         child: Padding(
                                           padding: EdgeInsets.only(
-                                              bottom: widget.measures!
+                                              bottom: widget.measures
                                                           .largeTitleContainerHeight >
                                                       0
                                                   ? 8.0
@@ -827,7 +827,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                                 : CrossFadeState
                                                                     .showSecond,
                                                             duration: widget
-                                                                .measures!
+                                                                .measures
                                                                 .standartAnimationDuration),
                                                         AnimatedCrossFade(
                                                             firstChild: Center(
@@ -854,7 +854,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                                 : CrossFadeState
                                                                     .showFirst,
                                                             duration: widget
-                                                                .measures!
+                                                                .measures
                                                                 .standartAnimationDuration),
                                                         Center(
                                                           child:
@@ -875,7 +875,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                             child:
                                                                 AnimatedContainer(
                                                               duration: widget
-                                                                  .measures!
+                                                                  .measures
                                                                   .standartAnimationDuration,
                                                               width: Store
                                                                       .instance
@@ -1057,7 +1057,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                             : CrossFadeState
                                                                 .showSecond,
                                                         duration: widget
-                                                            .measures!
+                                                            .measures
                                                             .standartAnimationDuration),
                                                     AnimatedCrossFade(
                                                         firstChild: Center(
@@ -1084,7 +1084,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                             : CrossFadeState
                                                                 .showFirst,
                                                         duration: widget
-                                                            .measures!
+                                                            .measures
                                                             .standartAnimationDuration),
                                                     Center(
                                                       child: CupertinoButton(
@@ -1103,7 +1103,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                         child:
                                                             AnimatedContainer(
                                                           duration: widget
-                                                              .measures!
+                                                              .measures
                                                               .standartAnimationDuration,
                                                           width: Store
                                                                   .instance
@@ -1147,16 +1147,16 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                   ),
                                   AnimatedContainer(
                                     duration: widget
-                                        .measures!.searchBarAnimationDuration,
+                                        .measures.searchBarAnimationDuration,
                                     height:
-                                        widget.measures!.bottomToolbarHeight,
+                                        widget.measures.bottomToolbarHeight,
                                     color: widget.appBar!.bottom!.color,
                                     child: Stack(
                                       clipBehavior: Clip.none,
                                       children: [
                                         Positioned(
                                           height: widget
-                                              .measures!.bottomToolbarHeight,
+                                              .measures.bottomToolbarHeight,
                                           bottom: 0,
                                           left: 0,
                                           right: 0,
@@ -1235,7 +1235,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
       Store.instance.searchBarResultVisible.value = false;
     }
     if (!hasFocus) {
-      Future.delayed(widget.measures!.searchBarAnimationDuration, () {
+      Future.delayed(widget.measures.searchBarAnimationDuration, () {
         Store.instance.searchBarAnimationStatus.value =
             SearchBarAnimationStatus.paused;
       });
