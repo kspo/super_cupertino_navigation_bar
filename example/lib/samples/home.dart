@@ -24,6 +24,12 @@ class _HomeState extends State<Home> {
   SearchBarResultBehavior resultBehavior =
       SearchBarResultBehavior.visibleOnFocus;
 
+  bool showDummy = false;
+
+  void setClosed() => setState(() {
+        showDummy = false;
+      });
+
   @override
   Widget build(BuildContext context) {
     return SuperScaffold(
@@ -43,9 +49,55 @@ class _HomeState extends State<Home> {
         searchBar: SuperSearchBar(
           resultColor: Theme.of(context).appBarTheme.backgroundColor,
           enabled: searchBarEnabled,
-          searchResult: const Text(
-            "This is result page",
-            style: TextStyle(color: Colors.white),
+          onChanged: (text) {
+            setState(() {
+              if (text.length >= 3) {
+                showDummy = true;
+              } else {
+                showDummy = false;
+              }
+            });
+          },
+          searchResult: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "This search field has no search action. This is just show off 😎",
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "But you can place here any widget conditionally! For example;",
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "Write 3 chars to search field",
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              AnimatedCrossFade(
+                firstChild: SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  child: const Text(
+                    "This can be placeholder",
+                    style: TextStyle(color: Colors.green),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                secondChild: General.instance.dummyContact(),
+                crossFadeState: showDummy
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
+                duration: const Duration(milliseconds: 250),
+              ),
+            ],
           ),
           animationBehavior: animationBehavior,
           resultBehavior: resultBehavior,
@@ -68,7 +120,7 @@ class _HomeState extends State<Home> {
           children: [
             Card(
               color: Theme.of(context).cardColor,
-              margin: const EdgeInsets.all(15),
+              margin: const EdgeInsets.symmetric(horizontal: 15),
               child: GestureDetector(
                 onTap: () => Navigator.of(context).pushNamed("/play"),
                 child: Container(

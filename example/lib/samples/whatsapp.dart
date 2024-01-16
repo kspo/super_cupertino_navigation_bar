@@ -51,7 +51,8 @@ class _WhatsappState extends State<Whatsapp> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, "/second");
+                print("go anywhere");
+                // Navigator.pushNamed(context, "/second");
               },
               child: Center(
                 child: Container(

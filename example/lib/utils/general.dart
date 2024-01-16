@@ -220,14 +220,16 @@ class General {
     showCupertinoModalPopup(
       useRootNavigator: false,
       context: context,
-      builder: (BuildContext context) => Container(
-        height: 100,
-        width: double.infinity,
-        color: Colors.white,
-        padding: const EdgeInsets.all(15),
-        child: const Text(
-          "This is just snackbar triggered by appbar button",
-          style: TextStyle(color: Colors.black),
+      builder: (BuildContext context) => Material(
+        child: Container(
+          height: 100,
+          width: double.infinity,
+          color: Colors.white,
+          padding: const EdgeInsets.all(15),
+          child: const Text(
+            "This is just snackbar triggered by appbar button",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
       ),
     );

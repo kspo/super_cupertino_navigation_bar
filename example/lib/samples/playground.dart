@@ -33,6 +33,7 @@ class _PlaygroundState extends State<Playground> {
       },
       stretch: stretch,
       appBar: SuperAppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: const Text(
           "Wanna Play?",
         ),
@@ -50,7 +51,8 @@ class _PlaygroundState extends State<Playground> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, "/second");
+                print("go anywhere");
+                //Navigator.pushNamed(context, "/second");
               },
               child: Center(
                 child: Container(
