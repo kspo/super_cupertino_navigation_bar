@@ -204,7 +204,7 @@ class _AppleMessagesState extends State<AppleMessages> {
                               height: 10,
                               width: 10,
                             ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
                       SizedBox(

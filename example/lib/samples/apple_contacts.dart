@@ -235,7 +235,7 @@ class Header extends StatelessWidget {
       child: Container(
         height: 60,
         color: color,
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         alignment: Alignment.centerLeft,
         child: Text(
           title ?? 'Header #$index',

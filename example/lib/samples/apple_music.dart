@@ -29,6 +29,7 @@ class _AppleMusicState extends State<AppleMusic> {
       child: Material(
         color: Colors.transparent,
         child: SuperScaffold(
+          scrollController: ScrollController(),
           appBar: SuperAppBar(
             backgroundColor: Colors.black.withOpacity(0.95),
             automaticallyImplyLeading: false,

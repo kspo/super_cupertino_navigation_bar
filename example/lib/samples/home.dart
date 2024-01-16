@@ -200,7 +200,7 @@ class _HomeState extends State<Home> {
                               if (General.instance.examples[i].subtitle != null)
                                 Column(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Text(
