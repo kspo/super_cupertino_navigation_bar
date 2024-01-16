@@ -63,7 +63,7 @@ class SuperScaffold extends StatefulWidget {
   final FloatingActionButton? floatingActionButton;
   final bool stretch;
   final bool transitionBetweenRoutes;
-  Measures? measures;
+  late final Measures measures;
   SuperAppBar? appBar;
   final Widget body;
   final Function(bool)? onCollapsed;
