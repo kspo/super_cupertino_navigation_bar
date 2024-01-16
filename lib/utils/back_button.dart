@@ -2,33 +2,6 @@ import 'package:flutter/cupertino.dart';
 
 import 'back_chevron.dart';
 import 'back_label.dart';
-import 'navigation_bar_static_components.dart';
-
-class LeadingWidget extends StatelessWidget {
-  const LeadingWidget({
-    super.key,
-    required this.components,
-  });
-
-  final NavigationBarStaticComponents components;
-
-  @override
-  Widget build(BuildContext context) {
-    Widget? leading = components.leading;
-    final Widget? backChevron = components.backChevron;
-    final Widget? backLabel = components.backLabel;
-
-    if (leading == null && backChevron != null && backLabel != null) {
-      leading = SuperCupertinoNavigationBarBackButton.assemble(
-        backChevron,
-        backLabel,
-      );
-    }
-
-    return Container(
-        alignment: Alignment.centerLeft, child: leading ?? const SizedBox());
-  }
-}
 
 /// A nav bar back button typically used in [CupertinoNavigationBar].
 ///
@@ -87,8 +60,10 @@ class SuperCupertinoNavigationBarBackButton extends StatelessWidget {
   /// Defaults to null.
   final VoidCallback? onPressed;
 
+  /// Defaults to null.
   final Widget? backChevron;
 
+  /// Defaults to null.
   final Widget? backLabel;
 
   @override

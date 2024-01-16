@@ -1,3 +1,6 @@
+## [2.1.1] - 2024-01-17
+* Dart analyze pub.dev score upgraded
+
 ## [2.1.0] - 2024-01-17
 * Dart analyze pub.dev score upgraded
 * Deprecated methods fixed

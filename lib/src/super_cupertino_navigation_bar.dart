@@ -21,7 +21,6 @@ class SuperScaffold extends StatefulWidget {
     required this.appBar,
     this.stretch = true,
     this.body = const SizedBox(),
-    this.floatingActionButton,
     this.onCollapsed,
     this.brightness,
     this.scrollController,
@@ -36,15 +35,61 @@ class SuperScaffold extends StatefulWidget {
     );
   }
 
-  final FloatingActionButton? floatingActionButton;
+  /// Whether the nav bar should stretch to fill the over-scroll area.
+  ///
+  /// The nav bar can still expand and contract as the user scrolls, but it will
+  /// also stretch when the user over-scrolls if the [stretch] value is `true`.
+  ///
+  /// When set to `true`, the nav bar will prevent subsequent slivers from
+  /// accessing overscrolls. This may be undesirable for using overscroll-based
+  /// widgets like the [CupertinoSliverRefreshControl].
+  ///
+  /// Defaults to `true`.
   final bool stretch;
+
+  /// {@template flutter.cupertino.CupertinoNavigationBar.transitionBetweenRoutes}
+  /// Whether to transition between navigation bars.
+  ///
+  /// When [transitionBetweenRoutes] is true, this navigation bar will transition
+  /// on top of the routes instead of inside it if the route being transitioned
+  /// to also has a [CupertinoNavigationBar] or a [CupertinoSliverNavigationBar]
+  /// with [transitionBetweenRoutes] set to true.
+  ///
+  /// This transition will also occur on edge back swipe gestures like on iOS
+  /// but only if the previous page below has `maintainState` set to true on the
+  /// [PageRoute].
+  ///
+  /// When set to true, only one navigation bar can be present per route unless
+  /// [heroTag] is also set.
+  ///
+  /// This value defaults to true.
+  /// {@endtemplate}
   final bool transitionBetweenRoutes;
+
+  /// {@template flutter.cupertino.CupertinoNavigationBar.brightness}
+  /// The brightness of the specified [backgroundColor].
+  ///
+  /// Setting this value changes the style of the system status bar. Typically
+  /// used to increase the contrast ratio of the system status bar over
+  /// [backgroundColor].
+  ///
+  /// If set to null, the value of the property will be inferred from the relative
+  /// luminance of [backgroundColor].
+  /// {@endtemplate}
+  final Brightness? brightness;
+
+  /// This value defaults to [Measures].
   late final Measures measures;
+
+  /// Required.
   final SuperAppBar appBar;
+
+  /// Can be any widget.
+  /// Defaults to SizedBox()
   final Widget body;
+
   final Function(bool)? onCollapsed;
   late final ScrollController? scrollController;
-  final Brightness? brightness;
 
   @override
   State<SuperScaffold> createState() => _SuperScaffoldState();

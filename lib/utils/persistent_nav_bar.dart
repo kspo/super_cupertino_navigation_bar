@@ -14,6 +14,17 @@ class PersistentNavigationBar extends StatelessWidget {
 
   final NavigationBarStaticComponents components;
 
+  /// Padding for the contents of the navigation bar.
+  ///
+  /// If null, the navigation bar will adopt the following defaults:
+  ///
+  ///  * Vertically, contents will be sized to the same height as the navigation
+  ///    bar itself minus the status bar.
+  ///  * Horizontally, padding will be 16 pixels according to iOS specifications
+  ///    unless the leading widget is an automatically inserted back button, in
+  ///    which case the padding will be 0.
+  ///
+  /// Vertical padding won't change the height of the nav bar.
   final EdgeInsetsDirectional? padding;
 
   /// Whether the middle widget has a visible animated opacity. A null value

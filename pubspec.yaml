@@ -1,6 +1,6 @@
 name: super_cupertino_navigation_bar
-description: This package offers a collapsible app bar along with an attractive search bar animation, enhancing the visual appeal of your Flutter app with an iOS-inspired design. This package is versatile, allowing complete customization, and it seamlessly works on both iOS and Android platforms.
-version: 2.1.0
+description: Elevate your Flutter app's aesthetics with a collapsible app bar, stylish search bar animation, and versatile design inspired by iOS. Customize freely; it seamlessly supports iOS and Android.
+version: 2.1.1
 homepage: https://github.com/kspo/super_cupertino_navigation_bar.git
 
 environment:
