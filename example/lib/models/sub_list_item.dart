@@ -5,6 +5,7 @@ class SubListItem {
     required this.icon,
     required this.iconColor,
     required this.title,
+    this.subtitle,
     required this.screen,
     this.imageUrl,
   });
@@ -14,4 +15,5 @@ class SubListItem {
   final Color iconColor;
   final String screen;
   final String? imageUrl;
+  final String? subtitle;
 }

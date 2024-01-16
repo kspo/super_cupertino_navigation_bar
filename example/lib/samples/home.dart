@@ -190,9 +190,30 @@ class _HomeState extends State<Home> {
                           const SizedBox(
                             width: 20,
                           ),
-                          Text(
-                            General.instance.examples[i].title,
-                            style: const TextStyle(fontSize: 18),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                General.instance.examples[i].title,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              if (General.instance.examples[i].subtitle != null)
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      General.instance.examples[i].subtitle!,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: CupertinoColors.systemBlue,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                            ],
                           ),
                           const Spacer(),
                           const Icon(

@@ -392,12 +392,27 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                       ? Duration.zero
                                       : widget
                                           .measures.searchBarAnimationDuration,
-                                  child: PersistentNavigationBar(
-                                    components: components,
-                                    middleVisible:
-                                        widget.appBar!.alwaysShowTitle
-                                            ? null
-                                            : titleOpacity != 0,
+                                  child: AnimatedOpacity(
+                                    duration: animationStatus ==
+                                            SearchBarAnimationStatus.paused
+                                        ? Duration.zero
+                                        : widget.measures
+                                            .titleOpacityAnimationDuration,
+                                    opacity: Store
+                                            .instance.searchBarHasFocus.value
+                                        ? (widget.appBar!.searchBar!
+                                                    .animationBehavior ==
+                                                SearchBarAnimationBehavior.top
+                                            ? 0
+                                            : 1)
+                                        : 1,
+                                    child: PersistentNavigationBar(
+                                      components: components,
+                                      middleVisible:
+                                          widget.appBar!.alwaysShowTitle
+                                              ? null
+                                              : titleOpacity != 0,
+                                    ),
                                   ),
                                 ),
                                 const Spacer(),

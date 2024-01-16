@@ -64,7 +64,8 @@ class _AppleMessagesState extends State<AppleMessages> {
           leading: GestureDetector(
             onTap: null,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 19),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 19),
               child: Text(
                 "Edit",
                 style: General.instance
@@ -193,7 +194,7 @@ class _AppleMessagesState extends State<AppleMessages> {
                           ? Container(
                               height: 10,
                               width: 10,
-                              margin: const EdgeInsets.only(top: 15),
+                              margin: const EdgeInsets.only(top: 5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
                                 color: CupertinoColors.systemBlue,
@@ -203,6 +204,9 @@ class _AppleMessagesState extends State<AppleMessages> {
                               height: 10,
                               width: 10,
                             ),
+                      SizedBox(
+                        width: 8,
+                      ),
                       SizedBox(
                         height: 40,
                         width: 40,

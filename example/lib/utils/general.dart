@@ -39,6 +39,7 @@ class General {
       title: "Apple Music",
       screen: "/apple_music",
       imageUrl: "assets/app_icon_7.png",
+      subtitle: "CupertinoPageScaffold",
     ),
     SubListItem(
       icon: Icons.search,
@@ -46,6 +47,7 @@ class General {
       title: "Apple Clock",
       screen: "/clock",
       imageUrl: "assets/app_icon_11.png",
+      subtitle: "CupertinoTabScaffold",
     ),
     SubListItem(
       icon: Icons.search,
@@ -53,6 +55,7 @@ class General {
       title: "Apple Store",
       screen: "/store",
       imageUrl: "assets/app_icon_1.png",
+      subtitle: "Scaffold & BottomNavigationBar",
     ),
     SubListItem(
       icon: Icons.account_circle,
