@@ -898,7 +898,7 @@ class _NavigationBarComponentsTransition {
     final KeyedSubtree? topLeading =
         topComponents.leadingKey.currentWidget as KeyedSubtree?;
 
-    if (bottomSearchBar == null) {
+    if (bottomSearchBar == null || !bottomLargeExpanded) {
       return null;
     }
 

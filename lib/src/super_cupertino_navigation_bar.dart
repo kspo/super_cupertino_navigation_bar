@@ -7,7 +7,6 @@ import 'package:snap_scroll_physics/snap_scroll_physics.dart';
 import 'package:super_cupertino_navigation_bar/models/super_appbar.model.dart';
 import 'package:super_cupertino_navigation_bar/models/super_search_bar.model.dart';
 import 'package:super_cupertino_navigation_bar/models/super_search_bar_action.model.dart';
-import 'package:super_cupertino_navigation_bar/models/will_pop.dart';
 import 'package:super_cupertino_navigation_bar/utils/hero_tag.dart';
 import 'package:super_cupertino_navigation_bar/utils/hero_things.dart';
 import 'package:super_cupertino_navigation_bar/utils/measures.dart';
@@ -137,8 +136,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
       previousPageTitle: widget.appBar.previousPageTitle,
       userMiddle: widget.appBar.title,
       userTrailing: widget.appBar.actions,
-      largeTitleActions:
-          Row(children: [...?widget.appBar.largeTitle!.actions]),
+      largeTitleActions: Row(children: [...?widget.appBar.largeTitle!.actions]),
       userLargeTitle: Text(
         widget.appBar.largeTitle!.largeTitle,
         style: widget.appBar.largeTitle!.textStyle.copyWith(
@@ -153,9 +151,9 @@ class _SuperScaffoldState extends State<SuperScaffold> {
 
     double topPadding = MediaQuery.of(context).padding.top;
 
-    return ConditionalWillPopScope(
-      onWillPop: _onWillPop,
-      shouldAddCallback: Store.instance.searchBarHasFocus.value,
+    return PopScope(
+      canPop: !Store.instance.searchBarHasFocus.value,
+      // shouldAddCallback: Store.instance.searchBarHasFocus.value,
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -195,8 +193,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                 ? Duration.zero
                                 : widget.measures.searchBarAnimationDuration,
                             height: Store.instance.searchBarHasFocus.value
-                                ? (widget.appBar.searchBar!
-                                            .animationBehavior ==
+                                ? (widget.appBar.searchBar!.animationBehavior ==
                                         SearchBarAnimationBehavior.top
                                     ? topPadding +
                                         widget.measures.searchContainerHeight +
@@ -310,8 +307,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                         : clampDouble(1 - _scrollOffset / 10, 0, 1))
                     : 1;
 
-                double titleOpacity = widget
-                            .appBar.searchBar!.scrollBehavior ==
+                double titleOpacity = widget.appBar.searchBar!.scrollBehavior ==
                         SearchBarScrollBehavior.floated
                     ? (_scrollOffset >=
                             (widget.measures.appbarHeightExceptPrimaryToolbar -
