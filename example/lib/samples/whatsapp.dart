@@ -23,8 +23,7 @@ class _WhatsappState extends State<Whatsapp> {
       },
       stretch: true,
       appBar: SuperAppBar(
-        backgroundColor:
-            Theme.of(context).appBarTheme.backgroundColor!.withOpacity(0.75),
+        backgroundColor: Colors.black,
         automaticallyImplyLeading: true,
         title: Text(
           "Whatsapp",
@@ -40,6 +39,7 @@ class _WhatsappState extends State<Whatsapp> {
           ),
         ),
         actions: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(
               CupertinoIcons.camera,

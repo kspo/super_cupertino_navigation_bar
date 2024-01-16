@@ -20,7 +20,6 @@ class _AppleFoldersState extends State<AppleFolders> {
       },
       stretch: false,
       appBar: SuperAppBar(
-          bottomBorder: const BorderSide(color: Colors.white10, width: 0),
           backgroundColor: Colors.black.withOpacity(0.5),
           height: 45,
           automaticallyImplyLeading: true,

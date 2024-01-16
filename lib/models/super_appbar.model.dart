@@ -18,7 +18,7 @@ class SuperAppBar {
     this.largeTitle,
     this.bottom,
     this.backgroundColor,
-    this.bottomBorder,
+    this.border,
     this.shadowColor,
   }) {
     searchBar = searchBar ?? SuperSearchBar();
@@ -58,7 +58,7 @@ class SuperAppBar {
   SuperLargeTitle? largeTitle;
   SuperAppBarBottom? bottom;
   final Color? backgroundColor;
-  final BorderSide? bottomBorder;
+  final Border? border;
   final Color? shadowColor;
   final bool automaticallyImplyLeading;
 }

@@ -27,8 +27,14 @@ class _AppleMusicState extends State<AppleMusic> {
     return SuperScaffold(
       backgroundColor: Colors.black,
       appBar: SuperAppBar(
-        backgroundColor: Colors.black.withOpacity(0.5),
+        backgroundColor: Colors.black.withOpacity(0.95),
         automaticallyImplyLeading: false,
+        title: Text(
+          "Search",
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium!.color,
+          ),
+        ),
         largeTitle: SuperLargeTitle(
           largeTitle: "Search",
           actions: [

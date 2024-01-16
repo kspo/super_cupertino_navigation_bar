@@ -19,7 +19,6 @@ class _GithubInboxState extends State<GithubInbox> {
       },
       stretch: true,
       appBar: SuperAppBar(
-        bottomBorder: const BorderSide(color: Colors.white10, width: 1),
         backgroundColor: const Color(0xff17161b),
         automaticallyImplyLeading: true,
         title: Text(

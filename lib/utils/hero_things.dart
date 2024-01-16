@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +62,12 @@ Widget wrapWithBackground({
     return childWithBackground;
   }
 
-  return childWithBackground;
+  return ClipRect(
+    child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+      child: childWithBackground,
+    ),
+  );
 }
 
 // Whether the current route supports nav bar hero transitions from or to.

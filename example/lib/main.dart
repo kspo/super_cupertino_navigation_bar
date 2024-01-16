@@ -28,21 +28,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData.dark(
         useMaterial3: false,
       ).copyWith(
-          appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
-          scaffoldBackgroundColor: const Color(0xff424242),
-          cardColor: const Color(0xff1e1d1d),
-          iconTheme: const IconThemeData(color: CupertinoColors.systemBlue),
-          cardTheme: CardTheme(
-            color: const Color(0xff1e1d1d),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          )),
-      themeMode: ThemeMode.dark,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xff000000),
+        cardColor: const Color(0xff0E0E10),
+        shadowColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: CupertinoColors.systemBlue),
+        cardTheme: CardTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+      ),
+      title: 'Flutter Demo',
       builder: (context, Widget? child) => WebFrame(
         child: child!,
       ),

@@ -198,9 +198,7 @@ class NavigationBarTransition extends StatelessWidget {
     // can actually be outside the linearly lerp'ed Rect in the middle of
     // the animation, such as the topLargeTitle. The textScaleFactor is kept
     // at 1 to avoid odd transitions between pages.
-    return MediaQuery(
-      data: MediaQuery.of(context)
-          .copyWith(textScaler: const TextScaler.linear(1)),
+    return MediaQuery.withNoTextScaling(
       child: SizedBox(
         height: max(heightTween.begin!, heightTween.end!) +
             MediaQuery.paddingOf(context).top,

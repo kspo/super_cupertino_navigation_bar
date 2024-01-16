@@ -22,7 +22,6 @@ class _AppleTipsState extends State<AppleTips> {
       stretch: true,
       appBar: SuperAppBar(
         backgroundColor: Colors.black.withOpacity(0.5),
-        bottomBorder: const BorderSide(color: Colors.white10, width: 0),
         height: 45,
         automaticallyImplyLeading: false,
         previousPageTitle: "Home",

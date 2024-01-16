@@ -34,8 +34,7 @@ class _HomeState extends State<Home> {
       transitionBetweenRoutes: true,
       stretch: stretch,
       appBar: SuperAppBar(
-        backgroundColor:
-            Theme.of(context).appBarTheme.backgroundColor!.withOpacity(0.50),
+        backgroundColor: Colors.black,
         title: Text(
           "Welcome",
           style:

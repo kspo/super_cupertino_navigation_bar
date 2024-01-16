@@ -20,7 +20,6 @@ class _GithubIssuesState extends State<GithubIssues> {
       stretch: true,
       appBar: SuperAppBar(
         backgroundColor: const Color(0xff17161b),
-        bottomBorder: const BorderSide(color: Colors.white10, width: 1),
         automaticallyImplyLeading: true,
         title: Text(
           "Issues",

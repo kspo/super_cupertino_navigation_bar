@@ -33,14 +33,12 @@ class _PlaygroundState extends State<Playground> {
       },
       stretch: stretch,
       appBar: SuperAppBar(
-        backgroundColor:
-            Theme.of(context).appBarTheme.backgroundColor!.withOpacity(0.50),
         title: const Text(
           "Wanna Play?",
-          style: TextStyle(color: Colors.white),
         ),
         previousPageTitle: "Home",
         actions: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(
               CupertinoIcons.camera,

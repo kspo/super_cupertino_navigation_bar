@@ -240,7 +240,6 @@ class _AppleStoreState extends State<AppleStore> {
       },
       stretch: true,
       appBar: SuperAppBar(
-        bottomBorder: const BorderSide(color: Colors.white10, width: 0),
         backgroundColor: Colors.black,
         automaticallyImplyLeading: false,
         height: 40,

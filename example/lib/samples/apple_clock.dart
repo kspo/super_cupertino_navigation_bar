@@ -19,7 +19,6 @@ class _AppleClockState extends State<AppleClock> {
       },
       stretch: true,
       appBar: SuperAppBar(
-        bottomBorder: const BorderSide(color: Colors.white10, width: 0),
         backgroundColor: Colors.black,
         height: 45,
         automaticallyImplyLeading: true,
