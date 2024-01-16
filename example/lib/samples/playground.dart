@@ -28,6 +28,42 @@ class _PlaygroundState extends State<Playground> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: CupertinoColors.systemBlue,
+        onPressed: () async {
+          dynamic value = await showCupertinoModalBottomSheet(
+            expand: true,
+            context: context,
+            enableDrag: false,
+            builder: (context) => SettingsWidget(
+              scrollBehavior: scrollBehavior,
+              animationBehavior: animationBehavior,
+              unfocusedSliderValue: unfocusedSliderValue,
+              focusedSliderValue: focusedSliderValue,
+              alwaysSliderValue: alwaysSliderValue,
+              largeTitleEnabled: largeTitleEnabled,
+              searchBarEnabled: searchBarEnabled,
+              stretch: stretch,
+              resultBehavior: resultBehavior,
+            ),
+          );
+          setState(() {
+            scrollBehavior = value[0];
+            animationBehavior = value[1];
+            unfocusedSliderValue = value[2];
+            focusedSliderValue = value[3];
+            alwaysSliderValue = value[4];
+            largeTitleEnabled = value[5];
+            searchBarEnabled = value[6];
+            stretch = value[7];
+            resultBehavior = value[8];
+          });
+        },
+        child: const Icon(
+          Icons.settings,
+          color: Colors.white,
+        ),
+      ),
       body: SuperScaffold(
         onCollapsed: (val) {
           print("collapsed => $val");
@@ -154,42 +190,6 @@ class _PlaygroundState extends State<Playground> {
                 ),
             separatorBuilder: (c, i) => const Divider(),
             itemCount: 100),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: CupertinoColors.systemBlue,
-          onPressed: () async {
-            dynamic value = await showCupertinoModalBottomSheet(
-              expand: true,
-              context: context,
-              enableDrag: false,
-              builder: (context) => SettingsWidget(
-                scrollBehavior: scrollBehavior,
-                animationBehavior: animationBehavior,
-                unfocusedSliderValue: unfocusedSliderValue,
-                focusedSliderValue: focusedSliderValue,
-                alwaysSliderValue: alwaysSliderValue,
-                largeTitleEnabled: largeTitleEnabled,
-                searchBarEnabled: searchBarEnabled,
-                stretch: stretch,
-                resultBehavior: resultBehavior,
-              ),
-            );
-            setState(() {
-              scrollBehavior = value[0];
-              animationBehavior = value[1];
-              unfocusedSliderValue = value[2];
-              focusedSliderValue = value[3];
-              alwaysSliderValue = value[4];
-              largeTitleEnabled = value[5];
-              searchBarEnabled = value[6];
-              stretch = value[7];
-              resultBehavior = value[8];
-            });
-          },
-          child: const Icon(
-            Icons.settings,
-            color: Colors.white,
-          ),
-        ),
       ),
     );
   }

@@ -20,6 +20,12 @@ class SuperLargeTitle {
   final String largeTitle;
   final List<Widget>? actions;
   final TextStyle textStyle;
+
+  /// {@template flutter.material.appbar.toolbarHeight}
+  /// Defines the height of the toolbar component of an [AppBar].
+  ///
+  /// By default, the value of [toolbarHeight] is [kToolbarHeight].
+  /// {@endtemplate}
   double height;
   final EdgeInsets padding;
 }

@@ -10,7 +10,14 @@ class SuperSearchBar {
   final Icon prefixIcon;
   final List<SuperAction> actions;
   final SearchBarScrollBehavior scrollBehavior;
+
+  /// {@template flutter.material.appbar.toolbarHeight}
+  /// Defines the height of the toolbar component of an [AppBar].
+  ///
+  /// By default, the value of [toolbarHeight] is [kToolbarHeight].
+  /// {@endtemplate}
   double height;
+
   final EdgeInsets padding;
   final SearchBarAnimationBehavior animationBehavior;
   final Duration animationDuration;
