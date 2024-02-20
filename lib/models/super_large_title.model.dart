@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class SuperLargeTitle {
   SuperLargeTitle({
     this.largeTitle = "Hello Super Human",
+    this.largeTitleWidget,
     this.actions,
     this.textStyle = const TextStyle(
       inherit: false,
@@ -18,6 +19,8 @@ class SuperLargeTitle {
 
   final bool enabled;
   final String largeTitle;
+  // If largeTitleWidget is not null, largeTitle will be ignored
+  final Widget? largeTitleWidget;
   final List<Widget>? actions;
   final TextStyle textStyle;
 

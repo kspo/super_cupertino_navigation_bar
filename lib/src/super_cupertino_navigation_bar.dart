@@ -173,7 +173,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
       userMiddle: widget.appBar.title,
       userTrailing: widget.appBar.actions,
       largeTitleActions: Row(children: [...?widget.appBar.largeTitle!.actions]),
-      userLargeTitle: Text(
+      userLargeTitle: widget.appBar.largeTitle?.largeTitleWidget ?? Text(
         widget.appBar.largeTitle!.largeTitle,
         style: widget.appBar.largeTitle!.textStyle.copyWith(
           color: widget.appBar.largeTitle!.textStyle.color ??
