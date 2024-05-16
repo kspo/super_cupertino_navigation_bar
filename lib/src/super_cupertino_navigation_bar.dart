@@ -24,6 +24,7 @@ class SuperScaffold extends StatefulWidget {
     this.onCollapsed,
     this.brightness,
     this.scrollController,
+    this.physics = const BouncingScrollPhysics(),
     this.transitionBetweenRoutes = true,
   }) : super(key: key) {
     measures = Measures(
@@ -90,6 +91,7 @@ class SuperScaffold extends StatefulWidget {
 
   final Function(bool)? onCollapsed;
   late final ScrollController? scrollController;
+  final ScrollPhysics? physics;
 
   @override
   State<SuperScaffold> createState() => _SuperScaffoldState();
@@ -98,7 +100,6 @@ class SuperScaffold extends StatefulWidget {
 class _SuperScaffoldState extends State<SuperScaffold> {
   double _scrollOffset = 0;
   bool _collapsed = false;
-  bool isSubmitted = false;
   late TextEditingController _editingController;
   late FocusNode _focusNode;
   late ScrollController _scrollController;
@@ -197,7 +198,7 @@ class _SuperScaffoldState extends State<SuperScaffold> {
           children: [
             NestedScrollViewPlus(
               physics: SnapScrollPhysics(
-                parent: const BouncingScrollPhysics(),
+                parent: widget.physics ?? const BouncingScrollPhysics(),
                 snaps: [
                   if (widget.appBar.searchBar!.scrollBehavior ==
                       SearchBarScrollBehavior.floated)
@@ -725,10 +726,6 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                               Flexible(
                                                 child: Focus(
                                                   onFocusChange: (hasFocus) {
-                                                    if (isSubmitted) {
-                                                      isSubmitted = false;
-                                                      return;
-                                                    }
                                                     searchBarFocusThings(
                                                         hasFocus);
                                                     setState(() {});
@@ -736,7 +733,6 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                   child:
                                                       CupertinoSearchTextField(
                                                     onSubmitted: (s) {
-                                                      isSubmitted = true;
                                                       widget.appBar.searchBar!
                                                           .onSubmitted
                                                           ?.call(s);
