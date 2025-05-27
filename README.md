@@ -77,86 +77,6 @@ Before the table of content, hereby, you can find all of example from [here](htt
 
 # SuperScaffold
 
-- [Additional Features and Customization Options](#additional-features-and-customization-options)
-- [SuperAppBar](#superappbar)
-  - [Parameters](#parameters)
-  - [Example Usage](#example-usage)
-- [SuperLargeTitle](#superlargetitle)
-  - [Parameters](#parameters-1)
-  - [Example Usage](#example-usage-1)
-- [SuperSearchBar](#supersearchbar)
-  - [Parameters](#parameters-2)
-  - [SearchResultHeader Class](#searchresultheader-class)
-  - [Enums](#enums)
-  - [Example Usage](#example-usage-2)
-- [SuperAppBarBottom](#superappbarbottom)
-  - [Parameters](#parameters-3)
-  - [Example Usage](#example-usage-3)
-
-
-# Getting Started
-
-#### Add dependency
-
-```yaml
-dependencies:
-  super_cupertino_navigation_bar: latest_version
-```
-
-#### Add import package
-
-```dart
-import 'package:super_cupertino_navigation_bar/super_cupertino_navigation_bar.dart';
-```
-
-#### Easy to use
-
-```dart
-Scaffold(
-  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-  body: SuperScaffold(
-      appBar: SuperAppBar(
-        title: Text("Hello SuperScaffold"),
-        largeTitle: SuperLargeTitle(
-          enabled: true,
-          largeTitle: "Welcome",
-        ),
-        searchBar: SuperSearchBar(
-          enabled: true,
-          onChanged: (query) {
-            // Search Bar Changes
-          },
-          onSubmitted: (query) {
-            // On Search Bar submitted
-          },
-          searchResult: /* ... */,
-          // Add other search bar properties as needed
-        ),
-        bottom: SuperAppBarBottom(
-          enabled: true,
-          height: 40,
-          child: YourCustomBottomWidget(), // Any widget of yours
-        ),
-      ),
-      body: SingleChildScrollView( // You can use CustomScrollView or any Widget desired
-        child: Column(
-          children: [
-              Card(
-                // Playground card
-                // Add your onTap logic for Playground card
-              ),
-              Card(
-                // List of example cards
-                // Add your ListView.separated logic for example cards
-              ),
-            ],
-          ),
-        ),
-    );
-```
-
-# SuperScaffold
-
 `SuperScaffold` is an extended version of the Flutter `Scaffold` widget with additional features and customization options.
 
 ## Additional Features and Customization Options
@@ -167,6 +87,113 @@ Scaffold(
 - **`onCollapsed`**: A callback function invoked when the app bar is collapsed.
 - **`scrollController`**: A custom scroll controller for the body of the `SuperScaffold`.
 - **`body`**: body attribute can now be any widget you want. SingleChildScrollView, CustomScrollView or etc...
+- **`onRefresh`**: A callback function for pull-to-refresh functionality. When provided, enables iOS-style pull-to-refresh.
+- **`refreshTriggerPullDistance`**: The distance the user must pull down to trigger a refresh (default: 100.0 pixels).
+- **`refreshIndicatorExtent`**: The extent of the refresh indicator when fully visible (default: 60.0 pixels).
+
+## Pull-to-Refresh Support
+
+`SuperScaffold` now includes built-in support for iOS-style pull-to-refresh functionality using `CupertinoSliverRefreshControl`.
+
+### Example Usage with Pull-to-Refresh
+
+```dart
+SuperScaffold(
+  appBar: SuperAppBar(
+    title: Text("Pull to Refresh Example"),
+    largeTitle: SuperLargeTitle(
+      largeTitle: "Refreshable Content",
+    ),
+  ),
+  // Enable pull-to-refresh
+  onRefresh: () async {
+    // Simulate network request
+    await Future.delayed(Duration(seconds: 2));
+    
+    // Update your data
+    setState(() {
+      // Refresh your content here
+    });
+  },
+  refreshTriggerPullDistance: 100.0, // Optional: customize trigger distance
+  refreshIndicatorExtent: 60.0, // Optional: customize indicator size
+  body: CustomScrollView(
+    slivers: [
+      SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => ListTile(
+            title: Text('Item $index'),
+          ),
+          childCount: 20,
+        ),
+      ),
+    ],
+  ),
+)
+```
+
+### Pull-to-Refresh Parameters
+
+| Parameter                    | Description                                                                                      | Default Value |
+|------------------------------|--------------------------------------------------------------------------------------------------|---------------|
+| `onRefresh`                  | Callback function triggered when the user pulls down to refresh. Must return a `Future<void>`.  | `null`        |
+| `refreshTriggerPullDistance` | The distance in pixels that the user must pull down to trigger a refresh.                       | `100.0`       |
+| `refreshIndicatorExtent`     | The extent of the refresh indicator when fully visible.                                         | `60.0`        |
+| `refreshIndicatorBuilder`    | A builder for creating custom refresh indicators. If null, uses the default iOS-style indicator.| `null`        |
+
+### Custom Refresh Indicator Example
+
+You can create completely custom refresh indicators using the `refreshIndicatorBuilder` parameter:
+
+```dart
+SuperScaffold(
+  appBar: SuperAppBar(
+    title: Text("Custom Refresh Indicator"),
+    largeTitle: SuperLargeTitle(
+      largeTitle: "Custom Indicator",
+    ),
+  ),
+  onRefresh: _handleRefresh,
+  refreshIndicatorBuilder: (
+    BuildContext context,
+    RefreshIndicatorMode refreshState,
+    double pulledExtent,
+    double refreshTriggerPullDistance,
+    double refreshIndicatorExtent,
+  ) {
+    // Build your custom indicator based on the refresh state
+    switch (refreshState) {
+      case RefreshIndicatorMode.drag:
+        // User is dragging but hasn't reached the trigger point
+        return MyCustomDragIndicator(progress: pulledExtent / refreshTriggerPullDistance);
+      case RefreshIndicatorMode.armed:
+        // User has pulled enough to trigger refresh on release
+        return MyCustomArmedIndicator();
+      case RefreshIndicatorMode.refresh:
+        // Refresh is in progress
+        return MyCustomLoadingIndicator();
+      case RefreshIndicatorMode.done:
+        // Refresh completed
+        return MyCustomDoneIndicator();
+      default:
+        return const SizedBox.shrink();
+    }
+  },
+  body: // Your content
+)
+```
+
+The builder receives:
+- `refreshState`: The current state of the refresh indicator
+- `pulledExtent`: How far the user has pulled down in pixels
+- `refreshTriggerPullDistance`: The distance needed to trigger refresh
+- `refreshIndicatorExtent`: The space allocated for the indicator
+
+### Notes on Pull-to-Refresh
+
+- The pull-to-refresh feature works seamlessly with all navigation bar configurations (floated, pinned, with or without search bar).
+- The refresh indicator appears above the navigation bar and respects the iOS design guidelines.
+- The `stretch` parameter does not interfere with the pull-to-refresh functionality when using the built-in `onRefresh` callback.
 
 Feel free to use this extended `SuperScaffold` in your Flutter application for enhanced customization and additional features. Adjust the parameters according to your application's requirements.
 
