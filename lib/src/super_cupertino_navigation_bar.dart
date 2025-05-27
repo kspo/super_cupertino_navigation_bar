@@ -25,6 +25,10 @@ class SuperScaffold extends StatefulWidget {
     this.brightness,
     this.scrollController,
     this.transitionBetweenRoutes = true,
+    this.onRefresh,
+    this.refreshTriggerPullDistance = 100.0,
+    this.refreshIndicatorExtent = 60.0,
+    this.refreshIndicatorBuilder,
   }) : super(key: key) {
     measures = Measures(
       searchTextFieldHeight: appBar.searchBar!.height,
@@ -43,6 +47,9 @@ class SuperScaffold extends StatefulWidget {
   /// When set to `true`, the nav bar will prevent subsequent slivers from
   /// accessing overscrolls. This may be undesirable for using overscroll-based
   /// widgets like the [CupertinoSliverRefreshControl].
+  ///
+  /// Note: If you're using the built-in pull-to-refresh functionality via [onRefresh],
+  /// the refresh control will work regardless of the [stretch] value.
   ///
   /// Defaults to `true`.
   final bool stretch;
@@ -90,6 +97,30 @@ class SuperScaffold extends StatefulWidget {
 
   final Function(bool)? onCollapsed;
   late final ScrollController? scrollController;
+
+  /// Called when the user triggers a refresh by pulling down.
+  /// 
+  /// If null, pull-to-refresh is disabled.
+  /// The returned [Future] must complete when the refresh operation is finished.
+  final Future<void> Function()? onRefresh;
+
+  /// The distance the user must pull down to trigger a refresh.
+  /// 
+  /// Defaults to 100.0 pixels.
+  final double refreshTriggerPullDistance;
+
+  /// The extent of the refresh indicator when fully visible.
+  /// 
+  /// Defaults to 60.0 pixels.
+  final double refreshIndicatorExtent;
+
+  /// A builder that's called to create a custom refresh indicator.
+  /// 
+  /// If null, the default iOS-style refresh indicator is used.
+  /// The builder receives the current [BuildContext], [RefreshIndicatorMode],
+  /// the pull amount (0.0 to 1.0 and above), the refresh trigger pull distance,
+  /// and the refresh indicator extent.
+  final RefreshControlIndicatorBuilder? refreshIndicatorBuilder;
 
   @override
   State<SuperScaffold> createState() => _SuperScaffoldState();
@@ -217,6 +248,13 @@ class _SuperScaffoldState extends State<SuperScaffold> {
               controller: _scrollController,
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) => [
+                if (widget.onRefresh != null)
+                  CupertinoSliverRefreshControl(
+                    refreshTriggerPullDistance: widget.refreshTriggerPullDistance,
+                    refreshIndicatorExtent: widget.refreshIndicatorExtent,
+                    builder: widget.refreshIndicatorBuilder,
+                    onRefresh: widget.onRefresh!,
+                  ),
                 OverlapAbsorberPlus(
                   sliver: SliverToBoxAdapter(
                     child: ValueListenableBuilder(
@@ -501,7 +539,9 @@ class _SuperScaffoldState extends State<SuperScaffold> {
                                                         components.largeTitle,
                                                   ),
                                                   const Spacer(),
-                                                  components.largeTitleActions!,
+                                                  Flexible(
+                                                    child: components.largeTitleActions!,
+                                                  ),
                                                   /*...?widget
                                                                   .appBar!
                                                                   .largeTitle!

@@ -15,6 +15,7 @@ import 'package:untitled/samples/github_inbox.dart';
 import 'package:untitled/samples/github_issues.dart';
 import 'package:untitled/samples/home.dart';
 import 'package:untitled/samples/playground.dart';
+import 'package:untitled/samples/pull_to_refresh_example.dart';
 import 'package:untitled/samples/whatsapp.dart';
 import 'package:untitled/web_frame.dart';
 
@@ -103,6 +104,9 @@ class MyApp extends StatelessWidget {
           case '/gallery':
             return CustomPageRoute(
                 builder: (_) => const ShortcutsGallery(), settings: settings);
+          case '/pull_to_refresh':
+            return CustomPageRoute(
+                builder: (_) => const PullToRefreshExample(), settings: settings);
         }
         return null;
       },

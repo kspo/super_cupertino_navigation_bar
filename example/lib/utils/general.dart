@@ -34,6 +34,14 @@ class General {
 
   List<SubListItem> examples = [
     SubListItem(
+      icon: Icons.refresh,
+      iconColor: Colors.blue,
+      title: "Pull to Refresh",
+      screen: "/pull_to_refresh",
+      imageUrl: "assets/app_icon_1.png",
+      subtitle: "Pull down to refresh content",
+    ),
+    SubListItem(
       icon: Icons.star,
       iconColor: Colors.amberAccent,
       title: "Apple iTunes",
